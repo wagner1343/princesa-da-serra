@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Main">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="800.0" spacing="5.0" styleClass="root" stylesheets="@Aplicacao.css">
+         <children>
+            <HBox prefHeight="60.0" prefWidth="800.0" spacing="8.0">
+               <children>
+                  <VBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="69.0" spacing="5.0">
+                     <children>
+                        <Label text="Partida:" />
+                        <Label text="Destino:" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="143.0" spacing="5.0">
+                     <children>
+                        <Label text="Guarapuava - PR" />
+                        <Label text="Curitiba - PR" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox prefHeight="60.0" prefWidth="193.0" spacing="5.0">
+                     <children>
+                        <Label text="05 de setembro de 2018" />
+                        <Label text="05 de setembro de 2018" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox prefHeight="60.0" prefWidth="89.0" spacing="5.0">
+                     <children>
+                        <Label text="10h:00m" />
+                        <Label text="14h:00m" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="100.0" prefWidth="3.0" />
+                  <VBox alignment="TOP_RIGHT" prefHeight="60.0" prefWidth="108.0" spacing="5.0">
+                     <children>
+                        <Label text="Poltrona:" />
+                        <Label text="Valor:" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <VBox alignment="TOP_RIGHT" prefHeight="60.0" prefWidth="75.0" spacing="5.0">
+                     <children>
+                        <Label text="18" />
+                        <Label text="R$ 90,00" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefHeight="3.0" prefWidth="790.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </VBox.margin>
+            </Separator>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label text="CPF:" />
+                        <TextField minHeight="-Infinity" prefHeight="30.0" prefWidth="332.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label text="Telefone:" />
+                        <TextField minHeight="-Infinity" prefHeight="30.0" prefWidth="299.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="123.0" text="Nome completo:" />
+                        <TextField minHeight="-Infinity" prefHeight="30.0" prefWidth="241.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label text="Email:" />
+                        <TextField minHeight="-Infinity" prefHeight="30.0" prefWidth="322.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" top="60.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
