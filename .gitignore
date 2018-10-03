@@ -1,9 +1,10 @@
-build
+build/
 
  # Idea user settings
-idea/workspace.xml
-idea/tasks.xml
-idea/usage.statistics.xml
+
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
 lib/*
 
 # Eclipse
