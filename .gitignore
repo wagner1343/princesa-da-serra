@@ -1,15 +1,17 @@
-./build
+build
 
  # Idea user settings
-./idea/workspace.xml
-./idea/tasks.xml
-./idea/usage.statistics.xml
-./lib/*
+idea/workspace.xml
+idea/tasks.xml
+idea/usage.statistics.xml
+lib/*
+libs/*
 
 # Eclipse
 .metadata
 bin/
 tmp/
+out/
 *.tmp
 *.bak
 *.swp
