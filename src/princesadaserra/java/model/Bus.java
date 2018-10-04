@@ -6,7 +6,6 @@ public class Bus {
 	
 	private int id;
 	private Model model;
-	private Date lastmaintenance;
-
+	private Date lastMaintenance;
 
 }

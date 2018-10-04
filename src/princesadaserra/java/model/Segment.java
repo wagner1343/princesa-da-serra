@@ -9,6 +9,5 @@ public class Segment {
 	private City cityDestination;
 	private Date time;
 	private double value;
-	
 
 }
