@@ -1,70 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/hibernate_core_5_3_6_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/hibernate-core-5.3.6.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Bus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/City.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Permission.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Route.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Sale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Segment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Trip.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/repository/trip/TripRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/repository/user/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/ui/view/trips/TripsViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/ui/view/trips/TripsViewModelImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/util/arch/View.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/princesadaserra/java/util/arch/ViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Estrutura iniciall">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaFxApplication.iml" beforeDir="false" afterPath="$PROJECT_DIR$/princesa-da-serra.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design/img/paisagem/curitiba.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/meta/design/img/paisagem/curitiba.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design/img/paisagem/jardim-boanico.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/meta/design/img/paisagem/jardim-boanico.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design/img/paisagem/ponte-florianopolis.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/meta/design/img/paisagem/ponte-florianopolis.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design/princesa-da-serra-concept.xd" beforeDir="false" afterPath="$PROJECT_DIR$/meta/design/princesa-da-serra-concept.xd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/app/Controller.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/app/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/app/controllers/LoginScreen/LoginScreenController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/app/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/app/services/Service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/app/services/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Cidade.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Modelo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Onibus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Permissao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Rota.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Segmento.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Venda.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Viagem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/ViagemRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/testes/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/viagemview/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/testes/ViagemViewModelTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/viagemview/TripsViewModelTeste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/testes/ViagemViewTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/viagemview/ViagemViewTeste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/view/Aplicacao.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/view/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princesadaserra/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/view/RealizaCompra.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/view/ViagemView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princesadaserra/java/ui/view/trips/TripsView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/viewmodel/ResultadoBusca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/viewmodel/ViagemViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/viewmodel/ViagemViewModelImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/viewmodel/ViewModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/img/bus1.png" beforeDir="false" afterPath="$PROJECT_DIR$/resources/img/bus1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/img/paisagem/curitiba.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/img/paisagem/curitiba.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/img/paisagem/ponte-florianopolis.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/img/paisagem/ponte-florianopolis.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/view/LoginScreen/LoginScreen.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/view/LoginScreen/LoginScreen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/view/LoginScreen/LoginScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/view/LoginScreen/LoginScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/view/LoginScreen/ponte-florianopolis.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/resources/view/LoginScreen/ponte-florianopolis.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/view/RegisterScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/view/RegisterScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/princesadaserra/resources/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uml/DiagramaClasses.png" beforeDir="false" afterPath="$PROJECT_DIR$/meta/uml/DiagramaClasses.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/uml/DiagramaClasses.ucls" beforeDir="false" afterPath="$PROJECT_DIR$/meta/uml/DiagramaClasses.ucls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/firebase/HttpsClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/firebase/RESTBindingAPIExampleHTTPS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/princesadaserra/java/model/Trip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/princesadaserra/java/model/Trip.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -120,8 +59,11 @@
     <session id="150165258">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.35" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.80" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -151,14 +93,15 @@
           <entry key="css" value="1" />
           <entry key="dummy" value="147" />
           <entry key="gitignore" value="8" />
-          <entry key="java" value="448" />
+          <entry key="java" value="456" />
+          <entry key="txt" value="26" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="1" />
-          <entry key="JAVA" value="448" />
-          <entry key="PLAIN_TEXT" value="155" />
+          <entry key="JAVA" value="456" />
+          <entry key="PLAIN_TEXT" value="181" />
         </counts>
       </usages-collector>
     </session>
@@ -171,7 +114,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/ui/view/trips/TripsViewModelImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="272">
               <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -187,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/repository/user/UserRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -205,7 +148,7 @@
         <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/model/Model.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -258,8 +201,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/model/Trip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="85">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -283,6 +226,11 @@
     </FindUsagesManager>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Wagner Silvestre Wuchryn Martins &lt;wagner1343@outlook.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -333,8 +281,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-62" />
+    <option name="y" value="-19" />
     <option name="width" value="1386" />
     <option name="height" value="788" />
   </component>
@@ -381,6 +330,36 @@
             <path>
               <item name="princesa-da-serra" type="b2602c69:ProjectViewProjectNode" />
               <item name="princesa-da-serra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="princesa-da-serra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="princesa-da-serra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="repository" type="462c0819:PsiDirectoryNode" />
+              <item name="trip" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="princesa-da-serra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="princesa-da-serra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="princesa-da-serra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="princesa-da-serra" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="trips" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="princesa-da-serra" type="b2602c69:ProjectViewProjectNode" />
+              <item name="princesa-da-serra" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -418,7 +397,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538596399356" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538596443844" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/hibernate-core-5.3.6.Final.jar!/" />
@@ -427,7 +406,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -505,53 +484,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <module name="princesa-da-serra" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <module name="princesa-da-serra" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -588,15 +520,30 @@
       <workItem from="1536948549491" duration="3356000" />
       <workItem from="1536962298602" duration="433000" />
     </task>
+    <task id="LOCAL-00001" summary="Estrutura inicial">
+      <created>1538596299848</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1538596299848</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Estrutura iniciall">
+      <created>1538596390709</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1538596390709</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="5120000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1386" height="788" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2677225" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.27609682" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -604,7 +551,6 @@
       <window_info id="Favorites" order="5" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Learn" order="7" />
-      <window_info anchor="bottom" id="Inspection Results" visible="true" weight="0.32977098" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32977098" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.44182622" />
@@ -615,11 +561,12 @@
       <window_info anchor="bottom" id="Application Servers" order="7" />
       <window_info anchor="bottom" id="Changes" order="8" />
       <window_info anchor="bottom" id="Profiler" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3298969" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.4599018" />
       <window_info anchor="bottom" id="Event Log" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="bottom" id="Problems" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.32977098" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -640,61 +587,24 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="Estrutura inicial" />
+    <MESSAGE value="Estrutura iniciall" />
+    <option name="LAST_COMMIT_MESSAGE" value="Estrutura iniciall" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/sample.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/princesadaserra/resources/view/LoginScreen.fxml" />
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/firebase/HttpsClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#301#302#0" expanded="true" />
-            <element signature="e#343#344#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/firebase/RESTBindingAPIExampleHTTPS.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="43" lean-forward="true" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/Main.java" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/Controller.java" />
+    <entry file="file://$PROJECT_DIR$/tests/firebase/HttpsClient.java" />
+    <entry file="file://$PROJECT_DIR$/tests/firebase/RESTBindingAPIExampleHTTPS.java" />
     <entry file="file://$PROJECT_DIR$/.idea/description.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -707,40 +617,11 @@
     <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/services/Service.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/services/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/controllers/LoginScreen/LoginScreenController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/view/Aplicacao.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="1" lean-forward="true" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/view/RealizaCompra.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1071" />
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/services/Service.java" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/services/UserService.java" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/app/controllers/LoginScreen/LoginScreenController.java" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/view/Aplicacao.css" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/view/RealizaCompra.fxml" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -755,30 +636,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/ui/view/viagens/ViagensView.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/viewmodel/ResultadoBusca.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/ui/df.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="15" selection-start-line="2" selection-start-column="15" selection-end-line="2" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/repo/viagem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/ui/view/viagens/ViagensView.css" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/viewmodel/ResultadoBusca.java" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/ui/df.java" />
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/repo/viagem.java" />
     <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/util/arch/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -824,13 +685,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/model/ViagemRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/model/ViagemRepo.java" />
     <entry file="file://$PROJECT_DIR$/.classpath">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -838,15 +693,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/ui/view/trips/TripsViewModelImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="272">
           <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -860,7 +712,7 @@
     <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/repository/user/UserRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -874,7 +726,7 @@
     <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/model/Model.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -915,8 +767,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/princesadaserra/java/model/Trip.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="85">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

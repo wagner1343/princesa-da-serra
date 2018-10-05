@@ -3,7 +3,7 @@ package princesadaserra.java.model;
 import java.util.Date;
 import java.util.Observable;
 
-public class Trip extends Observable{
+public class Trip {
 
 	private int id;
 	private Route rota;
