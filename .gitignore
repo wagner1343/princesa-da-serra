@@ -1,15 +1,18 @@
-./build
+build/
 
  # Idea user settings
-./idea/workspace.xml
-./idea/tasks.xml
-./idea/usage.statistics.xml
-./lib/*
+
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+lib/*
 
 # Eclipse
 .metadata
 bin/
 tmp/
+out/
+
 *.tmp
 *.bak
 *.swp
@@ -25,32 +28,8 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
-# PyDev specific (Python IDE for Eclipse)
-*.pydevproject
-
-# CDT-specific (C/C++ Development Tooling)
-.cproject
-
-# CDT- autotools
-.autotools
-
 # Java annotation processor (APT)
 .factorypath
-
-# PDT-specific (PHP Development Tools)
-.buildpath
-
-# sbteclipse plugin
-.target
-
-# Tern plugin
-.tern-project
-
-# TeXlipse plugin
-.texlipse
-
-# STS (Spring Tool Suite)
-.springBeans
 
 # Code Recommenders
 .recommenders/

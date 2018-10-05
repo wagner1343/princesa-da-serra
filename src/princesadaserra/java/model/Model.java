@@ -6,5 +6,4 @@ public class Model {
 	private int amntAxes;
 	private int amntSeats;
 
-
 }
