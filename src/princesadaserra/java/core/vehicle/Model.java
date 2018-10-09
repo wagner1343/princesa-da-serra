@@ -1,4 +1,4 @@
-package princesadaserra.java.model;
+package princesadaserra.java.core.vehicle;
 
 public class Model {
 

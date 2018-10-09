@@ -39,9 +39,9 @@
                            <children>
                               <AnchorPane cacheHint="SPEED" layoutX="81.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="251.0" style="-fx-background-radius: 5; -fx-background-color: white;">
                                  <children>
-                                    <JFXPasswordField cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Senha" unFocusColor="#00000061" />
-                                    <JFXTextField cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="180.0" promptText="Usuário" unFocusColor="#00000061" />
-                                    <JFXButton cacheHint="SPEED" layoutX="20.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #C4FF39; -fx-background-radius: 5;" text="Login" textFill="WHITE">
+                                    <JFXPasswordField fx:id="passwordTextField" cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Senha" unFocusColor="#00000061" />
+                                    <JFXTextField fx:id="userTextField" cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="180.0" promptText="Usuário" unFocusColor="#00000061" />
+                                    <JFXButton cacheHint="SPEED" layoutX="20.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginOnClick" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #C4FF39; -fx-background-radius: 5;" text="Login" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
@@ -51,6 +51,7 @@
                                     <DropShadow color="#00000035" height="30.94" offsetY="3.0" radius="15.942499999999999" width="34.83" />
                                  </effect>
                               </AnchorPane>
+                              <Text fx:id="resultText" layoutX="195.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                            </children>
                            <opaqueInsets>
                               <Insets />

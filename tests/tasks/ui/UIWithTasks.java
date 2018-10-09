@@ -1,4 +1,4 @@
-package princesadaserra.java;
+package tasks.ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -8,20 +8,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import princesadaserra.java.ui.screen.login.LoginScreenController;
 
-public class App extends Application {
+public class UIWithTasks extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/loginview/LoginScreen.fxml"));
-        loader.setController(new LoginScreenController() {
-            @Override
-            @FXML
-            public void loginOnClick() {
-                System.out.println("LoginOnCLick");
-            }
-        });
 
+        loader.setController(new Controller());
         Parent p = (Parent) loader.load();
         Scene scene = new Scene(p, 800, 600);
         stage.setTitle("Princesa da Serra");
