@@ -2,7 +2,7 @@ package princesadaserra.java.util.threading;
 
 import com.sun.istack.internal.Nullable;
 
-public abstract class Task<ArgumentType, ResultType> extends Thread {
+public abstract class Task<ArgumentType, ResultType> implements Runnable{
     ArgumentType argument;
     ResultType result;
 
@@ -23,7 +23,7 @@ public abstract class Task<ArgumentType, ResultType> extends Thread {
     private Callback onExecutingCallback;
     private CallbackWithArgument<TASKSTATUS> onStatusChangedCallback;
 
-    public abstract @Nullable ResultType execute(@Nullable ArgumentType argument);
+    protected abstract @Nullable ResultType execute(@Nullable ArgumentType argument);
 
     public Task(){
         this.TASKSTATUS = TASKSTATUS.INITIAL;
