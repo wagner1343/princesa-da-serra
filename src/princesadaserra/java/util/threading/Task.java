@@ -72,6 +72,8 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
             case CANCELED:
                 onCanceledCallback.execute(result);
                 break;
+            default:
+                break;
         }
 
         onFinishCallback.execute(result);
@@ -126,8 +128,6 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
         this.onExecutingCallback = onExecutingCallback;
     }
 
-
-
     public void addOnFinishCallback(CallbackWithArgument<ResultType> callback){
         this.onFinishCallbackList.addCallback(callback);
     }
@@ -136,36 +136,36 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
         this.onFinishCallbackList.addCallback((arg) -> callback.execute());
     }
 
-    public void addOnSuccessCallback(CallbackWithArgument<ResultType> callback){
-        this.onSuccessCallbackList.addCallback(callback);
-    }
-
-    public void addOnFailedCallback(CallbackWithArgument<ResultType> callback){
-        this.onFailedCallbackList.addCallback(callback);
-    }
-
     public void addOnCanceledCallback(CallbackWithArgument<ResultType> callback){
         this.onCanceledCallbackList.addCallback(callback);
-    }
-
-    public void addOnStatusChangedCallback(CallbackWithArgument<TASKSTATUS> callback){
-        this.onStatusChangedCallbackList.addCallback(callback);
-    }
-
-    public void addOnSuccessCallback(Callback callback){
-        this.onSuccessCallbackList.addCallback((arg) -> callback.execute());
-    }
-
-    public void addOnFailedCallback(Callback callback){
-        this.onFailedCallbackList.addCallback((arg) -> callback.execute());
     }
 
     public void addOnCanceledCallback(Callback callback){
         this.onCanceledCallbackList.addCallback((arg) -> callback.execute());
     }
 
+    public void addOnStatusChangedCallback(CallbackWithArgument<TASKSTATUS> callback){
+        this.onStatusChangedCallbackList.addCallback(callback);
+    }
+
     public void addOnStatusChangedCallback(Callback callback){
         this.onStatusChangedCallbackList.addCallback((arg) -> callback.execute());
+    }
+
+    public void addOnSuccessCallback(Callback callback){
+        this.onSuccessCallbackList.addCallback((arg) -> callback.execute());
+    }
+
+    public void addOnSuccessCallback(CallbackWithArgument<ResultType> callback){
+        this.onSuccessCallbackList.addCallback(callback);
+    }
+
+    public void addOnFailedCallback(Callback callback){
+        this.onFailedCallbackList.addCallback((arg) -> callback.execute());
+    }
+
+    public void addOnFailedCallback(CallbackWithArgument<ResultType> callback){
+        this.onFailedCallbackList.addCallback(callback);
     }
 
     public void addOnExecutingCallback(Callback callback){
