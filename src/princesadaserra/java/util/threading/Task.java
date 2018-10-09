@@ -1,7 +1,5 @@
 package princesadaserra.java.util.threading;
 
-import com.sun.istack.internal.Nullable;
-
 public abstract class Task<ArgumentType, ResultType> implements Runnable{
     ArgumentType argument;
     ResultType result;
@@ -23,7 +21,7 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
     private Callback onExecutingCallback;
     private CallbackWithArgument<TASKSTATUS> onStatusChangedCallback;
 
-    protected abstract @Nullable ResultType execute(@Nullable ArgumentType argument);
+    protected abstract ResultType execute(ArgumentType argument);
 
     public Task(){
         this.TASKSTATUS = TASKSTATUS.INITIAL;
@@ -44,7 +42,7 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
 
     }
 
-    public void start(@Nullable ArgumentType argument){
+    public void start(ArgumentType argument){
         this.argument = argument;
         this.thread = new Thread(this);
         thread.start();
