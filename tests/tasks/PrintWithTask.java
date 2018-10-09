@@ -1,6 +1,6 @@
 package tasks;
 
-import princesadaserra.java.tasks.Task;
+import princesadaserra.java.util.threading.Task;
 
 import java.util.Scanner;
 
@@ -8,18 +8,11 @@ public  class PrintWithTask {
 
     public static void main(String[] args){
 
-        Task task = new Task() {
+        Task<String, Integer> task = new Task<String, Integer>() {
 
             @Override
-            public void execute() {
-                while(isExecuting()){
-                    System.out.println("Iam executing");
-                    try {
-                        Thread.sleep(4000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+            public Integer execute(String argument) {
+                return Integer.parseInt(argument);
             }
         };
 
@@ -27,8 +20,8 @@ public  class PrintWithTask {
             System.out.println("Iniciando execução");
         });
 
-        task.addOnFinishCallback(() -> {
-            System.out.println("Finished");
+        task.addOnFinishCallback((result) -> {
+            System.out.println("Result is " + result);
         });
 
         task.addOnCanceledCallback(() -> {
@@ -43,11 +36,11 @@ public  class PrintWithTask {
             System.out.println("Failed");
         });
 
-        task.addOnStatusChangedCallback(() -> {
-            System.out.println("Status changed");
+        task.addOnStatusChangedCallback((status) -> {
+            System.out.println("Status changed to " + status.toString());
         });
 
-        task.start();
+        task.start("123");
 
         while(true) {
             Scanner s = new Scanner(System.in);
@@ -67,7 +60,5 @@ public  class PrintWithTask {
                     break;
             }
         }
-
-
     }
 }
