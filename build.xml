@@ -51,42 +51,6 @@
     <exclude name="**/?*.clj"/>
   </patternset>
   
-  <!-- JDK definitions -->
-  
-  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
-  <path id="jdk.classpath.1.8">
-    <fileset dir="${jdk.home.1.8}">
-      <include name="jre/lib/charsets.jar"/>
-      <include name="jre/lib/deploy.jar"/>
-      <include name="jre/lib/ext/access-bridge-64.jar"/>
-      <include name="jre/lib/ext/cldrdata.jar"/>
-      <include name="jre/lib/ext/dnsns.jar"/>
-      <include name="jre/lib/ext/jaccess.jar"/>
-      <include name="jre/lib/ext/jfxrt.jar"/>
-      <include name="jre/lib/ext/localedata.jar"/>
-      <include name="jre/lib/ext/nashorn.jar"/>
-      <include name="jre/lib/ext/sunec.jar"/>
-      <include name="jre/lib/ext/sunjce_provider.jar"/>
-      <include name="jre/lib/ext/sunmscapi.jar"/>
-      <include name="jre/lib/ext/sunpkcs11.jar"/>
-      <include name="jre/lib/ext/zipfs.jar"/>
-      <include name="jre/lib/javaws.jar"/>
-      <include name="jre/lib/jce.jar"/>
-      <include name="jre/lib/jfr.jar"/>
-      <include name="jre/lib/jfxswt.jar"/>
-      <include name="jre/lib/jsse.jar"/>
-      <include name="jre/lib/management-agent.jar"/>
-      <include name="jre/lib/mysql-connector-java-5.1.46-bin.jar"/>
-      <include name="jre/lib/plugin.jar"/>
-      <include name="jre/lib/resources.jar"/>
-      <include name="jre/lib/rt.jar"/>
-    </fileset>
-  </path>
-  
-  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
-  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
-  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
-  
   
   <!-- Project Libraries -->
   
@@ -109,9 +73,6 @@
   <dirname property="module.princesa-da-serra.basedir" file="${ant.file}"/>
   
   
-  <property name="module.jdk.home.princesa-da-serra" value="${project.jdk.home}"/>
-  <property name="module.jdk.bin.princesa-da-serra" value="${project.jdk.bin}"/>
-  <property name="module.jdk.classpath.princesa-da-serra" value="${project.jdk.classpath}"/>
   
   <property name="compiler.args.princesa-da-serra" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
   
@@ -123,7 +84,6 @@
   </path>
   
   <path id="princesa-da-serra.module.production.classpath">
-    <path refid="${module.jdk.classpath.princesa-da-serra}"/>
     <path refid="library.jfoenix-8.0.7.classpath"/>
     <path refid="library.hibernate-core-5.3.6.final.classpath"/>
   </path>
@@ -135,7 +95,6 @@
   </path>
   
   <path id="princesa-da-serra.module.classpath">
-    <path refid="${module.jdk.classpath.princesa-da-serra}"/>
     <pathelement location="${princesa-da-serra.output.dir}"/>
     <path refid="library.jfoenix-8.0.7.classpath"/>
     <path refid="library.hibernate-core-5.3.6.final.classpath"/>
@@ -169,7 +128,7 @@
   
   <target name="compile.module.princesa-da-serra.production" description="Compile module princesa-da-serra; production classes">
     <mkdir dir="${princesa-da-serra.output.dir}"/>
-    <javac destdir="${princesa-da-serra.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.princesa-da-serra}/javac">
+    <javac destdir="${princesa-da-serra.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.princesa-da-serra}"/>
       <bootclasspath refid="princesa-da-serra.module.bootclasspath"/>
       <classpath refid="princesa-da-serra.module.production.classpath"/>
