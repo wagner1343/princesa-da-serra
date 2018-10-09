@@ -1,4 +1,4 @@
-package princesadaserra.java.model;
+package princesadaserra.java.core.user;
 
 import java.util.ArrayList;
 
