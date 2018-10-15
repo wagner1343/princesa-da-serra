@@ -8,7 +8,7 @@ public  class PrintWithTask {
 
     public static void main(String[] args){
 
-        Task<String, Integer> task = new Task<String, Integer>() {
+        Task<String, Integer, Integer> task = new Task<String, Integer, Integer>() {
 
             @Override
             public Integer execute(String argument) {

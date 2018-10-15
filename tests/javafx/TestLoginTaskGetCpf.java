@@ -1,4 +1,4 @@
-package tasks.ui;
+package javafx;
 
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.util.threading.Task;

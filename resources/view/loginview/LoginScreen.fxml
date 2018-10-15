@@ -37,11 +37,11 @@
                         </AnchorPane>
                         <AnchorPane cacheHint="SPEED" layoutX="11.0" layoutY="357.0" minHeight="0.0" minWidth="0.0" prefHeight="240.0" prefWidth="400.0" style="-fx-background-color: #8AE664a6; -fx-background-radius: 0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                            <children>
-                              <AnchorPane cacheHint="SPEED" layoutX="81.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="251.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+                              <AnchorPane fx:id="loginPane" cacheHint="SPEED" layoutX="81.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="251.0" style="-fx-background-radius: 5; -fx-background-color: white;">
                                  <children>
-                                    <JFXPasswordField cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Senha" unFocusColor="#00000061" />
-                                    <JFXTextField cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="180.0" promptText="Usuário" unFocusColor="#00000061" />
-                                    <JFXButton cacheHint="SPEED" layoutX="20.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #C4FF39; -fx-background-radius: 5;" text="Login" textFill="WHITE">
+                                    <JFXPasswordField fx:id="passwordTextField" cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="Senha" unFocusColor="#00000061" />
+                                    <JFXTextField fx:id="userTextField" cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="180.0" promptText="Usuário" unFocusColor="#00000061" />
+                                    <JFXButton cacheHint="SPEED" layoutX="20.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginOnClick" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #C4FF39; -fx-background-radius: 5;" text="Login" textFill="WHITE">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
