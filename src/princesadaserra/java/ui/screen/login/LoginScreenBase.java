@@ -1,13 +1,12 @@
 package princesadaserra.java.ui.screen.login;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.geometry.Insets;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -34,7 +33,10 @@ public class LoginScreenBase extends AnchorPane {
     private Color dropShadowColor1;
 
     public LoginScreenBase() {
+        createComponents();
+    }
 
+    private void createComponents(){
         hBox = new HBox();
         vBox = new VBox();
         anchorPane = new AnchorPane();
@@ -57,7 +59,7 @@ public class LoginScreenBase extends AnchorPane {
         setPrefHeight(600.0);
         setPrefWidth(800.0);
         getStyleClass().add("root");
-        getStylesheets().add("//LoginScreen.css");
+        getStylesheets().add("/view/loginview/LoginScreen.css");
 
         AnchorPane.setBottomAnchor(hBox, 0.0);
         AnchorPane.setLeftAnchor(hBox, 0.0);
@@ -128,18 +130,32 @@ public class LoginScreenBase extends AnchorPane {
         loginPane.setStyle("-fx-background-radius: 5; -fx-background-color: white;");
 
         passwordTextField.setCacheHint(javafx.scene.CacheHint.SPEED);
+        passwordTextField.setPrefWidth(180);
+        passwordTextField.setPrefHeight(25);
         passwordTextField.setLayoutX(37.0);
         passwordTextField.setLayoutY(48.0);
+        passwordTextField.setFocusColor(Color.web("#757575"));
+        passwordTextField.setUnFocusColor(Color.web("#00000061"));
+        passwordTextField.setPromptText("Senha");
 
         userTextField.setCacheHint(javafx.scene.CacheHint.SPEED);
+        userTextField.setPrefWidth(180);
+        userTextField.setPrefHeight(25);
         userTextField.setLayoutX(37.0);
         userTextField.setLayoutY(16.0);
+        userTextField.setFocusColor(Color.web("#757575"));
+        userTextField.setUnFocusColor(Color.web("#00000061"));
+        userTextField.setPromptText("Usuário");
 
         jFXButton.setCacheHint(javafx.scene.CacheHint.SPEED);
         jFXButton.setLayoutX(20.0);
         jFXButton.setLayoutY(93.0);
+        jFXButton.setPrefWidth(208);
+        jFXButton.setPrefHeight(30);
         jFXButton.setStyle("-fx-background-color: #C4FF39; -fx-background-radius: 5;");
         jFXButton.setFont(new Font(14.0));
+        jFXButton.setTextFill(Color.web("white"));
+        jFXButton.setText("Login");
 
         dropShadow0.setColor(dropShadowColor);
         dropShadow0.setHeight(30.94);
@@ -165,9 +181,9 @@ public class LoginScreenBase extends AnchorPane {
         loginPane.getChildren().add(jFXButton);
         anchorPane1.getChildren().add(loginPane);
         anchorPane.getChildren().add(anchorPane1);
+
         vBox.getChildren().add(anchorPane);
         hBox.getChildren().add(vBox);
         getChildren().add(hBox);
-
     }
 }
