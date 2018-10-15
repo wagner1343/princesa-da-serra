@@ -1,3 +1,4 @@
+package princesadaserra.java.ui.screen.login;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
@@ -8,25 +9,29 @@ import javafx.scene.effect.Glow;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+
 public class LoginScreenBase extends AnchorPane {
 
-    private final HBox hBox;
-    private final VBox vBox;
-    private final AnchorPane anchorPane;
-    private final AnchorPane anchorPane0;
-    private final Text text;
-    private final Glow glow;
-    private final DropShadow dropShadow;
-    private final AnchorPane anchorPane1;
-    private final AnchorPane loginPane;
-    private final JFXPasswordField passwordTextField;
-    private final JFXTextField userTextField;
-    private final JFXButton jFXButton;
-    private final DropShadow dropShadow0;
-    private final DropShadow dropShadow1;
+    private HBox hBox;
+    private VBox vBox;
+    private AnchorPane anchorPane;
+    private AnchorPane anchorPane0;
+    private Text text;
+    private Glow glow;
+    private DropShadow dropShadow;
+    private AnchorPane anchorPane1;
+    private AnchorPane loginPane;
+    private JFXPasswordField passwordTextField;
+    private JFXTextField userTextField;
+    private JFXButton jFXButton;
+    private DropShadow dropShadow0;
+    private DropShadow dropShadow1;
+    private Color dropShadowColor;
+    private Color dropShadowColor1;
 
     public LoginScreenBase() {
 
@@ -90,7 +95,9 @@ public class LoginScreenBase extends AnchorPane {
         glow.setLevel(0.47);
         text.setEffect(glow);
 
-        //dropShadow.setColor(javafx.scene.paint.Color.#00000036);
+        dropShadowColor = Color.web("#00000036");
+        dropShadowColor1 = Color.web("#0000007f");
+        dropShadow.setColor(dropShadowColor);
         dropShadow.setHeight(12.1);
         dropShadow.setOffsetY(1.5);
         dropShadow.setRadius(5.55);
@@ -134,7 +141,7 @@ public class LoginScreenBase extends AnchorPane {
         jFXButton.setStyle("-fx-background-color: #C4FF39; -fx-background-radius: 5;");
         jFXButton.setFont(new Font(14.0));
 
-        //dropShadow0.setColor(javafx.scene.paint.Color.#00000035);
+        dropShadow0.setColor(dropShadowColor);
         dropShadow0.setHeight(30.94);
         dropShadow0.setOffsetY(3.0);
         dropShadow0.setRadius(15.942499999999999);
@@ -143,7 +150,7 @@ public class LoginScreenBase extends AnchorPane {
         anchorPane1.setOpaqueInsets(new Insets(0.0));
 
         dropShadow1.setBlurType(javafx.scene.effect.BlurType.GAUSSIAN);
-        //dropShadow1.setColor(javafx.scene.paint.Color.#0000007f);
+        dropShadow1.setColor(dropShadowColor1);
         dropShadow1.setHeight(25.62);
         dropShadow1.setOffsetY(2.0);
         dropShadow1.setRadius(12.58);
