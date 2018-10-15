@@ -1,5 +1,10 @@
 package princesadaserra.java.util.threading;
 
+import princesadaserra.java.util.callback.Callback;
+import princesadaserra.java.util.callback.CallbackList;
+import princesadaserra.java.util.callback.CallbackWithArgument;
+import princesadaserra.java.util.callback.CallbackWithArgumentList;
+
 public abstract class Task<ArgumentType, ResultType> implements Runnable{
     ArgumentType argument;
     ResultType result;
