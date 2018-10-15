@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import princesadaserra.java.ui.screen.login.LoginScreenBase;
 import princesadaserra.java.ui.screen.login.LoginScreenController;
 
 public class App extends Application {
@@ -24,7 +23,7 @@ public class App extends Application {
         });
 
         Parent p = (Parent) loader.load();
-        Scene scene = new Scene(new LoginScreenBase(), 800, 600);
+        Scene scene = new Scene(p, 800, 600);
         stage.setTitle("Princesa da Serra");
         stage.setScene(scene);
         stage.show();
