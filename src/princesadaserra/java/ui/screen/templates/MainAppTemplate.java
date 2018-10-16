@@ -5,7 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
-public class MainAppTemplate extends VBox {
+public class MainAppTemplate extends AnchorPane {
 
     private VBox content;
     private String pageName;
@@ -18,7 +18,16 @@ public class MainAppTemplate extends VBox {
         appBar = new AppBarTemplate(pageName);
         example = new DrawerStackExample();
 
-        setAlignment(Pos.TOP_CENTER);
+        AnchorPane.setLeftAnchor(appBar, 0d);
+        AnchorPane.setTopAnchor(appBar, 0d);
+        AnchorPane.setRightAnchor(appBar, 0d);
+
+        AnchorPane.setLeftAnchor(content, 0d);
+        AnchorPane.setBottomAnchor(content, 0d);
+        AnchorPane.setRightAnchor(content, 0d);
+        AnchorPane.setTopAnchor(content, appBar.getPrefHeight());
+        content.setLayoutY(appBar.getPrefHeight());
+        System.out.println("appbarHeight: " + appBar.getPrefHeight());
 
         setOnMouseClicked((event -> {
             example.getDrawer().toggle();

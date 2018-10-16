@@ -11,12 +11,6 @@ public class TripsContentExample extends VBox {
         rectangle = new Rectangle();
 
         setAlignment(javafx.geometry.Pos.TOP_CENTER);
-        setMaxHeight(USE_PREF_SIZE);
-        setMaxWidth(USE_PREF_SIZE);
-        setMinHeight(USE_PREF_SIZE);
-        setMinWidth(USE_PREF_SIZE);
-        setPrefHeight(600.0);
-        setPrefWidth(600.0);
 
         rectangle.setArcHeight(5.0);
         rectangle.setArcWidth(5.0);

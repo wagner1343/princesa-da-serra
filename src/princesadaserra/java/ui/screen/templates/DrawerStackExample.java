@@ -19,7 +19,8 @@ public class DrawerStackExample extends JFXDrawersStack {
     public DrawerStackExample(){
         pane = new StackPane();
         pane.setPrefWidth(100);
-        pane.setPrefHeight(500);
+        pane.setPrefHeight(800);
+        pane.setMinHeight(800);
         pane.setStyle("-fx-background-color: red");
         drawer = new JFXDrawer();
         drawer.setSidePane(pane);
