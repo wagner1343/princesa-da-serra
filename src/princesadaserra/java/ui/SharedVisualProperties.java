@@ -1,9 +1,26 @@
 package princesadaserra.java.ui;
 
+import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 public class SharedVisualProperties {
+    public static void setAllAnchorToZero(Node anchor){
+        AnchorPane.setLeftAnchor(anchor, 0d);
+        AnchorPane.setRightAnchor(anchor, 0d);
+        AnchorPane.setTopAnchor(anchor, 0d);
+        AnchorPane.setBottomAnchor(anchor, 0d);
+
+    }
+
+    public static void centerIntoScene(Node node){
+        double centerX = node.getScene().getWidth()/2;
+        double centerY = node.getScene().getHeight()/2;
+
+        node.setLayoutX(centerX);
+        node.setLayoutY(centerY);
+    }
     public static DropShadow getDropShadow() {
         return dropShadow;
     }

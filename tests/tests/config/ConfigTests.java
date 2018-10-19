@@ -8,8 +8,8 @@ import princesadaserra.java.util.config.Config;
 public class ConfigTests {
     static princesadaserra.java.util.config.Config config = new princesadaserra.java.util.config.Config();
 
+    @Test
     public void TestGetValueAndSetValueIntegrity(){
-
         config.setValue("TEST", "TEST");
         Assert.assertEquals(config.getValue("TEST"), "TEST");
     }

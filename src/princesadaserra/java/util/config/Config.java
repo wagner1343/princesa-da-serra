@@ -1,5 +1,8 @@
 package princesadaserra.java.util.config;
 
+import javafx.util.Pair;
+
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -8,6 +11,11 @@ public class Config {
 
     public Config(){
         configMap = new TreeMap<>();
+    }
+
+    public Config(List<Pair<String,String>> configPairs){
+        configMap = new TreeMap<>();
+        load(configPairs);
     }
 
     public String getValue(String key){
@@ -24,5 +32,11 @@ public class Config {
 
     public String setValue(String key, String value){
         return configMap.put(key, value);
+    }
+
+    public void load(List<Pair<String, String>> configPairs){
+        for(Pair<String, String> pair : configPairs){
+            configMap.put(pair.getKey(), pair.getValue());
+        }
     }
 }

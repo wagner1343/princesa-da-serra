@@ -1,6 +1,9 @@
 package princesadaserra.java.ui.screen.templates;
 
 import com.jfoenix.controls.*;
+import javafx.beans.property.ObjectProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Glow;
@@ -11,6 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
 
 
 public class LoginScreenBase extends AnchorPane {
@@ -31,6 +35,10 @@ public class LoginScreenBase extends AnchorPane {
     private DropShadow dropShadow1;
     private Color dropShadowColor;
     private Color dropShadowColor1;
+
+    public ObjectProperty<EventHandler<ActionEvent>> loginOnClick(){
+        return jFXButton.onActionProperty();
+    }
 
     public LoginScreenBase() {
         createComponents();

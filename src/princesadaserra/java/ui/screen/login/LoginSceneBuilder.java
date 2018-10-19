@@ -4,7 +4,7 @@ import javafx.scene.Scene;
 import princesadaserra.java.ui.screen.SceneBuilder;
 import princesadaserra.java.util.context.AppContext;
 
-public class LoginSceneBuilder extends SceneBuilder<LoginView, LoginViewController> {
+public class LoginSceneBuilder extends SceneBuilder{
 
     public LoginSceneBuilder(AppContext context) {
         super(context);
@@ -12,6 +12,9 @@ public class LoginSceneBuilder extends SceneBuilder<LoginView, LoginViewControll
 
     @Override
     public Scene build() {
-        return null;
+        LoginViewController loginViewController = new LoginViewController(new LoginView());
+
+        Scene scene = new Scene(loginViewController.getView());
+        return scene;
     }
 }

@@ -1,5 +1,6 @@
 package princesadaserra.java.ui.screen;
 
-public interface View<ViewController> {
-    public abstract void bind(ViewController controller);
+import javafx.scene.Parent;
+
+public class View extends Parent{
 }
