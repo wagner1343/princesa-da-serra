@@ -11,11 +11,18 @@ public class Config {
 
     public Config(){
         configMap = new TreeMap<>();
+        loadDefaults();
     }
 
     public Config(List<Pair<String,String>> configPairs){
         configMap = new TreeMap<>();
+        loadDefaults();
         load(configPairs);
+    }
+
+    private void loadDefaults(){
+        setValue(ConfigKeys.WINDOW_WIDTH, "800");
+        setValue(ConfigKeys.WINDOW_HEIGHT, "600");
     }
 
     public String getValue(String key){

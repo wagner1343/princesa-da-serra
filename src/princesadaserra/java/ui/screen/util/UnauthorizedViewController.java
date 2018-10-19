@@ -5,6 +5,7 @@ import princesadaserra.java.ui.screen.Controller;
 public class UnauthorizedViewController extends Controller<UnauthorizedView> {
     public UnauthorizedViewController(UnauthorizedView view) {
         super(view);
+        view.init();
     }
 
     @Override

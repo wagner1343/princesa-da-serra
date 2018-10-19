@@ -3,9 +3,15 @@ package princesadaserra.java.ui;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import princesadaserra.java.util.config.Config;
+import princesadaserra.java.util.config.ConfigKeys;
+import princesadaserra.java.util.context.AppContext;
 
 public class SharedVisualProperties {
+    static Config config = AppContext.getInstance().getConfig();
+
     public static void setAllAnchorToZero(Node anchor){
         AnchorPane.setLeftAnchor(anchor, 0d);
         AnchorPane.setRightAnchor(anchor, 0d);
@@ -14,12 +20,24 @@ public class SharedVisualProperties {
 
     }
 
+    public static void adjustToScreenSize(Region node){
+        node.setPrefWidth(Double.parseDouble(AppContext.getInstance().getConfig().getValue(ConfigKeys.WINDOW_WIDTH)));
+        node.setPrefHeight(Double.parseDouble(AppContext.getInstance().getConfig().getValue(ConfigKeys.WINDOW_HEIGHT)));
+        node.setMinWidth(Double.parseDouble(AppContext.getInstance().getConfig().getValue(ConfigKeys.WINDOW_WIDTH)));
+        node.setMinHeight(Double.parseDouble(AppContext.getInstance().getConfig().getValue(ConfigKeys.WINDOW_HEIGHT)));
+        node.setMaxWidth(Double.parseDouble(AppContext.getInstance().getConfig().getValue(ConfigKeys.WINDOW_WIDTH)));
+        node.setPrefHeight(Double.parseDouble(AppContext.getInstance().getConfig().getValue(ConfigKeys.WINDOW_HEIGHT)));
+
+    }
+
     public static void centerIntoScene(Node node){
-        double centerX = node.getScene().getWidth()/2;
-        double centerY = node.getScene().getHeight()/2;
+        double centerX = Double.parseDouble(config.getValue(ConfigKeys.WINDOW_WIDTH))/2 - (node.getBoundsInLocal().getWidth()/2);
+        double centerY = Double.parseDouble(config.getValue(ConfigKeys.WINDOW_HEIGHT))/2 - (node.getBoundsInLocal().getHeight()/2);
 
         node.setLayoutX(centerX);
         node.setLayoutY(centerY);
+
+        System.out.println("Centering " + node + " to " + centerX + " " + centerY);
     }
     public static DropShadow getDropShadow() {
         return dropShadow;

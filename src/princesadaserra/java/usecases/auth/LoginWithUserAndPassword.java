@@ -23,8 +23,15 @@ public class LoginWithUserAndPassword extends Task<Pair<String,String>, Boolean,
     }
     @Override
     protected Boolean execute(Pair<String, String> argument) {
+        String user;
+        String password;
+
         if(argument == null){
-            return false;
+            user = this.getUser();
+            password = this.getPassword();
+        } else{
+            user = argument.getKey();
+            password = argument.getValue();
         }
 
         return AuthService.getInstance().authenticate(user, password);

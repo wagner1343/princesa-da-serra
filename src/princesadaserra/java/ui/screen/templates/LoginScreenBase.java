@@ -44,6 +44,22 @@ public class LoginScreenBase extends AnchorPane {
         createComponents();
     }
 
+    public String getUser(){
+        return userTextField.getText();
+    }
+
+    public String getPassword(){
+        return passwordTextField.getText();
+    }
+
+    public void incorrectUserOrPassword(){
+        System.out.println("Incorrect user or password");
+        JFXSnackbar bar = new JFXSnackbar(this);
+        bar.getStylesheets().add("/view/snackbar/LoginSnackBar.css");
+        bar.show("Incorrect user or password", 3000);
+
+    }
+
     private void createComponents(){
         hBox = new HBox();
         vBox = new VBox();

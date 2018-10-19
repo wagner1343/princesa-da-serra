@@ -1,5 +1,7 @@
 package princesadaserra.java.util.threading;
 
+import javafx.application.Platform;
+
 public abstract class Task<ArgumentType, ResultType, ProgressType> implements Runnable{
     private ArgumentType argument;
     private ResultType result;
@@ -66,21 +68,24 @@ public abstract class Task<ArgumentType, ResultType, ProgressType> implements Ru
 
         if (STATUS == TASKSTATUS.EXECUTING) setSuccess();
 
-        switch (STATUS){
-            case SUCCESS:
-                onSuccessCallback.execute(result);
-                break;
-            case FAILED:
-                onFailedCallback.execute(result);
-                break;
-            case CANCELED:
-                onCanceledCallback.execute(result);
-                break;
-            default:
-                break;
-        }
+        Platform.runLater(() -> {
+            switch (STATUS){
+                case SUCCESS:
+                    onSuccessCallback.execute(result);
+                    break;
+                case FAILED:
+                    onFailedCallback.execute(result);
+                    break;
+                case CANCELED:
+                    onCanceledCallback.execute(result);
+                    break;
+                default:
+                    break;
+            }
 
-        onFinishCallback.execute(result);
+            onFinishCallback.execute(result);
+        });
+
     }
 
     public boolean isExecuting(){

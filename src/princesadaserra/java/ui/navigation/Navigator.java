@@ -40,6 +40,11 @@ public class Navigator {
         newStage.setScene(nextScene);
         newStage.show();
         stageOwnershipMap.put(nextScene.getWindow(), newStage);
+
+        System.out.println("Navigator.navigateToNewWindow");
+        System.out.println("scene = [" + scene + "]");
+        System.out.println("window = [" + nextScene.getWindow() + "]");
+        System.out.println("nextScene = [" + nextScene + "]");
     }
 
     public void navigateTo(SceneBuilder.ScenesTypes sceneType, Window window){
@@ -50,6 +55,10 @@ public class Navigator {
         stageOwnershipMap.put(window, targetStage);
 
         targetStage.show();
+
+        System.out.println("Navigator.navigateTo");
+        System.out.println("sceneType = [" + sceneType + "], window = [" + window + "]");
+        System.out.println("nextScene = [" + nextScene + "]");
     }
 
 

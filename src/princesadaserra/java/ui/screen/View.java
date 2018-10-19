@@ -1,6 +1,8 @@
 package princesadaserra.java.ui.screen;
 
 import javafx.scene.Parent;
+import javafx.scene.layout.Region;
 
-public class View extends Parent{
+public abstract class View extends Region {
+    public abstract void init();
 }
