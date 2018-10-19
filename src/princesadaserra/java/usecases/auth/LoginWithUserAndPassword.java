@@ -1,4 +1,4 @@
-package princesadaserra.java.tasks.auth;
+package princesadaserra.java.usecases.auth;
 
 import javafx.util.Pair;
 import princesadaserra.java.service.AuthService;

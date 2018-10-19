@@ -1,7 +1,6 @@
 package princesadaserra.java.ui.screen.login;
 
-import javafx.event.ActionEvent;
-import princesadaserra.java.tasks.auth.LoginWithUserAndPassword;
+import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 
 public class LoginViewControllerGuest implements LoginViewController {
 
