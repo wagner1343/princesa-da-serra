@@ -9,13 +9,11 @@ public class MainAppTemplate extends AnchorPane {
 
     private VBox content;
     private String pageName;
-    private AppBarTemplate appBar;
     private DrawerStackExample example;
-    public MainAppTemplate( VBox content, String pageName) {
-        this.content = content;
-        this.pageName = pageName;
 
-        appBar = new AppBarTemplate(pageName);
+    public MainAppTemplate(AppBarTemplate appBar, VBox content) {
+        this.content = content;
+
         example = new DrawerStackExample();
 
         AnchorPane.setLeftAnchor(appBar, 0d);

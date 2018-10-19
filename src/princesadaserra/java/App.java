@@ -1,17 +1,11 @@
 package princesadaserra.java;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import princesadaserra.java.ui.screen.login.LoginScreenBase;
-import princesadaserra.java.ui.screen.login.LoginScreenController;
+import princesadaserra.java.ui.screen.templates.AppBarTemplate;
 import princesadaserra.java.ui.screen.templates.DrawerStackExample;
 import princesadaserra.java.ui.screen.templates.MainAppTemplate;
 import princesadaserra.java.ui.screen.trips.TripsContentExample;
@@ -27,7 +21,7 @@ public class App extends Application {
         DrawerStackExample stackExample = new DrawerStackExample();
 
 
-        Parent p = new MainAppTemplate(new TripsContentExample(), "Viagens");
+        Parent p = new MainAppTemplate(new AppBarTemplate("Viagems"), new TripsContentExample());
 
         AnchorPane root = new AnchorPane();
         root.setStyle("-fx-background-color: grey");
@@ -61,7 +55,7 @@ public class App extends Application {
             System.out.println("Toggle");
         }));
 
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, screenY, screenX);
 
         stage.setTitle("Princesa da Serra");
         stage.setScene(scene);

@@ -1,12 +1,10 @@
 package tasks.ui;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import princesadaserra.java.ui.screen.login.LoginScreenController;
 
 public class UIWithTasks extends Application {
 

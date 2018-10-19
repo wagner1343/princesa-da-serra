@@ -17,7 +17,7 @@ public abstract class Route {
 
 	    if(result = isEmpty())
 	        segments.add(segment);
-        else if(result = getLastSegment().isConnected(segment))
+        else if(result = getLastSegment().connectsTo(segment))
             segments.add(segment);
 
         return result;

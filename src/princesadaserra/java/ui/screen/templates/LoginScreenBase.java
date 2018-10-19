@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.screen.login;
+package princesadaserra.java.ui.screen.templates;
 
 import com.jfoenix.controls.*;
 import javafx.geometry.Insets;
@@ -51,6 +51,8 @@ public class LoginScreenBase extends AnchorPane {
         jFXButton = new JFXButton();
         dropShadow0 = new DropShadow();
         dropShadow1 = new DropShadow();
+
+
 
         setCacheHint(javafx.scene.CacheHint.SPEED);
         setId("root");
