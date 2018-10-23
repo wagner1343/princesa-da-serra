@@ -5,15 +5,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import princesadaserra.java.ui.SharedVisualProperties;
-import princesadaserra.java.ui.screen.templates.TripSearchBoxTemplate;
+import princesadaserra.java.ui.screen.components.TripSearchBox;
 
 
-public class TripsViewSeller extends AnchorPane{
+public class TripsViewSales extends AnchorPane{
     private Text text;
-    private TripSearchBoxTemplate tripSearchBox;
+    private TripSearchBox tripSearchBox;
     private VBox page;
 
-    public TripsViewSeller(){
+    public TripsViewSales(){
         setStyle("-fx-background-color: white");
         page = new VBox();
 
@@ -27,7 +27,7 @@ public class TripsViewSeller extends AnchorPane{
 
         page.setAlignment(Pos.TOP_CENTER);
 
-        tripSearchBox = new TripSearchBoxTemplate();
+        tripSearchBox = new TripSearchBox();
         tripSearchBox.setLayoutX(88d);
         tripSearchBox.setLayoutY(88d);
         tripSearchBox.setEffect(SharedVisualProperties.getDropShadow());

@@ -2,7 +2,6 @@ package princesadaserra.java.ui.screen.login;
 
 import javafx.event.ActionEvent;
 import princesadaserra.java.ui.navigation.Navigator;
-import princesadaserra.java.ui.screen.Controller;
 import princesadaserra.java.ui.screen.SceneBuilder;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 

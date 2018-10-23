@@ -1,6 +1,5 @@
 package princesadaserra.java.util.config;
 
-import javafx.fxml.FXMLLoader;
 import javafx.util.Pair;
 
 import java.io.IOException;

@@ -3,14 +3,14 @@ package princesadaserra.java.ui.screen.dashboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import princesadaserra.java.ui.screen.templates.AppBarTemplate;
-import princesadaserra.java.ui.screen.templates.MainAppTemplate;
+import princesadaserra.java.ui.screen.components.AppBar;
+import princesadaserra.java.ui.screen.components.Dashboard;
 
-public class DashboardView extends MainAppTemplate {
+public class DashboardView extends Dashboard {
     private DashboardViewController controller;
 
     public DashboardView(StackPane drawerPane,  AnchorPane content) {
-        super(drawerPane, new AppBarTemplate("Dashboard", 50), content);
+        super(drawerPane, new AppBar("Dashboard", 50), content);
         controller = new DashboardViewController(this);
 
         AnchorPane.setBottomAnchor(getDrawerPane(), 0d);

@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.screen.templates;
+package princesadaserra.java.ui.screen.components;
 
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;

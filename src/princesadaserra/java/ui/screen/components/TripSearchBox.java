@@ -1,16 +1,16 @@
-package princesadaserra.java.ui.screen.templates;
+package princesadaserra.java.ui.screen.components;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.layout.AnchorPane;
 
-public class TripSearchBoxTemplate extends AnchorPane {
+public class TripSearchBox extends AnchorPane {
 
     private final JFXTextField OriginTextField;
     private final JFXTextField DestinyTextField;
     private final JFXTextField DateTextField;
     private final JFXTextField TimeTextField;
 
-    public TripSearchBoxTemplate() {
+    public TripSearchBox() {
 
         getStylesheets().add("/view/templates/TripSearchBoxTemplate.css");
         OriginTextField = new JFXTextField();

@@ -1,11 +1,10 @@
-package princesadaserra.java.ui.screen.templates;
+package princesadaserra.java.ui.screen.components;
 
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerBasicCloseTransition;
 import com.jfoenix.transitions.hamburger.HamburgerNextArrowBasicTransition;
 import javafx.animation.Transition;
 import javafx.scene.input.MouseEvent;
-import javafx.util.Duration;
 
 public class BurguerMenuButton extends JFXHamburger {
     HamburgerNextArrowBasicTransition nextArrowBasicTransition;

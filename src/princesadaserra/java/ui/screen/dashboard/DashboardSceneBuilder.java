@@ -1,11 +1,9 @@
 package princesadaserra.java.ui.screen.dashboard;
 
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import princesadaserra.java.ui.screen.SceneBuilder;
-import princesadaserra.java.ui.screen.templates.SellerSidePane;
-import princesadaserra.java.ui.screen.trips.TripsViewSeller;
+import princesadaserra.java.ui.screen.components.SellerSidePane;
+import princesadaserra.java.ui.screen.trips.TripsViewSales;
 import princesadaserra.java.ui.screen.util.UnauthorizedView;
 import princesadaserra.java.util.context.AppContext;
 
@@ -22,7 +20,7 @@ public class DashboardSceneBuilder extends SceneBuilder{
 
             switch (getContext().getCurrentUser().getRole()){
                 case SELLER:
-                    scene = new Scene(new DashboardView(new SellerSidePane(), new TripsViewSeller()));
+                    scene = new Scene(new DashboardView(new SellerSidePane(), new TripsViewSales()));
                     break;
 
                 default:

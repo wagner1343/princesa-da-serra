@@ -1,30 +1,18 @@
-package princesadaserra.java.ui.screen.templates;
+package princesadaserra.java.ui.screen.components;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXHamburger;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import princesadaserra.java.ui.SharedVisualProperties;
 
-public class AppBarTemplate extends AnchorPane {
+public class AppBar extends AnchorPane {
     private final double DEFAULT_PREF_HEIGHT = 56;
     private final double DEFAULT_PREF_WIDTH = 800;
     private final double DEFAULT_PAGE_FONT_SIZE = 20;
-
-
-    public BurguerMenuButton getButton() {
-        return button;
-    }
-
     private final BurguerMenuButton button;
     private final Text pageNameText;
 
-    public AppBarTemplate(String pageName, double height) {
+    public AppBar(String pageName, double height) {
         this.getStylesheets().add("/view/templates/AppBarTemplate.css");
         this.getStyleClass().add("AppBarRoot");
 
@@ -53,6 +41,10 @@ public class AppBarTemplate extends AnchorPane {
         getChildren().add(pageNameText);
 
         this.setEffect(SharedVisualProperties.getDropShadow());
+    }
+
+    public BurguerMenuButton getButton() {
+        return button;
     }
 
     private void init(){
