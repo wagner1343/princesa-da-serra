@@ -15,18 +15,10 @@ public class Navigator {
     private Map<SceneBuilder.ScenesTypes, SceneBuilder> sceneMap;
     private Map<Window, Stage> stageOwnershipMap;
     private AppContext context;
-    private static Navigator instance;
 
-    public static Navigator getInstance() {
-        if(instance == null){
-            instance = new Navigator();
-        }
 
-        return instance;
-    }
-
-    private Navigator(){
-        context = AppContext.getInstance();
+    public Navigator(AppContext context){
+        this.context = context;
         sceneMap = new HashMap<>(SceneBuilder.ScenesTypes.values().length, 1);
         stageOwnershipMap = new HashMap<>();
     }

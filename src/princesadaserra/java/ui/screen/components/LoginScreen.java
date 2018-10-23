@@ -38,12 +38,12 @@ public class LoginScreen extends AnchorPane {
     private Color dropShadowColor;
     private Color dropShadowColor1;
 
-    public ObjectProperty<EventHandler<ActionEvent>> loginOnClick(){
-        return jFXButton.onActionProperty();
-    }
-
     public LoginScreen() {
         createComponents();
+    }
+
+    public ObjectProperty<EventHandler<ActionEvent>> loginOnClick(){
+        return jFXButton.onActionProperty();
     }
 
     public String getUser(){
@@ -86,6 +86,7 @@ public class LoginScreen extends AnchorPane {
         setMaxWidth(USE_PREF_SIZE);
         setPrefHeight(600.0);
         setPrefWidth(800.0);
+        
         getStyleClass().add("root");
         getStylesheets().add("/view/loginview/LoginScreen.css");
 
@@ -95,8 +96,6 @@ public class LoginScreen extends AnchorPane {
         AnchorPane.setTopAnchor(hBox, 0.0);
         hBox.setAlignment(javafx.geometry.Pos.CENTER);
         hBox.setCacheHint(javafx.scene.CacheHint.SPEED);
-        hBox.setPrefHeight(600.0);
-        hBox.setPrefWidth(800.0);
 
         vBox.setCacheHint(javafx.scene.CacheHint.SPEED);
 
