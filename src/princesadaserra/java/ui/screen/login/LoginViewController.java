@@ -4,12 +4,15 @@ import javafx.event.ActionEvent;
 import princesadaserra.java.ui.navigation.Navigator;
 import princesadaserra.java.ui.screen.SceneBuilder;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
+import princesadaserra.java.util.context.AppContext;
 
 public class LoginViewController {
     private LoginView view;
+    private AppContext context;
 
-    public LoginViewController(LoginView view){
+    public LoginViewController(AppContext context,LoginView view){
         this.view = view;
+        this.context = context;
     }
 
     public void loginOnClick(ActionEvent event){
@@ -18,8 +21,8 @@ public class LoginViewController {
         task.addOnSuccessCallback((result) ->
         {
             if(result != null) {
-                view.getContext().setCurrentUser(result);
-                view.getContext().getNavigator().navigateTo(SceneBuilder.ScenesTypes.DASHBOARD);
+                context.setCurrentUser(result);
+                context.getNavigator().navigateTo(SceneBuilder.ScenesTypes.DASHBOARD);
             } else
                 view.incorrectUserOrPassword();
         }
