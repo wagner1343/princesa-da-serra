@@ -17,9 +17,10 @@ public class LoginViewController {
 
         task.addOnSuccessCallback((result) ->
         {
-            if(result)
-                Navigator.getInstance().navigateTo(SceneBuilder.ScenesTypes.DASHBOARD, view.getScene().getWindow());
-            else
+            if(result != null) {
+                view.getContext().setCurrentUser(result);
+                view.getContext().getNavigator().navigateTo(SceneBuilder.ScenesTypes.DASHBOARD);
+            } else
                 view.incorrectUserOrPassword();
         }
         );

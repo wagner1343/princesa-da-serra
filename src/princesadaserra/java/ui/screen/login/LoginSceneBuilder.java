@@ -12,7 +12,7 @@ public class LoginSceneBuilder extends SceneBuilder{
 
     @Override
     public Scene build() {
-        LoginView loginView = new LoginView();
+        LoginView loginView = new LoginView(getContext());
 
         Scene scene = new Scene(loginView);
         return scene;

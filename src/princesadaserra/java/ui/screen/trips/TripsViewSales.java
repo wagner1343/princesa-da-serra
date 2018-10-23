@@ -6,6 +6,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import princesadaserra.java.ui.SharedVisualProperties;
 import princesadaserra.java.ui.screen.components.TripSearchBox;
+import princesadaserra.java.util.context.AppContext;
 
 
 public class TripsViewSales extends AnchorPane{
@@ -33,7 +34,7 @@ public class TripsViewSales extends AnchorPane{
         tripSearchBox.setEffect(SharedVisualProperties.getDropShadow());
 
         text = new Text("This is tripsView for Seller user");
-        SharedVisualProperties.centerIntoScene(text);
+        SharedVisualProperties.relativeCenter(this, text);
 
         page.getChildren().add(text);
         page.getChildren().add(tripSearchBox);

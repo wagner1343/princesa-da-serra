@@ -9,18 +9,15 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class AppContext {
-    static Locale defaultLocale = new Locale("pt", "BR");
-    public static final String CONFIG_PATH = "/config.txt";
+    private static final String CONFIG_PATH = "/config.txt";
 
-    public ResourceBundle getStringsResource() {
-        return stringsResource;
+    private Navigator navigator;
+    private User currentUser;
+    private Config config;
+
+    public AppContext(){
+        config = new Config(ConfigLoader.load(getClass().getResource(CONFIG_PATH)));
     }
-
-    public void setStringsResource(ResourceBundle stringsResource) {
-        this.stringsResource = stringsResource;
-    }
-
-    private ResourceBundle stringsResource;
 
     public Navigator getNavigator() {
         return navigator;
@@ -29,14 +26,6 @@ public class AppContext {
     public void setNavigator(Navigator navigator) {
         this.navigator = navigator;
     }
-
-    Navigator navigator;
-
-    public AppContext(){
-        stringsResource = ResourceBundle.getBundle("/locale/strings", defaultLocale);
-        config = new Config(ConfigLoader.load(getClass().getResource(CONFIG_PATH)));
-    }
-
 
     public User getCurrentUser() {
         return currentUser;
@@ -53,7 +42,4 @@ public class AppContext {
     public void setConfig(Config config) {
         this.config = config;
     }
-
-    private User currentUser;
-    private Config config;
 }

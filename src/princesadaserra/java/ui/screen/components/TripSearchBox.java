@@ -2,6 +2,8 @@ package princesadaserra.java.ui.screen.components;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.layout.AnchorPane;
+import princesadaserra.java.util.context.AppContext;
+import princesadaserra.java.util.context.ResourcesHolder;
 
 public class TripSearchBox extends AnchorPane {
 
@@ -11,7 +13,6 @@ public class TripSearchBox extends AnchorPane {
     private final JFXTextField TimeTextField;
 
     public TripSearchBox() {
-
         getStylesheets().add("/view/templates/TripSearchBoxTemplate.css");
         OriginTextField = new JFXTextField();
         DestinyTextField = new JFXTextField();
@@ -29,22 +30,23 @@ public class TripSearchBox extends AnchorPane {
         OriginTextField.setLayoutX(40.0);
         OriginTextField.setLayoutY(14.0);
         OriginTextField.setPrefWidth(414);
-        OriginTextField.setPromptText("Origem");
+        OriginTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("origin.textfield.prompt"));
 
         DestinyTextField.setLayoutX(40.0);
         DestinyTextField.setLayoutY(44.0);
         DestinyTextField.setPrefWidth(414);
-        DestinyTextField.setPromptText("Destino");
+        DestinyTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("destiny.textfield.prompt"));
 
         DateTextField.setLayoutX(512.0);
         DateTextField.setLayoutY(14.0);
         DateTextField.setPrefWidth(85);
-        DateTextField.setPromptText("dd/mm/aaaa");
+        DateTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("date.textfield.prompt"));
 
         TimeTextField.setLayoutX(512.0);
         TimeTextField.setLayoutY(44.0);
         TimeTextField.setPrefWidth(85);
-        TimeTextField.setPromptText("hh:mm");
+        TimeTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("time.textfield.prompt"));
+
         getChildren().add(OriginTextField);
         getChildren().add(DestinyTextField);
         getChildren().add(DateTextField);

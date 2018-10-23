@@ -5,6 +5,15 @@ import princesadaserra.java.util.context.AppContext;
 
 public class LoginView extends LoginScreen {
     private LoginViewController controller;
+
+    public AppContext getContext() {
+        return context;
+    }
+
+    public void setContext(AppContext context) {
+        this.context = context;
+    }
+
     private AppContext context;
 
     public LoginView(AppContext context) {

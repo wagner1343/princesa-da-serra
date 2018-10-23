@@ -26,6 +26,7 @@ public class Navigator {
         Scene nextScene = getSceneBuilder(sceneType).build();
 
         stage.setScene(nextScene);
+        stage.show();
 
         System.out.println("Navigator.navigateTo");
         System.out.println("sceneType = [" + sceneType + "]");

@@ -20,8 +20,7 @@ public class UnauthorizedView extends AnchorPane {
         setBackground(new Background(new BackgroundFill(Color.web("red"), null, null)));
 
         getChildren().add(text);
-        SharedVisualProperties.centerIntoScene(text);
-        SharedVisualProperties.adjustToScreenSize(this);
+        SharedVisualProperties.relativeCenter(this, text);
         SharedVisualProperties.setAllAnchorToZero(this);
 
         init();

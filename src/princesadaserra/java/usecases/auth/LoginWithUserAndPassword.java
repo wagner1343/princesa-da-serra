@@ -6,7 +6,7 @@ import princesadaserra.java.service.AuthService;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
 
-public class LoginWithUserAndPassword extends Task<Pair<String,String>, Boolean, Integer> {
+public class LoginWithUserAndPassword extends Task<Pair<String,String>, User, Integer> {
     private final String password;
 
     public String getPassword() {
@@ -24,7 +24,7 @@ public class LoginWithUserAndPassword extends Task<Pair<String,String>, Boolean,
         this.password = password;
     }
     @Override
-    protected Boolean execute(Pair<String, String> argument) {
+    protected User execute(Pair<String, String> argument) {
         String user;
         String password;
 
@@ -37,10 +37,6 @@ public class LoginWithUserAndPassword extends Task<Pair<String,String>, Boolean,
         }
         User u = AuthService.getInstance().authenticate(user, password);
 
-        if(u != null){
-            AppContext.getInstance().setCurrentUser(u);
-        }
-
-        return u != null;
+        return u;
     }
 }
