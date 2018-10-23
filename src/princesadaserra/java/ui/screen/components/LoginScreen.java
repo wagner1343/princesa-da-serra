@@ -16,10 +16,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
+import princesadaserra.java.util.context.AppContext;
 
 
 public class LoginScreen extends AnchorPane {
+    private AppContext context;
 
     private HBox hBox;
     private VBox vBox;
@@ -38,7 +39,8 @@ public class LoginScreen extends AnchorPane {
     private Color dropShadowColor;
     private Color dropShadowColor1;
 
-    public LoginScreen() {
+    public LoginScreen(AppContext context) {
+        this.context = context;
         createComponents();
     }
 
@@ -172,7 +174,7 @@ public class LoginScreen extends AnchorPane {
         userTextField.setLayoutY(16.0);
         userTextField.setFocusColor(Color.web("#757575"));
         userTextField.setUnFocusColor(Color.web("#00000061"));
-        userTextField.setPromptText("Usuário");
+        userTextField.setPromptText(context.getStringsResource().getString("user.tesxtfield.prompt"));
 
         jFXButton.setCacheHint(javafx.scene.CacheHint.SPEED);
         jFXButton.setLayoutX(20.0);

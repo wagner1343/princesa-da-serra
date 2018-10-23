@@ -5,9 +5,22 @@ import princesadaserra.java.ui.navigation.Navigator;
 import princesadaserra.java.util.config.Config;
 import princesadaserra.java.util.config.ConfigLoader;
 
-public class AppContext {
+import java.util.Locale;
+import java.util.ResourceBundle;
 
+public class AppContext {
+    static Locale defaultLocale = new Locale("pt", "BR");
     public static final String CONFIG_PATH = "/config.txt";
+
+    public ResourceBundle getStringsResource() {
+        return stringsResource;
+    }
+
+    public void setStringsResource(ResourceBundle stringsResource) {
+        this.stringsResource = stringsResource;
+    }
+
+    private ResourceBundle stringsResource;
 
     public Navigator getNavigator() {
         return navigator;
@@ -20,6 +33,7 @@ public class AppContext {
     Navigator navigator;
 
     public AppContext(){
+        stringsResource = ResourceBundle.getBundle("/locale/strings", defaultLocale);
         config = new Config(ConfigLoader.load(getClass().getResource(CONFIG_PATH)));
     }
 

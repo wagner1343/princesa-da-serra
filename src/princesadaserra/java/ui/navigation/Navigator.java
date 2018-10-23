@@ -13,42 +13,22 @@ import java.util.Map;
 
 public class Navigator {
     private Map<SceneBuilder.ScenesTypes, SceneBuilder> sceneMap;
-    private Map<Window, Stage> stageOwnershipMap;
     private AppContext context;
+    private Stage stage;
 
-
-    public Navigator(AppContext context){
+    public Navigator(Stage stage, AppContext context){
+        this.stage = stage;
         this.context = context;
         sceneMap = new HashMap<>(SceneBuilder.ScenesTypes.values().length, 1);
-        stageOwnershipMap = new HashMap<>();
     }
 
-    public void navigateToNewWindow(SceneBuilder.ScenesTypes scene){
-        Stage newStage = new Stage();
-        Scene nextScene = getSceneBuilder(scene).build();
-
-
-        newStage.setScene(nextScene);
-        newStage.show();
-        stageOwnershipMap.put(nextScene.getWindow(), newStage);
-
-        System.out.println("Navigator.navigateToNewWindow");
-        System.out.println("scene = [" + scene + "]");
-        System.out.println("window = [" + nextScene.getWindow() + "]");
-        System.out.println("nextScene = [" + nextScene + "]");
-    }
-
-    public void navigateTo(SceneBuilder.ScenesTypes sceneType, Window window){
-        Stage targetStage = stageOwnershipMap.get(window);
+    public void navigateTo(SceneBuilder.ScenesTypes sceneType){
         Scene nextScene = getSceneBuilder(sceneType).build();
 
-        targetStage.setScene(nextScene);
-        stageOwnershipMap.put(window, targetStage);
-
-        targetStage.show();
+        stage.setScene(nextScene);
 
         System.out.println("Navigator.navigateTo");
-        System.out.println("sceneType = [" + sceneType + "], window = [" + window + "]");
+        System.out.println("sceneType = [" + sceneType + "]");
         System.out.println("nextScene = [" + nextScene + "]");
     }
 
@@ -56,7 +36,6 @@ public class Navigator {
     private SceneBuilder getSceneBuilder(SceneBuilder.ScenesTypes scene){
         if(!sceneMap.containsKey(scene))
             sceneMap.put(scene, createSceneBuilder(scene));
-
 
         return sceneMap.get(scene);
     }
