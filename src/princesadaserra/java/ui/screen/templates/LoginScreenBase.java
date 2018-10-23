@@ -202,8 +202,8 @@ public class LoginScreenBase extends AnchorPane {
 
         anchorPane0.getChildren().add(text);
         anchorPane.getChildren().add(anchorPane0);
-        loginPane.getChildren().add(passwordTextField);
         loginPane.getChildren().add(userTextField);
+        loginPane.getChildren().add(passwordTextField);
         loginPane.getChildren().add(jFXButton);
         anchorPane1.getChildren().add(loginPane);
         anchorPane.getChildren().add(anchorPane1);

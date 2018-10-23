@@ -11,10 +11,11 @@ import java.util.Scanner;
 
 public class ConfigLoader {
     public static List<Pair<String, String>> load(URL url){
+        System.out.println("ConfigLoader.load");
         List<Pair<String,String>> configPairs = new ArrayList<>(10);
         Scanner scanner = null;
-
         if(url == null){
+
             System.out.println("Invalid URL");
             return configPairs;
         }

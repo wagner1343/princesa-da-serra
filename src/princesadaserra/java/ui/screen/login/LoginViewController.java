@@ -6,26 +6,22 @@ import princesadaserra.java.ui.screen.Controller;
 import princesadaserra.java.ui.screen.SceneBuilder;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 
-public class LoginViewController extends Controller<LoginView> {
+public class LoginViewController {
+    private LoginView view;
 
-    public LoginViewController(LoginView view) {
-        super(view);
+    public LoginViewController(LoginView view){
+        this.view = view;
     }
 
-    @Override
-    public void bind(LoginView loginView) {
-        getView().loginOnClick().set(this::loginOnClick);
-    }
-
-    public void loginOnClick(ActionEvent actionEvent){
-        LoginWithUserAndPassword task = new LoginWithUserAndPassword(getView().getUser(),getView().getPassword());
+    public void loginOnClick(ActionEvent event){
+        LoginWithUserAndPassword task = new LoginWithUserAndPassword(view.getUser(), view.getPassword());
 
         task.addOnSuccessCallback((result) ->
         {
             if(result)
-                Navigator.getInstance().navigateTo(SceneBuilder.ScenesTypes.DASHBOARD, getView().getScene().getWindow());
+                Navigator.getInstance().navigateTo(SceneBuilder.ScenesTypes.DASHBOARD, view.getScene().getWindow());
             else
-                getView().incorrectUserOrPassword();
+                view.incorrectUserOrPassword();
         }
         );
 

@@ -30,6 +30,10 @@ public class SharedVisualProperties {
 
     }
 
+    public static double getVerticalCenter(Node node){
+        return node.getBoundsInLocal().getHeight() / 2;
+    }
+
     public static void centerIntoScene(Node node){
         double centerX = Double.parseDouble(config.getValue(ConfigKeys.WINDOW_WIDTH))/2 - (node.getBoundsInLocal().getWidth()/2);
         double centerY = Double.parseDouble(config.getValue(ConfigKeys.WINDOW_HEIGHT))/2 - (node.getBoundsInLocal().getHeight()/2);

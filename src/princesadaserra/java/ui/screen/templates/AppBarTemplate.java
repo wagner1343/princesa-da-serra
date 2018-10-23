@@ -17,18 +17,21 @@ public class AppBarTemplate extends AnchorPane {
     private final double DEFAULT_PAGE_FONT_SIZE = 20;
 
 
-    private final JFXHamburger menuButton;
+    public BurguerMenuButton getButton() {
+        return button;
+    }
+
+    private final BurguerMenuButton button;
     private final Text pageNameText;
 
-    public AppBarTemplate(String pageName) {
+    public AppBarTemplate(String pageName, double height) {
         this.getStylesheets().add("/view/templates/AppBarTemplate.css");
         this.getStyleClass().add("AppBarRoot");
 
-        menuButton = new JFXHamburger();
+        setPrefHeight(height);
+
+        button = new BurguerMenuButton();
         pageNameText = new Text(pageName);
-
-
-
 
         Font font = new Font(DEFAULT_PAGE_FONT_SIZE);
 
@@ -41,14 +44,10 @@ public class AppBarTemplate extends AnchorPane {
         pageNameText.setFont(font);
         pageNameText.setFill(SharedVisualProperties.getLightTextColor());
 
-        JFXButton button = new JFXButton();
-        button.setBackground(menuButton.getBackground());
-        menuButton.getStyleClass().add("AppBarMenuButton");
         button.setPrefWidth(24d);
-        button.setPrefHeight(24d);
-        button.setLayoutX(16d);
-        button.setLayoutY(getPrefHeight()/2 - menuButton.getPrefHeight()/2);
-
+        button.setPrefHeight(19d);
+        button.setLayoutY(15);
+        button.setLayoutX(8);
 
         getChildren().add(button);
         getChildren().add(pageNameText);

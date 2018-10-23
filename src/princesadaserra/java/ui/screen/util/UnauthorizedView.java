@@ -9,9 +9,11 @@ import princesadaserra.java.ui.SharedVisualProperties;
 
 public class UnauthorizedView extends AnchorPane {
     private Text text;
+    private UnauthorizedViewController controller;
 
     public UnauthorizedView(){
         System.out.println("UnauthorizedView()");
+        this.controller = new UnauthorizedViewController(this);
 
         text = new Text("Unauthorized view");
 
@@ -21,6 +23,8 @@ public class UnauthorizedView extends AnchorPane {
         SharedVisualProperties.centerIntoScene(text);
         SharedVisualProperties.adjustToScreenSize(this);
         SharedVisualProperties.setAllAnchorToZero(this);
+
+        init();
     }
 
     public void init(){

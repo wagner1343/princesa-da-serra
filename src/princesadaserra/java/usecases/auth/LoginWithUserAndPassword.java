@@ -1,7 +1,9 @@
 package princesadaserra.java.usecases.auth;
 
 import javafx.util.Pair;
+import princesadaserra.java.core.user.User;
 import princesadaserra.java.service.AuthService;
+import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
 
 public class LoginWithUserAndPassword extends Task<Pair<String,String>, Boolean, Integer> {
@@ -33,7 +35,12 @@ public class LoginWithUserAndPassword extends Task<Pair<String,String>, Boolean,
             user = argument.getKey();
             password = argument.getValue();
         }
+        User u = AuthService.getInstance().authenticate(user, password);
 
-        return AuthService.getInstance().authenticate(user, password);
+        if(u != null){
+            AppContext.getInstance().setCurrentUser(u);
+        }
+
+        return u != null;
     }
 }

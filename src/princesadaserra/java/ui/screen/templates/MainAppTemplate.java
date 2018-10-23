@@ -1,20 +1,89 @@
 package princesadaserra.java.ui.screen.templates;
 
+import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXDrawersStack;
-import javafx.geometry.Pos;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class MainAppTemplate extends AnchorPane {
 
-    private VBox content;
-    private String pageName;
-    private DrawerStackExample example;
+    public AnchorPane getContent() {
+        return content;
+    }
 
-    public MainAppTemplate(AppBarTemplate appBar, VBox content) {
+    public void setContent(AnchorPane content) {
         this.content = content;
+    }
 
-        example = new DrawerStackExample();
+    public String getPageName() {
+        return pageName;
+    }
+
+    public void setPageName(String pageName) {
+        this.pageName = pageName;
+    }
+
+    private AnchorPane content;
+    private String pageName;
+    private JFXDrawersStack drawersStack;
+
+    public JFXDrawer getDrawer() {
+        return drawer;
+    }
+
+    public void setDrawer(JFXDrawer drawer) {
+        this.drawer = drawer;
+    }
+
+    private JFXDrawer drawer;
+
+    public StackPane getDrawerPane() {
+        return drawerPane;
+    }
+
+    public void setDrawerPane(StackPane drawerPane) {
+        this.drawerPane = drawerPane;
+    }
+
+    private StackPane drawerPane;
+
+    public AppBarTemplate getAppBar() {
+        return appBar;
+    }
+
+    public void toggleDrawer(){
+
+        drawersStack.toggle(getDrawer());
+
+        System.out.println("Drawer " + (getDrawer().isOpened() ? "open" : "closed"));
+    }
+
+    private AppBarTemplate appBar;
+
+    public MainAppTemplate(StackPane drawerPane, AppBarTemplate appBar, AnchorPane content) {
+        this.appBar = appBar;
+        this.content = content;
+        this.drawerPane = drawerPane;
+
+        drawersStack = new JFXDrawersStack();
+        drawer = new JFXDrawer();
+        drawer.setDefaultDrawerSize(200);
+        drawer.setSidePane(drawerPane);
+        drawer.setOverLayVisible(true);
+
+        drawer.setOnDrawerClosed(event -> {
+            AnchorPane.clearConstraints(drawer);
+        });
+
+        drawer.setOnDrawerOpening(event -> {
+            AnchorPane.setBottomAnchor(drawersStack, 0d);
+            AnchorPane.setRightAnchor(drawersStack, 0d);
+            AnchorPane.setTopAnchor(drawersStack, 0d);
+            AnchorPane.setLeftAnchor(drawersStack, 0d);
+        });
+
+
 
         AnchorPane.setLeftAnchor(appBar, 0d);
         AnchorPane.setTopAnchor(appBar, 0d);
@@ -27,12 +96,11 @@ public class MainAppTemplate extends AnchorPane {
         content.setLayoutY(appBar.getPrefHeight());
         System.out.println("appbarHeight: " + appBar.getPrefHeight());
 
-        setOnMouseClicked((event -> {
-            example.getDrawer().toggle();
-            System.out.println("Toggle");
-        }));
-        getChildren().add(appBar);
+
+
         getChildren().add(content);
+        getChildren().add(drawersStack);
+        getChildren().add(appBar);
         init();
     }
 

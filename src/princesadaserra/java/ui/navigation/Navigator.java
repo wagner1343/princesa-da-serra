@@ -4,13 +4,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import princesadaserra.java.ui.screen.SceneBuilder;
+import princesadaserra.java.ui.screen.dashboard.DashboardSceneBuilder;
 import princesadaserra.java.ui.screen.login.LoginSceneBuilder;
-import princesadaserra.java.ui.screen.trips.TripsSceneBuilder;
 import princesadaserra.java.util.context.AppContext;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class Navigator {
     private Map<SceneBuilder.ScenesTypes, SceneBuilder> sceneMap;
@@ -76,7 +75,7 @@ public class Navigator {
             case LOGIN:
                 return new LoginSceneBuilder(context);
             case DASHBOARD:
-                return new TripsSceneBuilder(context);
+                return new DashboardSceneBuilder(context);
 
         }
 
