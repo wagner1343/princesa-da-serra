@@ -74,9 +74,12 @@ public class MainAppTemplate extends AnchorPane {
 
         drawer.setOnDrawerClosed(event -> {
             AnchorPane.clearConstraints(drawer);
+            drawersStack.toBack();
         });
 
         drawer.setOnDrawerOpening(event -> {
+            drawersStack.toFront();
+            appBar.toFront();
             AnchorPane.setBottomAnchor(drawersStack, 0d);
             AnchorPane.setRightAnchor(drawersStack, 0d);
             AnchorPane.setTopAnchor(drawersStack, 0d);
