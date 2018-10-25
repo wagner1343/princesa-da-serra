@@ -8,9 +8,8 @@ public class ResourcesHolder {
     private static ResourceBundle resourceBundle;
 
     public static ResourceBundle getResourceBundle(){
-        if(resourceBundle == null){
+        if(resourceBundle == null)
             resourceBundle = ResourceBundle.getBundle("locale.strings", defaultLocale);
-        }
 
         return resourceBundle;
     }

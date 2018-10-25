@@ -2,21 +2,17 @@ package princesadaserra.java.util.context;
 
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.navigation.Navigator;
-import princesadaserra.java.util.config.Config;
-import princesadaserra.java.util.config.ConfigLoader;
-
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 public class AppContext {
     private static final String CONFIG_PATH = "/config.txt";
-
+    private static AppContext instance;
     private Navigator navigator;
     private User currentUser;
-    private Config config;
 
-    public AppContext(){
-        config = new Config(ConfigLoader.load(getClass().getResource(CONFIG_PATH)));
+    public static AppContext getInstance() {
+        if(instance == null)
+            instance = new AppContext();
+        return instance;
     }
 
     public Navigator getNavigator() {
@@ -33,13 +29,5 @@ public class AppContext {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
-    }
-
-    public Config getConfig() {
-        return config;
-    }
-
-    public void setConfig(Config config) {
-        this.config = config;
     }
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="/view/templates/SidePaneWithUser.css" fx:id="paneRoot" prefHeight="600.0" prefWidth="253.0" style="-fx-background-color: #8AE664;" xmlns="http://javafx.com/javafx/10.0.1">
+   <children>
+      <ImageView fx:id="userImageView" fitHeight="64.0" fitWidth="64.0" layoutX="16.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/paisagem/curitiba.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D height="64.0" width="64.0" />
+         </viewport>
+      </ImageView>
+      <Text fx:id="titleText" fill="WHITE" layoutX="49.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Princesa da Serra">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="userNameText" fill="WHITE" layoutX="90.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wagner S. W. Martins">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="userEmailText" fill="#00000062" layoutX="92.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wagner1343@outlook.com">
+         <font>
+            <Font name="Segoe UI" size="11.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="optionsPaneRoot" layoutX="14.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="156.0">
+         <children>
+            <VBox fx:id="optionsVBox" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

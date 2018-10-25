@@ -23,7 +23,8 @@ public class AuthService {
         System.out.println("Method not implemented, returns true for wagner:1343 ROLE = seller or guest:1343 ROLE = guest or admin:1343 ROLE = admin");
         if(login.equals("wagner") && password.equals("1343")){
             User user = new User();
-            user.setName(login);
+            user.setName("Wagner S. W. Martins");
+            user.setEmail("wagner1343@outlook.com");
             user.setRole(Role.SELLER);
             return user;
         }else if(login.equals("guest") && password.equals("1343")){
@@ -41,5 +42,11 @@ public class AuthService {
         else{
             return null;
         }
+    }
+
+    public boolean logout(User user) {
+        System.out.println("AuthService.logout");
+        System.out.println("Method not implemented yet, always returns true");
+        return true;
     }
 }
