@@ -1,4 +1,4 @@
-package princesadaserra.java.util.threading;
+package princesadaserra.java.util.callback;
 
 import java.util.LinkedList;
 
@@ -10,7 +10,7 @@ public class CallbackWithArgumentList<ArgumentType> {
     }
 
     public void executeAll(ArgumentType argument){
-        for(CallbackWithArgument f : listeners){
+        for(CallbackWithArgument<ArgumentType> f : listeners){
             f.execute(argument);
         }
     }
