@@ -29,22 +29,22 @@ public class TripSearchBox extends AnchorPane {
         OriginTextField.setLayoutX(40.0);
         OriginTextField.setLayoutY(14.0);
         OriginTextField.setPrefWidth(414);
-        OriginTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("origin.textfield.prompt"));
+        OriginTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("textfield.origin.prompt"));
 
         DestinyTextField.setLayoutX(40.0);
         DestinyTextField.setLayoutY(44.0);
         DestinyTextField.setPrefWidth(414);
-        DestinyTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("destiny.textfield.prompt"));
+        DestinyTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("textfield.destiny.prompt"));
 
         DateTextField.setLayoutX(512.0);
         DateTextField.setLayoutY(14.0);
         DateTextField.setPrefWidth(85);
-        DateTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("date.textfield.prompt"));
+        DateTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("textfield.date.prompt"));
 
         TimeTextField.setLayoutX(512.0);
         TimeTextField.setLayoutY(44.0);
         TimeTextField.setPrefWidth(85);
-        TimeTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("time.textfield.prompt"));
+        TimeTextField.setPromptText(ResourcesHolder.getResourceBundle().getString("textfield.time.prompt"));
 
         getChildren().add(OriginTextField);
         getChildren().add(DestinyTextField);

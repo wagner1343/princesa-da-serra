@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.views.ScenesTypes;
 import princesadaserra.java.ui.views.components.animated.AnimatedHamburguer;
@@ -15,6 +16,7 @@ import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.context.ResourcesHolder;
 
 public class DashboardViewController {
+    public static final String FXML_PATH = "/view/templates/DashboardTemplate,fxml";
     @FXML
     private JFXDrawersStack drawersStack;
     @FXML
@@ -25,6 +27,8 @@ public class DashboardViewController {
     private AnchorPane contentRoot;
     @FXML
     private AnchorPane AppBarRoot;
+    @FXML
+    private Text appBarTitle;
 
     private SidePaneWithUser drawerPane;
     private JFXSnackbar snackbar;
@@ -43,35 +47,67 @@ public class DashboardViewController {
         drawersStack.addDrawer(drawer);
 
         addDrawerButtons();
-
-        loadSidePaneUserInfo();
+        showTrips();
+        AppContext.getInstance().addOnUserChanged((user) -> loadSidePaneUserInfo(user));
     }
 
-    private void loadSidePaneUserInfo() {
-        User user = AppContext.getInstance().getCurrentUser();
+    private void loadSidePaneUserInfo(User user) {
+        System.out.println("DashboardViewController.loadSidePaneUserInfo");
+        System.out.println("user = " + user);
         drawerPane.getUserEmailText().setText(user.getEmail() == null ? "" : user.getEmail());
         drawerPane.getUserNameText().setText(user.getName() == null ? "" : user.getName());
     }
 
+    private void setPageName(String name){
+        appBarTitle.setText(name);
+    }
+
+    private void showClients(){
+        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.clients"));
+    }
+
+    private void showTrips(){
+        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.trips"));
+    }
+
+    private void showHistory(){
+        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.history"));
+    }
+
+    private void showOptions(){
+        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.options"));
+    }
 
     private void addDrawerButtons(){
 
-        drawerPane.addButton("travels", ResourcesHolder.getResourceBundle().getString("drawer.trips.text"),
-                event -> {});
+        drawerPane.addButton("travels", ResourcesHolder.getResourceBundle().getString("drawer.text.trips"),
+                event -> {
+                    showTrips();
+                    drawer.close();
+                });
 
-        drawerPane.addButton("history", ResourcesHolder.getResourceBundle().getString("drawer.history.text"),
-                event -> {});
+        drawerPane.addButton("history", ResourcesHolder.getResourceBundle().getString("drawer.text.history"),
+                event -> {
+                    showHistory();
+                    drawer.close();
+                });
 
-        drawerPane.addButton("clients", ResourcesHolder.getResourceBundle().getString("drawer.clients.text"),
-                event -> {});
+        drawerPane.addButton("clients", ResourcesHolder.getResourceBundle().getString("drawer.text.clients"),
+                event -> {
+                    showClients();
+                    drawer.close();
+                });
 
-        drawerPane.addButton("options", ResourcesHolder.getResourceBundle().getString("drawer.options.text"),
-                event -> {});
+        drawerPane.addButton("options", ResourcesHolder.getResourceBundle().getString("drawer.text.options"),
+                event -> {
+                    showOptions();
+                    drawer.close();
+                });
 
-        drawerPane.addButton("logout", ResourcesHolder.getResourceBundle().getString("drawer.logout.text"),
+        drawerPane.addButton("logout", ResourcesHolder.getResourceBundle().getString("drawer.text.logout"),
                 event -> doLogout());
 
-        drawerPane.addButton("exit", ResourcesHolder.getResourceBundle().getString("drawer.exit.text"),
+        drawerPane.addButton("exit", ResourcesHolder.getResourceBundle().getString("drawer.text.exit"),
                 event -> Platform.exit());
     }
 
@@ -85,8 +121,6 @@ public class DashboardViewController {
     }
 
     public void toggleDrawer(){
-        System.out.println("DashboardViewController.toggleDrawer");
-
         if(drawer.isClosed())
             drawersStack.toFront();
 

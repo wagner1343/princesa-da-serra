@@ -23,7 +23,7 @@ public class AuthService {
         System.out.println("Method not implemented, returns true for wagner:1343 ROLE = seller or guest:1343 ROLE = guest or admin:1343 ROLE = admin");
         if(login.equals("wagner") && password.equals("1343")){
             User user = new User();
-            user.setName("Wagner S. W. Martins");
+            user.setName("Wagner W. Martins");
             user.setEmail("wagner1343@outlook.com");
             user.setRole(Role.SELLER);
             return user;

@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="princesa-da-serra">
+    <output-path>$PROJECT_DIR$/out/artifacts/princesa_da_serra</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="princesadaserra.java.App" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="Princesa da Serra" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="princesa_da_serra.jar">
+        <element id="module-output" name="princesa-da-serra" />
+      </element>
+      <element id="library" level="project" name="jfoenix-8.0.7" />
+      <element id="library" level="project" name="hibernate-core-5.3.6.Final" />
+    </root>
+  </artifact>
+</component>

@@ -24,3 +24,7 @@
 .jfx-snackbar-action {
     -fx-text-fill: #ff4081;
 }
+
+.jfx-hamburger StackPane {
+    -fx-background-color: white;
+}

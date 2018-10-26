@@ -16,15 +16,16 @@ public class LoginWithUserAndPassword extends Task<AppContext, User, Integer> {
 
     @Override
     protected User execute(AppContext context) {
+        System.out.println("LoginWithUserAndPassword.execute");
+        
         User user = AuthService.getInstance().authenticate(this.user, password);
-
         if(user == null)
             setFailed();
         else {
             context.setCurrentUser(user);
+            System.out.println("user.getEmail() = " + user.getEmail());
             setSuccess();
         }
-
         return user;
     }
 }

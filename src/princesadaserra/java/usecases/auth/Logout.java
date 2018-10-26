@@ -15,7 +15,6 @@ public class Logout extends Task<AppContext, Pair<Boolean, String>, Integer>{
             return new Pair<>(false, "User logged out already");
         }
 
-
         if(AuthService.getInstance().logout(user)){
             setSuccess();
             return new Pair<>(true, "Logged out with success");
