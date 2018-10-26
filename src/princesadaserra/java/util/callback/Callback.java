@@ -1,4 +1,4 @@
-package princesadaserra.java.util.threading;
+package princesadaserra.java.util.callback;
 
 public interface Callback<T> {
     void execute();

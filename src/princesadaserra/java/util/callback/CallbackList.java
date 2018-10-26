@@ -1,4 +1,4 @@
-package princesadaserra.java.util.threading;
+package princesadaserra.java.util.callback;
 
 import java.util.LinkedList;
 
