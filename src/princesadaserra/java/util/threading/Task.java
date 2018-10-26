@@ -1,49 +1,51 @@
 package princesadaserra.java.util.threading;
 
-import princesadaserra.java.util.callback.Callback;
-import princesadaserra.java.util.callback.CallbackList;
-import princesadaserra.java.util.callback.CallbackWithArgument;
-import princesadaserra.java.util.callback.CallbackWithArgumentList;
+import javafx.application.Platform;
 
-public abstract class Task<ArgumentType, ResultType> implements Runnable{
-    ArgumentType argument;
-    ResultType result;
+public abstract class Task<ArgumentType, ResultType, ProgressType> implements Runnable{
+    private ArgumentType argument;
+    private ResultType result;
+    private ProgressType progress;
 
     private Thread thread;
-    private TASKSTATUS TASKSTATUS;
+    private TASKSTATUS STATUS;
 
     private CallbackWithArgumentList<ResultType> onSuccessCallbackList;
     private CallbackWithArgumentList<ResultType> onFailedCallbackList;
     private CallbackWithArgumentList<ResultType> onCanceledCallbackList;
     private CallbackWithArgumentList<ResultType> onFinishCallbackList;
-    private CallbackList onExecutingCallbackList;
     private CallbackWithArgumentList<TASKSTATUS> onStatusChangedCallbackList;
+    private CallbackWithArgumentList<ProgressType> onProgressChangedCallbackList;
+    private CallbackList onExecutingCallbackList;
 
     private CallbackWithArgument<ResultType> onSuccessCallback;
     private CallbackWithArgument<ResultType> onFailedCallback;
     private CallbackWithArgument<ResultType> onCanceledCallback;
     private CallbackWithArgument<ResultType> onFinishCallback;
-    private Callback onExecutingCallback;
     private CallbackWithArgument<TASKSTATUS> onStatusChangedCallback;
+    private CallbackWithArgument<ProgressType> onProgressChangedCallback;
+    private Callback onExecutingCallback;
 
     protected abstract ResultType execute(ArgumentType argument);
 
     public Task(){
-        this.TASKSTATUS = TASKSTATUS.INITIAL;
+        this.STATUS = TASKSTATUS.INITIAL;
 
         onSuccessCallbackList = new CallbackWithArgumentList<>();
         onFailedCallbackList = new CallbackWithArgumentList<>();
         onCanceledCallbackList = new CallbackWithArgumentList<>();
         onFinishCallbackList = new CallbackWithArgumentList<>();
-        onExecutingCallbackList = new CallbackList();
         onStatusChangedCallbackList = new CallbackWithArgumentList<>();
+        onProgressChangedCallbackList = new CallbackWithArgumentList<>();
+        onExecutingCallbackList = new CallbackList();
 
         this.onSuccessCallback = (arg) -> this.onSuccessCallbackList.executeAll(arg);
         this.onFailedCallback = (arg) -> this.onFailedCallbackList.executeAll(arg);
         this.onCanceledCallback = (arg) -> this.onCanceledCallbackList.executeAll(arg);
         this.onFinishCallback = (arg) -> this.onFinishCallbackList.executeAll(arg);
-        this.onExecutingCallback = () -> this.onExecutingCallbackList.executeAll();
         this.onStatusChangedCallback = (arg) -> this.onStatusChangedCallbackList.executeAll(arg);
+        this.onProgressChangedCallback = (arg) -> this.onProgressChangedCallbackList.executeAll(arg);
+        this.onExecutingCallback = () -> this.onExecutingCallbackList.executeAll();
 
     }
 
@@ -51,7 +53,6 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
         this.argument = argument;
         this.thread = new Thread(this);
         thread.start();
-
     }
 
     public void start(){
@@ -65,72 +66,103 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
 
         result = execute(argument);
 
-        if (TASKSTATUS == TASKSTATUS.EXECUTING) setSuccess();
+        if (STATUS == TASKSTATUS.EXECUTING) setSuccess();
 
-        switch (TASKSTATUS){
-            case SUCCESS:
-                onSuccessCallback.execute(result);
-                break;
-            case FAILED:
-                onFailedCallback.execute(result);
-                break;
-            case CANCELED:
-                onCanceledCallback.execute(result);
-                break;
-            default:
-                break;
-        }
+        Platform.runLater(() -> {
+            switch (STATUS){
+                case SUCCESS:
+                    onSuccessCallback.execute(result);
+                    break;
+                case FAILED:
+                    onFailedCallback.execute(result);
+                    break;
+                case CANCELED:
+                    onCanceledCallback.execute(result);
+                    break;
+                default:
+                    break;
+            }
 
-        onFinishCallback.execute(result);
+            onFinishCallback.execute(result);
+        });
+
     }
 
     public boolean isExecuting(){
-        return getTASKSTATUS() == TASKSTATUS.EXECUTING;
+        return getSTATUS() == TASKSTATUS.EXECUTING;
     }
 
     public void setOnStatusChangedCallback(Callback onStatusChangedCallback) {
         this.onStatusChangedCallback = (arg) -> onStatusChangedCallback.execute();
     }
 
-    private void setTASKSTATUS(TASKSTATUS TASKSTATUS){
-        this.TASKSTATUS = TASKSTATUS;
-        onStatusChangedCallback.execute(TASKSTATUS);
+    private void setSTATUS(TASKSTATUS STATUS){
+        this.STATUS = STATUS;
+        onStatusChangedCallback.execute(STATUS);
     }
 
-    public TASKSTATUS getTASKSTATUS(){
-        return this.TASKSTATUS;
+    public TASKSTATUS getSTATUS(){
+        return this.STATUS;
     }
 
     public void setFailed(){
-        setTASKSTATUS(TASKSTATUS.FAILED);
+        setSTATUS(STATUS.FAILED);
     }
 
     public void setSuccess(){
-        setTASKSTATUS(TASKSTATUS.SUCCESS);
+        setSTATUS(STATUS.SUCCESS);
     }
 
     public void setCanceled(){
-        setTASKSTATUS(TASKSTATUS.CANCELED);
+        setSTATUS(STATUS.CANCELED);
     }
 
     public void setExecuting(){
-        setTASKSTATUS(TASKSTATUS.EXECUTING);
+        setSTATUS(STATUS.EXECUTING);
     }
 
     public void setOnSuccessCallback(Callback onSuccessCallback) {
         this.onSuccessCallback = (arg) -> onSuccessCallback.execute();
     }
 
+    public void setOnSuccessCallback(CallbackWithArgument<ResultType> onSuccessCallback) {
+        this.onSuccessCallback = onSuccessCallback;
+    }
+
     public void setOnFailedCallback(Callback onFailedCallback) {
         this.onFailedCallback = (arg) -> onFailedCallback.execute();
+    }
+
+    public void setOnFailedCallback(CallbackWithArgument<ResultType> onFailedCallback) {
+        this.onFailedCallback = onFailedCallback;
     }
 
     public void setOnCanceledCallback(Callback onCanceledCallback) {
         this.onCanceledCallback = (arg) -> onCanceledCallback.execute();
     }
 
+    public void setOnCanceledCallback(CallbackWithArgument<ResultType> onCanceledCallback) {
+        this.onCanceledCallback = onCanceledCallback;
+    }
+
     public void setOnExecutingCallback(Callback onExecutingCallback) {
         this.onExecutingCallback = onExecutingCallback;
+    }
+
+    public void setOnProgressChangedCallback(CallbackWithArgument<ProgressType> onProgressChangedCallback) {
+        this.onProgressChangedCallback = onProgressChangedCallback;
+    }
+
+    public void setOnProgressChangedCallback(Callback onProgressChangedCallback) {
+        this.onProgressChangedCallback = (arg) -> onProgressChangedCallback.execute();
+    }
+
+    public void addOnProgressChangedCallback(CallbackWithArgument<ProgressType> onProgressChangedCallback){
+        this.onProgressChangedCallbackList.addCallback(onProgressChangedCallback);
+    }
+
+    public void addOnProgressChangedCallback(Callback<ProgressType> onProgressChangedCallback){
+        this.onProgressChangedCallbackList.addCallback((arg) -> onProgressChangedCallback.execute());
     }
 
     public void addOnFinishCallback(CallbackWithArgument<ResultType> callback){
@@ -177,6 +209,14 @@ public abstract class Task<ArgumentType, ResultType> implements Runnable{
         this.onExecutingCallbackList.addCallback(callback);
     }
 
+    public ProgressType getProgress() {
+        return progress;
+    }
+
+    public void setProgress(ProgressType progress) {
+        this.progress = progress;
+        this.onProgressChangedCallback.execute(progress);
+    }
 }
 
 

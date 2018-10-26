@@ -1,0 +1,17 @@
+.root{
+    -fx-background-image:  url('../../img/paisagem/ponte-florianopolis.jpg');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.jfx-snackbar-content {
+    -fx-background-color: #323232;
+}
+
+.jfx-snackbar-toast {
+    -fx-text-fill: WHITE;
+}
+.jfx-snackbar-action {
+    -fx-text-fill: #ff4081;
+}

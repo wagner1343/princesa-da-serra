@@ -1,13 +1,19 @@
 package princesadaserra.java.core.route;
 
-import java.util.Date;
-
 public class Segment {
 
 	private int id;
+
+	public Segment(City cityOrigin, City cityDestination, int time, double value) {
+		this.cityOrigin = cityOrigin;
+		this.cityDestination = cityDestination;
+		this.time = time;
+		this.value = value;
+	}
+
 	private City cityOrigin;
 	private City cityDestination;
-	private Date time;
+	private int time;
 	private double value;
 
 	public City getCityOrigin() {
@@ -26,7 +32,7 @@ public class Segment {
 		this.cityDestination = cityDestination;
 	}
 
-	public boolean isConnected(Segment other){
+	public boolean connectsTo(Segment other){
 	    return getCityDestination() == other.getCityOrigin();
     }
 }

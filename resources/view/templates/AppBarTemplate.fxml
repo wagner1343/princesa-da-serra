@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXHamburger layoutX="24.0" layoutY="23.0" prefHeight="16.0" prefWidth="16.0" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="23.0" />
+      <Text layoutX="76.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Viagens" AnchorPane.leftAnchor="76.0" AnchorPane.topAnchor="12.1015625">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
