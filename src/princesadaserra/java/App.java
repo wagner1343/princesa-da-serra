@@ -6,6 +6,8 @@ import princesadaserra.java.ui.navigation.Navigator;
 import princesadaserra.java.ui.views.ScenesTypes;
 import princesadaserra.java.util.context.AppContext;
 
+import java.util.Scanner;
+
 public class App extends Application {
 
     @Override

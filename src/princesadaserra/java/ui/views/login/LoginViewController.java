@@ -10,6 +10,7 @@ import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
 
 public class LoginViewController {
+    public static final String FXML_PATH = "/view/login/LoginScreen.fxml";
     @FXML
     private AnchorPane root;
     @FXML

@@ -12,10 +12,10 @@
        <AnchorPane fx:id="contentRoot" layoutX="300.0" layoutY="194.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
       <AnchorPane styleClass="app-bar" fx:id="AppBarRoot" layoutX="0.0" layoutY="0.0" prefHeight="50.0"  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnimatedHamburguer styleClass="icon" fx:id="menuButton" layoutX="27.0" layoutY="15.0" onMouseClicked="#toggleDrawer" />
-            <Text styleClass="title" layoutX="88.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PageName" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="16.0">
+            <AnimatedHamburguer prefWidth="26" prefHeight="20" styleClass="icon" fx:id="menuButton" layoutX="20.0" layoutY="16.0" onMouseClicked="#toggleDrawer" />
+            <Text fx:id="appBarTitle" styleClass="title" layoutX="88.0" layoutY="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PageName" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="10.0">
                <font>
-                  <Font size="18.0" />
+                  <Font size="22.0" />
                </font>
             </Text>
          </children>

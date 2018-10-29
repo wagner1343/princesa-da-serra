@@ -34,7 +34,7 @@ public class MaterialIconButton extends AnchorPane {
         button = new JFXButton();
         fadeBackground = new AnchorPane();
         fadeBackground.setStyle("-fx-background-color: #000");
-        fadeTransition = new FadeTransition(new Duration(300), fadeBackground);
+        fadeTransition = new FadeTransition(new Duration(50), fadeBackground);
 
         textArea.setFont(new Font("Segoe-ui", 16));
 
