@@ -15,7 +15,6 @@
       <element id="archive" name="princesa_da_serra.jar">
         <element id="module-output" name="princesa-da-serra" />
       </element>
-      <element id="library" level="project" name="hibernate-core-5.3.6.Final" />
     </root>
   </artifact>
 </component>
