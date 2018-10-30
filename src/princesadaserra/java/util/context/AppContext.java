@@ -2,8 +2,8 @@ package princesadaserra.java.util.context;
 
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.navigation.Navigator;
-import princesadaserra.java.util.threading.CallbackWithArgument;
-import princesadaserra.java.util.threading.CallbackWithArgumentList;
+import princesadaserra.java.util.callback.CallbackWithArgument;
+import princesadaserra.java.util.callback.CallbackWithArgumentList;
 
 public class AppContext {
     private static final String CONFIG_PATH = "/config.txt";
