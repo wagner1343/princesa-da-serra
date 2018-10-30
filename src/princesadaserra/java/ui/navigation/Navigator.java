@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import princesadaserra.java.ui.views.ScenesTypes;
+import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.util.context.ResourcesHolder;
 
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.views.dashboard;
+package princesadaserra.java.ui.controller.dashboard;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXDrawersStack;
@@ -8,7 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
-import princesadaserra.java.ui.views.ScenesTypes;
+import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.usecases.auth.Logout;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.context.ResourcesHolder;

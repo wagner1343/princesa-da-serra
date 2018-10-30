@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.views;
+package princesadaserra.java.ui.controller;
 
 public enum ScenesTypes {
     LOGIN,

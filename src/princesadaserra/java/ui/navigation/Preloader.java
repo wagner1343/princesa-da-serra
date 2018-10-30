@@ -1,10 +1,7 @@
 package princesadaserra.java.ui.navigation;
 
-import javafx.scene.Parent;
-import princesadaserra.java.ui.views.ScenesTypes;
+import princesadaserra.java.ui.controller.ScenesTypes;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

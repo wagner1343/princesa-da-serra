@@ -1,11 +1,11 @@
-package princesadaserra.java.ui.views.login;
+package princesadaserra.java.ui.controller.login;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import princesadaserra.java.ui.views.ScenesTypes;
+import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
 
