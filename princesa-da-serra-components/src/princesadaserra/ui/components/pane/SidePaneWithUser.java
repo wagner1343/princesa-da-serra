@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.views.components.pane;
+package princesadaserra.ui.components.pane;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import princesadaserra.java.ui.views.components.button.MaterialIconButton;
+import princesadaserra.ui.components.button.MaterialIconButton;
 
 import java.util.TreeMap;
 
@@ -52,14 +52,14 @@ public class SidePaneWithUser extends AnchorPane {
         );
 
         userImageView.setClip(imageClip);
-        userImageView.setImage(new Image("/img/profile/wagner.jpg"));
+        //userImageView.setImage(new Image("/img/profile/wagner.jpg"));
 
         titleText.setFill(javafx.scene.paint.Color.WHITE);
         titleText.setLayoutX(49.0);
         titleText.setLayoutY(36.0);
         titleText.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         titleText.setStrokeWidth(0.0);
-        titleText.setText("Princesa da Serra");
+        //titleText.setText("Princesa da Serra");
         titleText.setFont(new Font(24.0));
         titleText.getStyleClass().add("-pfx-title-text");
 
@@ -68,7 +68,7 @@ public class SidePaneWithUser extends AnchorPane {
         userNameText.setLayoutY(100.0);
         userNameText.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         userNameText.setStrokeWidth(0.0);
-        userNameText.setText("Wagner S. W. Martins");
+        //userNameText.setText("Wagner S. W. Martins");
         userNameText.setFont(new Font("Segoe UI", 16.0));
         userNameText.getStyleClass().add("-pfx-user-name-text");
 
@@ -77,7 +77,7 @@ public class SidePaneWithUser extends AnchorPane {
         userEmailText.setLayoutY(118.0);
         userEmailText.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
         userEmailText.setStrokeWidth(0.0);
-        userEmailText.setText("wagner1343@outlook.com");
+        //userEmailText.setText("wagner1343@outlook.com");
         userEmailText.setFont(new Font("Segoe UI", 11.0));
         userEmailText.getStyleClass().add("-pfx-user-email-text");
 
@@ -164,7 +164,8 @@ public class SidePaneWithUser extends AnchorPane {
     }
 
     public void addButton(String buttonId, String buttonText, EventHandler<ActionEvent> handler){
-        MaterialIconButton button = new MaterialIconButton(buttonText);
+        MaterialIconButton button = new MaterialIconButton();
+        button.setButtonText(buttonText);
         button.getButton().setOnAction(handler);
 
         buttonMap.put(buttonId, button);

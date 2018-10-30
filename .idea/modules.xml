@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/princesa-da-serra.iml" filepath="$PROJECT_DIR$/princesa-da-serra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/princesa-da-serra-components/princesa-da-serra-components.iml" filepath="$PROJECT_DIR$/princesa-da-serra-components/princesa-da-serra-components.iml" />
     </modules>
   </component>
 </project>

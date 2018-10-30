@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="princesa-da-serra-components:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/princesa_da_serra_components_jar</output-path>
+    <root id="archive" name="princesa-da-serra-components.jar">
+      <element id="module-output" name="princesa-da-serra-components" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jfoenix/jfoenix/8.0.7/jfoenix-8.0.7.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

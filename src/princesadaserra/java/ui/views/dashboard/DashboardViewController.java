@@ -9,11 +9,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.views.ScenesTypes;
-import princesadaserra.java.ui.views.components.animated.AnimatedHamburguer;
-import princesadaserra.java.ui.views.components.pane.SidePaneWithUser;
 import princesadaserra.java.usecases.auth.Logout;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.context.ResourcesHolder;
+import princesadaserra.ui.components.animated.AnimatedHamburguer;
+import princesadaserra.ui.components.pane.SidePaneWithUser;
 
 public class DashboardViewController {
     public static final String FXML_PATH = "/view/templates/DashboardTemplate,fxml";

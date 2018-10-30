@@ -1,7 +1,9 @@
-package princesadaserra.java.ui.views.components.button;
+package princesadaserra.ui.components.button;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.FadeTransition;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
@@ -17,26 +19,36 @@ public class MaterialIconButton extends AnchorPane {
     private double bottomPadding = 8d;
     private double leftPadding = 54d;
     private double rightPadding = 16d;
+    private ObjectProperty<String> buttonText = new SimpleObjectProperty<>("");
+
 
     public MaterialIconButton() {
-        this.textArea = new Text();
         init();
     }
 
-    public MaterialIconButton(String text) {
-        this.textArea = new Text(text);
-        init();
+    public String getButtonText() {
+        return buttonText.get();
+    }
+
+    public void setButtonText(String buttonText) {
+        this.buttonText.set(buttonText);
+    }
+
+    public ObjectProperty<String> buttonTextProperty() {
+        return buttonText;
     }
 
     private void init() {
         getStyleClass().add("-pfx-material-button");
 
+        this.textArea = new Text();
         button = new JFXButton();
         fadeBackground = new AnchorPane();
         fadeBackground.setStyle("-fx-background-color: #000");
         fadeTransition = new FadeTransition(new Duration(50), fadeBackground);
 
         textArea.setFont(new Font("Segoe-ui", 16));
+        textArea.textProperty().bindBidirectional(buttonText);
 
         fadeTransition.setFromValue(0d);
         fadeTransition.setToValue(0.1);

@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact name="princesa-da-serra-components:jar-link">
+    <output-path>$PROJECT_DIR$/out/artifacts/princesa_da_serra_components_jar_link</output-path>
+    <root id="root">
+      <element id="archive" name="princesa-da-serra-components.jar">
+        <element id="module-output" name="princesa-da-serra-components" />
+      </element>
+      <element id="library" level="project" name="com.jfoenix:jfoenix:8.0.7" />
+    </root>
+  </artifact>
+</component>

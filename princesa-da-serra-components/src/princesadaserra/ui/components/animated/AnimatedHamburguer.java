@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.views.components.animated;
+package princesadaserra.ui.components.animated;
 
 import com.jfoenix.controls.JFXHamburger;
 import javafx.animation.RotateTransition;
