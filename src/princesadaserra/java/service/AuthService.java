@@ -3,10 +3,19 @@ package princesadaserra.java.service;
 import princesadaserra.java.core.user.Role;
 import princesadaserra.java.core.user.User;
 
+import java.sql.*;
+
 public class AuthService {
     private static AuthService authService;
+    private final String SERVICE_USER = "auth_service";
+    private final String SERVICE_PASSWORD = "123456";
 
     private AuthService(){
+
+    }
+
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection("jdbc:postgresql://localhost:5432/princesa_da_serra", SERVICE_USER, SERVICE_PASSWORD);
     }
 
     public static AuthService getInstance(){
@@ -48,5 +57,19 @@ public class AuthService {
         System.out.println("AuthService.logout");
         System.out.println("Method not implemented yet, always returns true");
         return true;
+    }
+
+    public boolean register(String userName, String password, String role){
+        System.out.println("AuthService.register");
+
+        try (Connection connection = getConnection()) {
+            connection.createStatement()
+                    .execute(String.format("CREATE USER %s WITH PASSWORD '%s' ROLE %s;", userName, password, role));
+
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

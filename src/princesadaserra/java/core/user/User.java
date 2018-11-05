@@ -5,12 +5,21 @@ import java.util.ArrayList;
 public class User {
 
 	private int id;
+	private String login;
 	private String name;
 	private String email;
 	private String phone;
 	private String cpf;
 	private ArrayList<Permission> permissions;
 	private Role role;
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
 
 	public Role getRole() {
 		return role;
