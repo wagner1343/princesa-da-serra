@@ -3,6 +3,24 @@ package princesadaserra.java.core.user;
 import java.util.ArrayList;
 
 public class User {
+	private String imageUrl;
+	private Long id;
+	private String username;
+	private String password;
+	private String name;
+	private String email;
+	private String phone;
+	private String cpf;
+	private ArrayList<Permission> permissions;
+	private Role role;
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	public Long getId() {
 		return id;
@@ -12,9 +30,6 @@ public class User {
 		this.id = id;
 	}
 
-	private Long id;
-	private String username;
-
 	public String getPassword() {
 		return password;
 	}
@@ -22,14 +37,6 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	private String password;
-	private String name;
-	private String email;
-	private String phone;
-	private String cpf;
-	private ArrayList<Permission> permissions;
-	private Role role;
 
 	public String getUsername() {
 		return username;

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDrawersStack;
 import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
@@ -54,8 +55,11 @@ public class DashboardViewController {
     private void loadSidePaneUserInfo(User user) {
         System.out.println("DashboardViewController.loadSidePaneUserInfo");
         System.out.println("user = " + user);
+        drawerPane.getUserImageView().setImage(new Image(user.getImageUrl()));
         drawerPane.getUserEmailText().setText(user.getEmail() == null ? "" : user.getEmail());
         drawerPane.getUserNameText().setText(user.getName() == null ? "" : user.getName());
+
+        drawerPane.getTitleText().setText("Princesaa da serra");
     }
 
     private void setPageName(String name){

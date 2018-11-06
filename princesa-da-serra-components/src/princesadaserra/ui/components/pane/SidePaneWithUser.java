@@ -16,6 +16,11 @@ import java.util.TreeMap;
 
 public class SidePaneWithUser extends AnchorPane {
     private TreeMap<String, MaterialIconButton> buttonMap;
+
+    public TreeMap<String, MaterialIconButton> getButtonMap() {
+        return buttonMap;
+    }
+
     private  ImageView userImageView;
     private  Text titleText;
     private  Text userNameText;

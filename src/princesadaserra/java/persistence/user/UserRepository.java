@@ -30,6 +30,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
                 user.setEmail(result.getString("email"));
                 user.setPhone(result.getString("phone"));
                 user.setCpf(result.getString("cpf"));
+                user.setImageUrl(result.getString("image_url"));
             }
 
             return user;
@@ -55,28 +56,16 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         }
     }
 
-    public User find(String username){
-        try {
+    public User find(String username) throws SQLException {
             PreparedStatement statement = getConnection()
                     .prepareStatement(SQLQueries.USER_SELECT_BY_NAME);
 
             statement.setString(1, username);
 
             ResultSet result = statement.executeQuery();
-            User user = new User();
-            while(result.next()){
-                user.setId(result.getLong("id_user"));
-                user.setName(result.getString("name"));
-                user.setEmail(result.getString("email"));
-                user.setPhone(result.getString("phone"));
-                user.setCpf(result.getString("cpf"));
-            }
+            User user = result.next() ? mapResult(result) : null;
 
             return user;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 
     @Override
@@ -117,12 +106,23 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         }
     }
 
+    private User mapResult(ResultSet result) throws SQLException {
+        User user = new User();
+        user.setId(result.getLong("id_user"));
+        user.setName(result.getString("name"));
+        user.setEmail(result.getString("email"));
+        user.setPhone(result.getString("phone"));
+        user.setCpf(result.getString("cpf"));
+        user.setImageUrl(result.getString("image_url"));
+        return user;
+    }
+
 
     private class SQLQueries {
         public static final String USER_INSERT = "INSERT INTO users (name, email, phone, cpf) VALUES(?, ?, ?, ?)";
         public static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
         public static final String USER_UPDATE = "UPDATE users set name = ?, email = ?, phone = ?, cpf = ? where user_id = ?";
-        public static final String USER_SELECT = "Select id_user, name, email, phone, cpf from users where id_user = ? LIMIT 1";
-        public static final String USER_SELECT_BY_NAME = "Select id_user, name, email, phone, cpf from users where name = ? LIMIT 1";
+        public static final String USER_SELECT = "Select id_user, name, email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
+        public static final String USER_SELECT_BY_NAME = "Select id_user, name, email, phone, cpf, image_url from users where name = ? LIMIT 1";
     }
 }

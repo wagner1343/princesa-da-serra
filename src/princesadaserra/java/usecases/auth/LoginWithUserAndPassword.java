@@ -6,6 +6,8 @@ import princesadaserra.java.service.AuthService;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
 
+import java.sql.SQLException;
+
 public class LoginWithUserAndPassword extends Task<AppContext, User, Integer> {
     private final String password;
     private final String userName;
@@ -20,14 +22,18 @@ public class LoginWithUserAndPassword extends Task<AppContext, User, Integer> {
     @Override
     protected User execute(AppContext context) {
         System.out.println("LoginWithUserAndPassword.execute");
-        
-        if(AuthService.authenticate(userName, password)){
-            context.getCurrentUser().setUsername(userName);
-            context.getCurrentUser().setPassword(password);
-
-            context.setCurrentUser(userRepository.find(userName));
+        User user = null;
+        try{
+            user = userRepository.find(userName);
+            context.setCurrentUser(user);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            setFailed();
         }
 
-        return null;
+        if(user == null)
+            setFailed();
+
+        return user;
     }
 }

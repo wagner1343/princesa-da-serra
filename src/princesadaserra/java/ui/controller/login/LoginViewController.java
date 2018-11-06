@@ -30,9 +30,11 @@ public class LoginViewController {
 
         LoginWithUserAndPassword loginTask = new LoginWithUserAndPassword(userTextField.getText(), passwordTextField.getText());
 
-        loginTask.addOnSuccessCallback( user -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.DASHBOARD) );
-        loginTask.addOnFinishCallback(
-                result -> {snackbar.enqueue(new JFXSnackbar.SnackbarEvent((result == null) ? "Login failed" : "Login Success"));});
+        loginTask.addOnSuccessCallback( result -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.DASHBOARD) );
+        loginTask.addOnFailedCallback(
+                () -> {
+                    snackbar.enqueue(new JFXSnackbar.SnackbarEvent("Login failed"));
+                });
 
         loginTask.start(AppContext.getInstance());
     }
