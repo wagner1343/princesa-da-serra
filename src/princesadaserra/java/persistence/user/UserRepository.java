@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
-    protected UserRepository(String userName, String password) {
+    public UserRepository(String userName, String password) {
         super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
     }
 
@@ -18,7 +18,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     public User find(Long key) {
         try {
             PreparedStatement statement = getConnection()
-                    .prepareStatement("Select id_user, name, email, phone, cpf from users where id_user = ? LIMIT 1");
+                    .prepareStatement(SQLQueries.USER_SELECT);
 
             statement.setLong(1, key);
 
@@ -43,14 +43,39 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     public void update(User user) {
         try{
             PreparedStatement statement = getConnection()
-                    .prepareStatement("UPDATE users set name = ?, email = ?, phone = ?, cpf = ? where user_id = ?;");
+                    .prepareStatement(SQLQueries.USER_UPDATE);
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getPhone());
             statement.setString(4, user.getCpf());
             statement.setLong(5, user.getId());
+
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public User find(String username){
+        try {
+            PreparedStatement statement = getConnection()
+                    .prepareStatement(SQLQueries.USER_SELECT_BY_NAME);
+
+            statement.setString(1, username);
+
+            ResultSet result = statement.executeQuery();
+            User user = new User();
+            while(result.next()){
+                user.setId(result.getLong("id_user"));
+                user.setName(result.getString("name"));
+                user.setEmail(result.getString("email"));
+                user.setPhone(result.getString("phone"));
+                user.setCpf(result.getString("cpf"));
+            }
+
+            return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -96,5 +121,8 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     private class SQLQueries {
         public static final String USER_INSERT = "INSERT INTO users (name, email, phone, cpf) VALUES(?, ?, ?, ?)";
         public static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
+        public static final String USER_UPDATE = "UPDATE users set name = ?, email = ?, phone = ?, cpf = ? where user_id = ?";
+        public static final String USER_SELECT = "Select id_user, name, email, phone, cpf from users where id_user = ? LIMIT 1";
+        public static final String USER_SELECT_BY_NAME = "Select id_user, name, email, phone, cpf from users where name = ? LIMIT 1";
     }
 }

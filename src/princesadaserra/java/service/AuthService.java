@@ -32,7 +32,7 @@ public class AuthService {
         System.out.println("login = [" + userName + "], password = [" + password + "]");
 
         try {
-            if(getConnection() != null){
+            if(getAuthConnection() != null){
                 AuthService.userName = userName;
                 AuthService.password = password;
                 return true;

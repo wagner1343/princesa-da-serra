@@ -6,22 +6,11 @@ import princesadaserra.java.service.AuthService;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
 
-public class Logout extends Task<AppContext, Pair<Boolean, String>, Integer>{
+public class Logout extends Task<AppContext, Boolean, Integer>{
     @Override
-    protected Pair<Boolean, String> execute(AppContext context) {
-        User user = context.getCurrentUser();
-        if (user == null){
-            setFailed();
-            return new Pair<>(false, "User logged out already");
-        }
+    protected Boolean execute(AppContext context) {
+        AuthService.logout();
 
-        if(AuthService.getInstance().logout(user)){
-            setSuccess();
-            return new Pair<>(true, "Logged out with success");
-        }
-        else {
-            setFailed();
-            return new Pair<>(false, "Logout failed");
-        }
+        return true;
     }
 }

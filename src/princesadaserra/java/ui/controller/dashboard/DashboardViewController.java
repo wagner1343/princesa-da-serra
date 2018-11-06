@@ -115,7 +115,7 @@ public class DashboardViewController {
         System.out.println("DashboardViewController.doLogout");
 
         Logout logout = new Logout();
-        logout.addOnFinishCallback( (result) -> snackbar.enqueue(new JFXSnackbar.SnackbarEvent(result.getValue())) );
+        logout.addOnFinishCallback( (result) -> snackbar.enqueue(new JFXSnackbar.SnackbarEvent("")) );
         logout.addOnSuccessCallback( () -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.LOGIN) );
         logout.start(AppContext.getInstance());
     }

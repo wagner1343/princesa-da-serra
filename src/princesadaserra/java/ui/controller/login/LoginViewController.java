@@ -32,7 +32,7 @@ public class LoginViewController {
 
         loginTask.addOnSuccessCallback( user -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.DASHBOARD) );
         loginTask.addOnFinishCallback(
-                result -> {snackbar.enqueue(new JFXSnackbar.SnackbarEvent((!result) ? "Login failed" : "Login Success"));});
+                result -> {snackbar.enqueue(new JFXSnackbar.SnackbarEvent((result == null) ? "Login failed" : "Login Success"));});
 
         loginTask.start(AppContext.getInstance());
     }
