@@ -7,10 +7,10 @@ import princesadaserra.java.util.threading.Task;
 
 public class LoginWithUserAndPassword extends Task<AppContext, User, Integer> {
     private final String password;
-    private final String user;
+    private final String userName;
 
-    public LoginWithUserAndPassword(String user, String password){
-        this.user = user;
+    public LoginWithUserAndPassword(String userName, String password, AppContext appContext){
+        this.userName = userName;
         this.password = password;
     }
 
@@ -18,14 +18,8 @@ public class LoginWithUserAndPassword extends Task<AppContext, User, Integer> {
     protected User execute(AppContext context) {
         System.out.println("LoginWithUserAndPassword.execute");
         
-        User user = AuthService.getInstance().authenticate(this.user, password);
-        if(user == null)
-            setFailed();
-        else {
-            context.setCurrentUser(user);
-            System.out.println("user.getEmail() = " + user.getEmail());
-            setSuccess();
+        if(AuthService.authenticate(userName, password)){
+
         }
-        return user;
     }
 }
