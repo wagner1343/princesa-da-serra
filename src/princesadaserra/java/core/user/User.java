@@ -4,7 +4,15 @@ import java.util.ArrayList;
 
 public class User {
 
-	private int id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	private Long id;
 	private String login;
 	private String name;
 	private String email;
@@ -27,14 +35,6 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
