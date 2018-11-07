@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Pair;
 import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
@@ -19,6 +20,7 @@ public class LoginViewController {
     private JFXPasswordField passwordTextField;
 
     private JFXSnackbar snackbar;
+    LoginWithUserAndPassword loginTask;
 
     @FXML
     public void initialize(){
@@ -28,14 +30,10 @@ public class LoginViewController {
     public void loginOnClick(){
         System.out.println("LoginViewController.loginOnClick");
 
-        LoginWithUserAndPassword loginTask = new LoginWithUserAndPassword(userTextField.getText(), passwordTextField.getText());
-
+        loginTask = new LoginWithUserAndPassword(AppContext.getInstance());
         loginTask.addOnSuccessCallback( result -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.DASHBOARD) );
         loginTask.addOnFailedCallback(
-                () -> {
-                    snackbar.enqueue(new JFXSnackbar.SnackbarEvent("Login failed"));
-                });
-
-        loginTask.start(AppContext.getInstance());
+                () -> { snackbar.enqueue(new JFXSnackbar.SnackbarEvent("Login failed")); });
+        loginTask.start(new Pair<>(userTextField.getText(), passwordTextField.getText()));
     }
 }

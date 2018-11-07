@@ -20,6 +20,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     public User find(Long key) {
         User user = null;
         try {
+
             PreparedStatement statement = getConnection()
                     .prepareStatement(SQLQueries.USER_SELECT);
 
@@ -77,6 +78,8 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     public User add(User user) {
         System.out.println("UserRepository.add");
         try{
+            getConnection().createStatement()
+                    .execute(String.format("CREATE USER %s WITH PASSWORD '%s'", user.getUsername(), user.getPassword()));
             PreparedStatement statement = getConnection()
                     .prepareStatement(SQLQueries.USER_INSERT, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getName());
@@ -112,6 +115,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     }
 
     private class SQLQueries {
+
         public static final String USER_INSERT = "INSERT INTO users (name, email, phone, cpf) VALUES(?, ?, ?, ?)";
         public static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
         public static final String USER_UPDATE = "UPDATE users set name = ?, email = ?, phone = ?, cpf = ? where user_id = ?";

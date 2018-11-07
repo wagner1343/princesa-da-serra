@@ -12,6 +12,7 @@ public class UserMapper implements Mapper<ResultSet, User> {
         User user = null;
 
         try {
+            user = new User();
             user.setId(result.getLong("id_user"));
 
             user.setName(result.getString("name"));

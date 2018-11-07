@@ -7,7 +7,9 @@ public class TestUserRepository {
     public static void main(String[] args) {
         UserRepository repo = new UserRepository("postgres", "123456");
         User user = new User();
-        user.setName("Volmir");
+        user.setUsername("volmir");
+        user.setPassword("654321");
+        user.setName("volmir");
         user.setEmail("volmir@outlook.com");
         user.setCpf("cpf");
         user.setPhone("phone");
