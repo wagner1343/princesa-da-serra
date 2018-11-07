@@ -10,12 +10,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
+    UserMapper mapper;
     public UserRepository(String userName, String password) {
         super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+        mapper = new UserMapper();
     }
 
     @Override
     public User find(Long key) {
+        User user = null;
         try {
             PreparedStatement statement = getConnection()
                     .prepareStatement(SQLQueries.USER_SELECT);
@@ -23,21 +26,17 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
             statement.setLong(1, key);
 
             ResultSet result = statement.executeQuery();
-            User user = new User();
-            while(result.next()){
-                user.setId(result.getLong("id_user"));
-                user.setName(result.getString("name"));
-                user.setEmail(result.getString("email"));
-                user.setPhone(result.getString("phone"));
-                user.setCpf(result.getString("cpf"));
-                user.setImageUrl(result.getString("image_url"));
+
+            if(result.next()){
+                user = mapper.map(result);
             }
 
-            return user;
+
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
         }
+
+        return user;
     }
 
     @Override
@@ -50,22 +49,28 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
             statement.setString(3, user.getPhone());
             statement.setString(4, user.getCpf());
             statement.setLong(5, user.getId());
-
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public User find(String username) throws SQLException {
+    public User find(String username){
+        User user = null;
+
+        try {
             PreparedStatement statement = getConnection()
                     .prepareStatement(SQLQueries.USER_SELECT_BY_NAME);
-
             statement.setString(1, username);
 
             ResultSet result = statement.executeQuery();
-            User user = result.next() ? mapResult(result) : null;
 
-            return user;
+            if(result.next())
+                user = mapper.map(result);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override
@@ -105,18 +110,6 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
             e.printStackTrace();
         }
     }
-
-    private User mapResult(ResultSet result) throws SQLException {
-        User user = new User();
-        user.setId(result.getLong("id_user"));
-        user.setName(result.getString("name"));
-        user.setEmail(result.getString("email"));
-        user.setPhone(result.getString("phone"));
-        user.setCpf(result.getString("cpf"));
-        user.setImageUrl(result.getString("image_url"));
-        return user;
-    }
-
 
     private class SQLQueries {
         public static final String USER_INSERT = "INSERT INTO users (name, email, phone, cpf) VALUES(?, ?, ?, ?)";
