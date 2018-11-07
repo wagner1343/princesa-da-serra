@@ -6,6 +6,7 @@ import princesadaserra.java.persistence.user.UserRepository;
 public class TestUserRepository {
     public static void main(String[] args) {
         UserRepository repo = new UserRepository("postgres", "123456");
+
         User user = new User();
         user.setUsername("volmir");
         user.setPassword("654321");
