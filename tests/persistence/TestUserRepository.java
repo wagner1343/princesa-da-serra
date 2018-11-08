@@ -10,10 +10,10 @@ public class TestUserRepository {
 
         User user = new User();
         user.setRole(Role.NORMAL_USER);
-        user.setUsername("wagner1343");
+        user.setUsername("wagner");
         user.setPassword("13431343");
-        user.setFirstName("Wagner Silvestre");
-        user.setLastName("Wuchryn Martins");
+        user.setFirstName("Wagner");
+        user.setLastName("");
         user.setEmail("wagner1343@outlook.com");
         user.setCpf("cpf");
         user.setPhone("phone");

@@ -14,8 +14,8 @@ import princesadaserra.java.usecases.auth.Logout;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.context.ResourcesHolder;
 import princesadaserra.ui.components.animated.AnimatedHamburguer;
-import princesadaserra.ui.components.pane.SidePaneWithUser;
 import princesadaserra.ui.components.pane.UserInfoAdapter;
+import princesadaserra.ui.components.pane.UserSidePane;
 
 public class DashboardViewController {
 
@@ -33,7 +33,7 @@ public class DashboardViewController {
     @FXML
     private Text appBarTitle;
 
-    private SidePaneWithUser drawerPane;
+    private UserSidePane drawerPane;
     private JFXSnackbar snackbar;
     private JFXDrawer drawer;
 
@@ -41,7 +41,7 @@ public class DashboardViewController {
     public void initialize(){
         drawer = new JFXDrawer();
         snackbar = new JFXSnackbar(dashboardRoot);
-        drawerPane = new SidePaneWithUser();
+        drawerPane = new UserSidePane();
         drawerPane.getTitleText().setText("Princesa da serra");
 
         drawer.setSidePane(drawerPane);
@@ -59,22 +59,24 @@ public class DashboardViewController {
         System.out.println("DashboardViewController.setSidePaneUserInfo");
         System.out.println("user = " + user);
 
-        drawerPane.setUserInfo(new UserInfoAdapter() {
-            @Override
-            public Image getImage() {
-                return  new Image(user.getImageUrl());
-            }
+        if (user != null) {
+            drawerPane.setUserInfo(new UserInfoAdapter() {
+                @Override
+                public Image getImage() {
+                    return new Image(user.getImageUrl());
+                }
 
-            @Override
-            public String getDisplayName() {
-                return user.getFirstName();
-            }
+                @Override
+                public String getDisplayName() {
+                    return user.getFirstName();
+                }
 
-            @Override
-            public String getEmail() {
-                return user.getEmail();
-            }
-        });
+                @Override
+                public String getEmail() {
+                    return user.getEmail();
+                }
+            });
+        }
     }
 
     private void setPageName(String name){

@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -15,7 +14,7 @@ import princesadaserra.ui.components.button.MaterialIconButton;
 
 import java.util.TreeMap;
 
-public class SidePaneWithUser extends AnchorPane {
+public class UserSidePane extends AnchorPane {
     private UserInfoAdapter userAdapter;
     private TreeMap<String, MaterialIconButton> buttonMap;
 
@@ -27,7 +26,7 @@ public class SidePaneWithUser extends AnchorPane {
     private  VBox optionsVBox;
     private  Node imageClip;
 
-    public SidePaneWithUser() {
+    public UserSidePane() {
         buttonMap = new TreeMap<>();
         userImageView = new ImageView();
         titleText = new Text();

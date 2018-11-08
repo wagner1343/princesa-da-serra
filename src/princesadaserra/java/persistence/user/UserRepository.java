@@ -4,7 +4,10 @@ import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.Repository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
     private UserMapper mapper;
@@ -79,12 +82,11 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     }
 
     private static class SQLQueries {
-
-        public static final String USER_INSERT = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
-        public static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
-        public static final String USER_UPDATE = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where user_id = ?";
-        public static final String USER_SELECT = "Select id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
-        public static final String USER_SELECT_BY_USERNAME = "Select usename, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
+        private static final String USER_INSERT = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        private static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
+        private static final String USER_UPDATE = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
+        private static final String USER_SELECT = "Select id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
+        private static final String USER_SELECT_BY_USERNAME = "Select usename, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
 
         public static PreparedStatement update(Connection conn, User user) throws SQLException {
             PreparedStatement statement = conn
