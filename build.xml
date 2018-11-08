@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="princesa-da-serra" default="all">
+<project firstName="princesa-da-serra" default="all">
   
   
   <property file="princesa-da-serra.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
-  <property name="skip.tests" value="true"/>
+  <property firstName="skip.tests" value="true"/>
    -->
   
   <!-- Compiler options -->
   
-  <property name="compiler.debug" value="on"/>
-  <property name="compiler.generate.no.warnings" value="off"/>
-  <property name="compiler.args" value=""/>
-  <property name="compiler.max.memory" value="700m"/>
+  <property firstName="compiler.debug" value="on"/>
+  <property firstName="compiler.generate.no.warnings" value="off"/>
+  <property firstName="compiler.args" value=""/>
+  <property firstName="compiler.max.memory" value="700m"/>
   <patternset id="ignored.files">
-    <exclude name="**/*.hprof/**"/>
-    <exclude name="**/*.pyc/**"/>
-    <exclude name="**/*.pyo/**"/>
-    <exclude name="**/*.rbc/**"/>
-    <exclude name="**/*.yarb/**"/>
-    <exclude name="**/*~/**"/>
-    <exclude name="**/.DS_Store/**"/>
-    <exclude name="**/.git/**"/>
-    <exclude name="**/.hg/**"/>
-    <exclude name="**/.svn/**"/>
-    <exclude name="**/CVS/**"/>
-    <exclude name="**/__pycache__/**"/>
-    <exclude name="**/_svn/**"/>
-    <exclude name="**/vssver.scc/**"/>
-    <exclude name="**/vssver2.scc/**"/>
+    <exclude firstName="**/*.hprof/**"/>
+    <exclude firstName="**/*.pyc/**"/>
+    <exclude firstName="**/*.pyo/**"/>
+    <exclude firstName="**/*.rbc/**"/>
+    <exclude firstName="**/*.yarb/**"/>
+    <exclude firstName="**/*~/**"/>
+    <exclude firstName="**/.DS_Store/**"/>
+    <exclude firstName="**/.git/**"/>
+    <exclude firstName="**/.hg/**"/>
+    <exclude firstName="**/.svn/**"/>
+    <exclude firstName="**/CVS/**"/>
+    <exclude firstName="**/__pycache__/**"/>
+    <exclude firstName="**/_svn/**"/>
+    <exclude firstName="**/vssver.scc/**"/>
+    <exclude firstName="**/vssver2.scc/**"/>
   </patternset>
   <patternset id="library.patterns">
-    <include name="*.egg"/>
-    <include name="*.jar"/>
-    <include name="*.ear"/>
-    <include name="*.swc"/>
-    <include name="*.war"/>
-    <include name="*.zip"/>
-    <include name="*.ane"/>
+    <include firstName="*.egg"/>
+    <include firstName="*.jar"/>
+    <include firstName="*.ear"/>
+    <include firstName="*.swc"/>
+    <include firstName="*.war"/>
+    <include firstName="*.zip"/>
+    <include firstName="*.ane"/>
   </patternset>
   <patternset id="compiler.resources">
-    <exclude name="**/?*.java"/>
-    <exclude name="**/?*.form"/>
-    <exclude name="**/?*.class"/>
-    <exclude name="**/?*.groovy"/>
-    <exclude name="**/?*.scala"/>
-    <exclude name="**/?*.flex"/>
-    <exclude name="**/?*.kt"/>
-    <exclude name="**/?*.clj"/>
+    <exclude firstName="**/?*.java"/>
+    <exclude firstName="**/?*.form"/>
+    <exclude firstName="**/?*.class"/>
+    <exclude firstName="**/?*.groovy"/>
+    <exclude firstName="**/?*.scala"/>
+    <exclude firstName="**/?*.flex"/>
+    <exclude firstName="**/?*.kt"/>
+    <exclude firstName="**/?*.clj"/>
   </patternset>
   
   
@@ -74,10 +74,10 @@
   
   
   
-  <property name="compiler.args.princesa-da-serra" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  <property firstName="compiler.args.princesa-da-serra" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
   
-  <property name="princesa-da-serra.output.dir" value="${module.princesa-da-serra.basedir}/out/production/princesa-da-serra"/>
-  <property name="princesa-da-serra.testoutput.dir" value="${module.princesa-da-serra.basedir}/out/test/princesa-da-serra"/>
+  <property firstName="princesa-da-serra.output.dir" value="${module.princesa-da-serra.basedir}/out/production/princesa-da-serra"/>
+  <property firstName="princesa-da-serra.testoutput.dir" value="${module.princesa-da-serra.basedir}/out/test/princesa-da-serra"/>
   
   <path id="princesa-da-serra.module.bootclasspath">
     <!-- Paths to be included in compilation bootclasspath -->
@@ -118,15 +118,15 @@
   
   <path id="princesa-da-serra.module.sourcepath">
     <dirset dir="${module.princesa-da-serra.basedir}">
-      <include name="src"/>
-      <include name="resources"/>
+      <include firstName="src"/>
+      <include firstName="resources"/>
     </dirset>
   </path>
   
   
-  <target name="compile.module.princesa-da-serra" depends="compile.module.princesa-da-serra.production,compile.module.princesa-da-serra.tests" description="Compile module princesa-da-serra"/>
+  <target firstName="compile.module.princesa-da-serra" depends="compile.module.princesa-da-serra.production,compile.module.princesa-da-serra.tests" description="Compile module princesa-da-serra"/>
   
-  <target name="compile.module.princesa-da-serra.production" description="Compile module princesa-da-serra; production classes">
+  <target firstName="compile.module.princesa-da-serra.production" description="Compile module princesa-da-serra; production classes">
     <mkdir dir="${princesa-da-serra.output.dir}"/>
     <javac destdir="${princesa-da-serra.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true">
       <compilerarg line="${compiler.args.princesa-da-serra}"/>
@@ -148,20 +148,20 @@
     </copy>
   </target>
   
-  <target name="compile.module.princesa-da-serra.tests" depends="compile.module.princesa-da-serra.production" description="compile module princesa-da-serra; test classes" unless="skip.tests"/>
+  <target firstName="compile.module.princesa-da-serra.tests" depends="compile.module.princesa-da-serra.production" description="compile module princesa-da-serra; test classes" unless="skip.tests"/>
   
-  <target name="clean.module.princesa-da-serra" description="cleanup module">
+  <target firstName="clean.module.princesa-da-serra" description="cleanup module">
     <delete dir="${princesa-da-serra.output.dir}"/>
     <delete dir="${princesa-da-serra.testoutput.dir}"/>
   </target>
   
-  <target name="init" description="Build initialization">
+  <target firstName="init" description="Build initialization">
     <!-- Perform any build initialization in this target -->
   </target>
   
-  <target name="clean" depends="clean.module.princesa-da-serra" description="cleanup all"/>
+  <target firstName="clean" depends="clean.module.princesa-da-serra" description="cleanup all"/>
   
-  <target name="build.modules" depends="init, clean, compile.module.princesa-da-serra" description="build all modules"/>
+  <target firstName="build.modules" depends="init, clean, compile.module.princesa-da-serra" description="build all modules"/>
   
-  <target name="all" depends="build.modules" description="build all"/>
+  <target firstName="all" depends="build.modules" description="build all"/>
 </project>

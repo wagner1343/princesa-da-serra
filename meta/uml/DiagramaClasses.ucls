@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.2" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
   realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="model.Cidade" project="ProjetoIntegrador" 
+  <class id="1" language="java" firstName="model.Cidade" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Cidade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="867" y="108"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -10,7 +10,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="model.Modelo" project="ProjetoIntegrador" 
+  <class id="2" language="java" firstName="model.Modelo" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Modelo.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="88" y="314"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -19,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="model.Onibus" project="ProjetoIntegrador" 
+  <class id="3" language="java" firstName="model.Onibus" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Onibus.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="88" y="88"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="model.Permissao" project="ProjetoIntegrador" 
+  <class id="4" language="java" firstName="model.Permissao" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Permissao.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="351" y="372"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="model.Rota" project="ProjetoIntegrador" 
+  <class id="5" language="java" firstName="model.Rota" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Rota.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="132" y="562"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -46,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="model.Segmento" project="ProjetoIntegrador" 
+  <class id="6" language="java" firstName="model.Segmento" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Segmento.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="641" y="620"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -55,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="model.Usuario" project="ProjetoIntegrador" 
+  <class id="7" language="java" firstName="model.Usuario" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="659" y="378"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -64,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="model.Venda" project="ProjetoIntegrador" 
+  <class id="8" language="java" firstName="model.Venda" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Venda.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="542" y="104"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -73,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="model.Viagem" project="ProjetoIntegrador" 
+  <class id="9" language="java" firstName="model.Viagem" project="ProjetoIntegrador"
     file="/ProjetoIntegrador/src/model/Viagem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="316" y="131"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
@@ -84,7 +84,7 @@
   </class>  
   <association id="10">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="11" name="rota">        
+      <attribute id="11" firstName="rota">
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="12" minimum="0" maximum="1">        
@@ -96,7 +96,7 @@
   </association>  
   <association id="13">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="14" name="onibus"/>      
+      <attribute id="14" firstName="onibus"/>
       <multiplicity id="15" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
@@ -104,7 +104,7 @@
   </association>  
   <association id="16">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="17" name="permissoes">        
+      <attribute id="17" firstName="permissoes">
         <position height="18" width="64" x="439" y="339"/>      
       </attribute>      
       <multiplicity id="18" minimum="0" maximum="2147483647">        
@@ -116,7 +116,7 @@
   </association>  
   <association id="19">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="20" name="cidadeChegada">        
+      <attribute id="20" firstName="cidadeChegada">
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="21" minimum="0" maximum="1">        
@@ -128,7 +128,7 @@
   </association>  
   <association id="22">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="23" name="motorista"/>      
+      <attribute id="23" firstName="motorista"/>
       <multiplicity id="24" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
@@ -136,7 +136,7 @@
   </association>  
   <association id="25">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="26" name="viagem">        
+      <attribute id="26" firstName="viagem">
         <position height="18" width="42" x="412" y="87"/>      
       </attribute>      
       <multiplicity id="27" minimum="0" maximum="1">        
@@ -148,7 +148,7 @@
   </association>  
   <association id="28">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="29" name="modelo">        
+      <attribute id="29" firstName="modelo">
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="30" minimum="0" maximum="1">        
@@ -160,7 +160,7 @@
   </association>  
   <association id="31">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="32" name="segmentos">        
+      <attribute id="32" firstName="segmentos">
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="33" minimum="0" maximum="2147483647">        
@@ -172,7 +172,7 @@
   </association>  
   <association id="34">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="35" name="usuario">        
+      <attribute id="35" firstName="usuario">
         <position height="0" width="0" x="40" y="29"/>      
       </attribute>      
       <multiplicity id="36" minimum="0" maximum="1">        
@@ -185,7 +185,7 @@
   <association id="37">    
     <bendpoint x="810" y="527"/>    
     <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="38" name="cidadePartida">        
+      <attribute id="38" firstName="cidadePartida">
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="39" minimum="0" maximum="1">        

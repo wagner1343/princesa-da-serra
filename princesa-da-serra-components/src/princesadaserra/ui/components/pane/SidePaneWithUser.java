@@ -3,6 +3,7 @@ package princesadaserra.ui.components.pane;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -23,7 +24,7 @@ public class SidePaneWithUser extends AnchorPane {
 
     private  ImageView userImageView;
     private  Text titleText;
-    private  Text userNameText;
+    private Label userNameText;
     private  Text userEmailText;
     private  AnchorPane optionsPaneRoot;
     private  VBox optionsVBox;
@@ -33,7 +34,7 @@ public class SidePaneWithUser extends AnchorPane {
         buttonMap = new TreeMap<>();
         userImageView = new ImageView();
         titleText = new Text();
-        userNameText = new Text();
+        userNameText = new Label();
         userEmailText = new Text();
         optionsPaneRoot = new AnchorPane();
         optionsVBox = new VBox();
@@ -68,14 +69,13 @@ public class SidePaneWithUser extends AnchorPane {
         titleText.setFont(new Font(24.0));
         titleText.getStyleClass().add("-pfx-title-text");
 
-        userNameText.setFill(javafx.scene.paint.Color.WHITE);
+        userNameText.setTextFill(javafx.scene.paint.Color.WHITE);
         userNameText.setLayoutX(90.0);
-        userNameText.setLayoutY(100.0);
-        userNameText.setStrokeType(javafx.scene.shape.StrokeType.OUTSIDE);
-        userNameText.setStrokeWidth(0.0);
+        userNameText.setLayoutY(84.0);
         //userNameText.setText("Wagner S. W. Martins");
         userNameText.setFont(new Font("Segoe UI", 16.0));
         userNameText.getStyleClass().add("-pfx-user-name-text");
+        userNameText.setMaxWidth(150.0);
 
         userEmailText.setFill(javafx.scene.paint.Color.valueOf("#00000062"));
         userEmailText.setLayoutX(92.0);
@@ -128,11 +128,11 @@ public class SidePaneWithUser extends AnchorPane {
         return titleText;
     }
 
-    public Text getUserNameText() {
+    public Label getUserNameText() {
         return userNameText;
     }
 
-    public void setUserNameText(Text userNameText) {
+    public void setUserNameText(Label userNameText) {
         this.userNameText = userNameText;
     }
 

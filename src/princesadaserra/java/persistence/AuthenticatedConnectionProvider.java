@@ -14,16 +14,16 @@ public class AuthenticatedConnectionProvider extends ConnectionProvider{
         this.password = password;
     }
 
+    @Override
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(getConnectionUrl(), getUsername(), getPassword());
+    }
+
     protected String getUsername() {
         return username;
     }
 
     protected String getPassword() {
         return password;
-    }
-
-    @Override
-    public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(getConnectionUrl(), getUsername(), getPassword());
     }
 }

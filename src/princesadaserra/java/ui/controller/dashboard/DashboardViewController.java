@@ -40,6 +40,7 @@ public class DashboardViewController {
         drawer = new JFXDrawer();
         snackbar = new JFXSnackbar(dashboardRoot);
         drawerPane = new SidePaneWithUser();
+        drawerPane.getTitleText().setText("Princesa da serra");
 
         drawer.setSidePane(drawerPane);
         drawer.setDefaultDrawerSize(drawerPane.getPrefWidth());
@@ -57,9 +58,7 @@ public class DashboardViewController {
         System.out.println("user = " + user);
         drawerPane.getUserImageView().setImage(new Image(user.getImageUrl()));
         drawerPane.getUserEmailText().setText(user.getEmail() == null ? "" : user.getEmail());
-        drawerPane.getUserNameText().setText(user.getName() == null ? "" : user.getName());
-
-        drawerPane.getTitleText().setText("Princesaa da serra");
+        drawerPane.getUserNameText().setText(user.getFirstName() == null ? "" : user.getFirstName());
     }
 
     private void setPageName(String name){

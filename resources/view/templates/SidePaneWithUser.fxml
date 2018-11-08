@@ -22,12 +22,12 @@
       </Text>
       <Text fx:id="userNameText" fill="WHITE" layoutX="90.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wagner S. W. Martins">
          <font>
-            <Font name="Segoe UI" size="16.0" />
+            <Font firstName="Segoe UI" size="16.0" />
          </font>
       </Text>
       <Text fx:id="userEmailText" fill="#00000062" layoutX="92.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="wagner1343@outlook.com">
          <font>
-            <Font name="Segoe UI" size="11.0" />
+            <Font firstName="Segoe UI" size="11.0" />
          </font>
       </Text>
       <AnchorPane fx:id="optionsPaneRoot" layoutX="14.0" layoutY="200.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="156.0">

@@ -15,7 +15,8 @@ public class UserMapper implements Mapper<ResultSet, User> {
             user = new User();
             user.setId(result.getLong("id_user"));
 
-            user.setName(result.getString("name"));
+            user.setFirstName(result.getString("first_name"));
+            user.setLastName(result.getString("last_name"));
             user.setEmail(result.getString("email"));
             user.setPhone(result.getString("phone"));
             user.setCpf(result.getString("cpf"));

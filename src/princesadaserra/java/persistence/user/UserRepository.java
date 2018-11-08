@@ -4,13 +4,11 @@ import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.Repository;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
-    UserMapper mapper;
+    private UserMapper mapper;
+
     public UserRepository(String userName, String password) {
         super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
         mapper = new UserMapper();
@@ -19,38 +17,22 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     @Override
     public User find(Long key) {
         User user = null;
-        try {
 
-            PreparedStatement statement = getConnection()
-                    .prepareStatement(SQLQueries.USER_SELECT);
+        try(Connection conn = getConnection()) {
+            ResultSet result = SQLQueries.findByKey(conn, key).executeQuery();
 
-            statement.setLong(1, key);
-
-            ResultSet result = statement.executeQuery();
-
-            if(result.next()){
+            if(result.next())
                 user = mapper.map(result);
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
 
         return user;
     }
 
     @Override
     public void update(User user) {
-        try{
-            PreparedStatement statement = getConnection()
-                    .prepareStatement(SQLQueries.USER_UPDATE);
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPhone());
-            statement.setString(4, user.getCpf());
-            statement.setLong(5, user.getId());
-            statement.executeUpdate();
+        try(Connection conn = getConnection()){
+            System.out.println("UserRepository.update");
+            System.out.println("updated rows = " + SQLQueries.update(conn, user).executeUpdate());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,67 +41,109 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
     public User find(String username){
         User user = null;
 
-        try {
-            PreparedStatement statement = getConnection()
-                    .prepareStatement(SQLQueries.USER_SELECT_BY_NAME);
-            statement.setString(1, username);
-
-            ResultSet result = statement.executeQuery();
+        try(Connection conn = getConnection()) {
+            ResultSet result = SQLQueries.findByUsername(conn, username).executeQuery();
 
             if(result.next())
                 user = mapper.map(result);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
+
         return user;
     }
 
     @Override
     public User add(User user) {
         System.out.println("UserRepository.add");
-        try{
-            getConnection().createStatement()
-                    .execute(String.format("CREATE USER %s WITH PASSWORD '%s'", user.getUsername(), user.getPassword()));
-            PreparedStatement statement = getConnection()
-                    .prepareStatement(SQLQueries.USER_INSERT, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getPhone());
-            statement.setString(4, user.getCpf());
 
-            System.out.println("execute = " + statement.execute());
+        try(Connection conn = getConnection()){
+            conn.setAutoCommit(false);
+            SQLQueries.createDatabaseUser(conn, user).execute();
+            ResultSet getUserIdResult = SQLQueries.findDatabaseUserByUsername(conn, user).executeQuery();
 
-            ResultSet keys = statement.getGeneratedKeys();
+            if(getUserIdResult.next())
+                user.setId(getUserIdResult.getLong("usesysid"));
 
-            if(keys.next()){
-                user.setId(keys.getLong(1));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            System.out.println("execute = " + SQLQueries.insert(conn, user).execute());
+            System.out.println("user.getId() = " + user.getId());
+            conn.commit();
+        } catch (SQLException e) { e.printStackTrace(); }
 
         return user;
     }
 
     @Override
     public void remove(Long key) {
-        try{
-            PreparedStatement statement = getConnection().prepareStatement(SQLQueries.USER_DELETE);
-            statement.setLong(1, key);
-
-            System.out.println("execute = " + statement.execute());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        try(Connection conn = getConnection()){
+            System.out.println("execute = " + SQLQueries.delete(conn, key).execute());
+        } catch (SQLException e) { e.printStackTrace(); }
     }
 
-    private class SQLQueries {
+    private static class SQLQueries {
 
-        public static final String USER_INSERT = "INSERT INTO users (name, email, phone, cpf) VALUES(?, ?, ?, ?)";
+        public static final String USER_INSERT = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
         public static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
-        public static final String USER_UPDATE = "UPDATE users set name = ?, email = ?, phone = ?, cpf = ? where user_id = ?";
-        public static final String USER_SELECT = "Select id_user, name, email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
-        public static final String USER_SELECT_BY_NAME = "Select id_user, name, email, phone, cpf, image_url from users where name = ? LIMIT 1";
+        public static final String USER_UPDATE = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where user_id = ?";
+        public static final String USER_SELECT = "Select id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
+        public static final String USER_SELECT_BY_USERNAME = "Select usename, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
+
+        public static PreparedStatement update(Connection conn, User user) throws SQLException {
+            PreparedStatement statement = conn
+                    .prepareStatement(SQLQueries.USER_UPDATE);
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setString(3, user.getEmail());
+            statement.setString(4, user.getPhone());
+            statement.setString(5, user.getCpf());
+            statement.setLong(6, user.getId());
+
+            return statement;
+        }
+
+        public static PreparedStatement findByUsername(Connection conn, String username) throws SQLException {
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_SELECT_BY_USERNAME);
+            statement.setString(1, username);
+
+            return  statement;
+        }
+
+        public static PreparedStatement findByKey(Connection conn, Long key) throws SQLException {
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_SELECT);
+            statement.setLong(1, key);
+
+            return statement;
+        }
+
+        public static PreparedStatement createDatabaseUser(Connection conn, User user) throws SQLException {
+            return conn.prepareStatement(
+                    String.format("CREATE USER %s WITH PASSWORD '%s' IN ROLE %s",
+                            user.getUsername(), user.getPassword(), user.getRole()));
+        }
+
+        public static PreparedStatement findDatabaseUserByUsername(Connection conn, User user) throws SQLException {
+            PreparedStatement statement = conn.prepareStatement("SELECT usesysid FROM pg_user WHERE usename = ?");
+            statement.setString(1, user.getUsername());
+
+            return statement;
+        }
+
+        public static PreparedStatement insert(Connection conn, User user) throws SQLException {
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_INSERT);
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPhone());
+            statement.setString(4, user.getCpf());
+            statement.setLong(5, user.getId());
+            statement.setString(6, user.getUsername());
+            statement.setString(7, user.getLastName());
+
+            return statement;
+        }
+
+        public static PreparedStatement delete(Connection conn, Long key) throws SQLException {
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_DELETE);
+            statement.setLong(1, key);
+
+            return statement;
+        }
     }
 }
