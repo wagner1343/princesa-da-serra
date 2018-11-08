@@ -16,11 +16,8 @@ import princesadaserra.ui.components.button.MaterialIconButton;
 import java.util.TreeMap;
 
 public class SidePaneWithUser extends AnchorPane {
+    private UserInfoAdapter userAdapter;
     private TreeMap<String, MaterialIconButton> buttonMap;
-
-    public TreeMap<String, MaterialIconButton> getButtonMap() {
-        return buttonMap;
-    }
 
     private  ImageView userImageView;
     private  Text titleText;
@@ -114,6 +111,16 @@ public class SidePaneWithUser extends AnchorPane {
         optionsPaneRoot.getChildren().add(optionsVBox);
         getChildren().add(optionsPaneRoot);
 
+    }
+
+    public void setUserInfo(UserInfoAdapter userInfo){
+        getUserImageView().setImage(userInfo.getImage());
+        getUserNameText().setText(userInfo.getDisplayName());
+        getUserEmailText().setText(userInfo.getEmail());
+    }
+
+    public TreeMap<String, MaterialIconButton> getButtonMap() {
+        return buttonMap;
     }
 
     public ImageView getUserImageView() {

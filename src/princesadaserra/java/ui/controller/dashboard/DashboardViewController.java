@@ -15,8 +15,10 @@ import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.context.ResourcesHolder;
 import princesadaserra.ui.components.animated.AnimatedHamburguer;
 import princesadaserra.ui.components.pane.SidePaneWithUser;
+import princesadaserra.ui.components.pane.UserInfoAdapter;
 
 public class DashboardViewController {
+
     public static final String FXML_PATH = "/view/templates/DashboardTemplate,fxml";
     @FXML
     private JFXDrawersStack drawersStack;
@@ -50,15 +52,29 @@ public class DashboardViewController {
 
         addDrawerButtons();
         showTrips();
-        AppContext.getInstance().addOnUserChanged((user) -> loadSidePaneUserInfo(user));
+        AppContext.getInstance().addOnUserChanged((user) -> setSidePaneUserInfo(user));
     }
 
-    private void loadSidePaneUserInfo(User user) {
-        System.out.println("DashboardViewController.loadSidePaneUserInfo");
+    private void setSidePaneUserInfo(User user) {
+        System.out.println("DashboardViewController.setSidePaneUserInfo");
         System.out.println("user = " + user);
-        drawerPane.getUserImageView().setImage(new Image(user.getImageUrl()));
-        drawerPane.getUserEmailText().setText(user.getEmail() == null ? "" : user.getEmail());
-        drawerPane.getUserNameText().setText(user.getFirstName() == null ? "" : user.getFirstName());
+
+        drawerPane.setUserInfo(new UserInfoAdapter() {
+            @Override
+            public Image getImage() {
+                return  new Image(user.getImageUrl());
+            }
+
+            @Override
+            public String getDisplayName() {
+                return user.getFirstName();
+            }
+
+            @Override
+            public String getEmail() {
+                return user.getEmail();
+            }
+        });
     }
 
     private void setPageName(String name){
