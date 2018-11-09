@@ -52,6 +52,7 @@ public class DashboardViewController {
 
         addDrawerButtons();
         showTrips();
+        setSidePaneUserInfo(AppContext.getInstance().getCurrentUser());
         AppContext.getInstance().addOnUserChanged((user) -> setSidePaneUserInfo(user));
     }
 
