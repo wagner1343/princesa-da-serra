@@ -1,8 +1,8 @@
 package princesadaserra.java.persistence.repository.user;
 
+import org.postgresql.ds.PGConnectionPoolDataSource;
 import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
-import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -13,11 +13,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
+public class UserRepository extends PGConnectionPoolDataSource implements Repository<User, Long> {
     private princesadaserra.java.persistence.repository.user.UserMapper mapper;
 
     public UserRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+        super.setUrl("jdbc:postgresql://localhost:5432/princesa_da_serra");
+        super.setUser(userName);
+        super.setPassword(password);
+
         mapper = new princesadaserra.java.persistence.repository.user.UserMapper();
     }
 
