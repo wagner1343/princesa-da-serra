@@ -1,4 +1,4 @@
-package princesadaserra.java.persistence;
+package princesadaserra.java.persistence.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

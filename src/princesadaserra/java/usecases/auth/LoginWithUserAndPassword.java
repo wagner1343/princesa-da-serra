@@ -2,11 +2,9 @@ package princesadaserra.java.usecases.auth;
 
 import javafx.util.Pair;
 import princesadaserra.java.core.user.User;
-import princesadaserra.java.persistence.user.UserRepository;
+import princesadaserra.java.persistence.repository.user.UserRepository;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
-
-import java.sql.SQLException;
 
 public class LoginWithUserAndPassword extends Task<Pair<String, String>, User, Integer>{
     private AppContext context;

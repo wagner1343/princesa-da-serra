@@ -1,4 +1,4 @@
-package princesadaserra.java.persistence.user;
+package princesadaserra.java.persistence.repository.user;
 
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.util.mapping.Mapper;

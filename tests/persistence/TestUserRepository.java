@@ -1,8 +1,8 @@
 package persistence;
 
-import princesadaserra.java.core.user.Role;
+import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
-import princesadaserra.java.persistence.user.UserRepository;
+import princesadaserra.java.persistence.repository.user.UserRepository;
 
 public class TestUserRepository {
     public static void main(String[] args) {

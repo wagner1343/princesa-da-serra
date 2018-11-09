@@ -1,20 +1,24 @@
-package princesadaserra.java.persistence.user;
+package princesadaserra.java.persistence.repository.user;
 
+import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
-import princesadaserra.java.persistence.AuthenticatedConnectionProvider;
-import princesadaserra.java.persistence.Repository;
+import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
+import princesadaserra.java.persistence.repository.Repository;
+import princesadaserra.java.persistence.repository.Specification;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
-    private UserMapper mapper;
+    private princesadaserra.java.persistence.repository.user.UserMapper mapper;
 
     public UserRepository(String userName, String password) {
         super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
-        mapper = new UserMapper();
+        mapper = new princesadaserra.java.persistence.repository.user.UserMapper();
     }
 
     @Override
@@ -79,6 +83,20 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         try(Connection conn = getConnection()){
             System.out.println("execute = " + SQLQueries.delete(conn, key).execute());
         } catch (SQLException e) { e.printStackTrace(); }
+    }
+
+    @Override
+    public List<User> find(Specification specification) {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public List<User> delete(Specification specification) {
+        throw new NotImplementedException();
+    }
+
+    public List<Role> listRoles(){
+        throw new NotImplementedException();
     }
 
     private static class SQLQueries {
