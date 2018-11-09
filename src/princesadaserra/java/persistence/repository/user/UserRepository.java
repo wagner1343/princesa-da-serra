@@ -136,7 +136,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         public static PreparedStatement createDatabaseUser(Connection conn, User user) throws SQLException {
             return conn.prepareStatement(
                     String.format("CREATE USER %s WITH PASSWORD '%s' IN ROLE %s",
-                            user.getUsername(), user.getPassword(), user.getRole()));
+                            user.getUsername(), user.getPassword(), user.getRole().getName()));
         }
 
         public static PreparedStatement findDatabaseUserByUsername(Connection conn, User user) throws SQLException {

@@ -9,7 +9,7 @@ public class TestUserRepository {
         UserRepository repo = new UserRepository("postgres", "13431343");
 
         User user = new User();
-        user.setRole(Role.NORMAL_USER);
+        user.setRole(new Role("normal_user"));
         user.setUsername("wagner");
         user.setPassword("13431343");
         user.setFirstName("Wagner");
