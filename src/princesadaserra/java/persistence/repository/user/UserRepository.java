@@ -13,11 +13,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+//TODO USER_PERMITION
+
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
     private princesadaserra.java.persistence.repository.user.UserMapper mapper;
 
     public UserRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+            super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
         mapper = new princesadaserra.java.persistence.repository.user.UserMapper();
     }
 
