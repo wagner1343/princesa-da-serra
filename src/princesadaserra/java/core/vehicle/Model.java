@@ -2,15 +2,15 @@ package princesadaserra.java.core.vehicle;
 
 public class Model {
 
-    private int id;
+    private Long id;
     private int amntAxis;
     private int amntSeats;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

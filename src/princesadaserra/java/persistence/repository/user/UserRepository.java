@@ -1,6 +1,5 @@
 package princesadaserra.java.persistence.repository.user;
 
-import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
@@ -11,18 +10,33 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 //TODO USER_PERMITION
 
 public class UserRepository extends AuthenticatedConnectionProvider implements Repository<User, Long> {
-    private princesadaserra.java.persistence.repository.user.UserMapper mapper;
+    UserMapper mapper;
 
     public UserRepository(String userName, String password) {
             super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
         mapper = new princesadaserra.java.persistence.repository.user.UserMapper();
     }
 
+    public List<User> list(){
+
+        List<User> users = new ArrayList<>();
+
+        try(Connection conn = getConnection()) {
+            ResultSet result = SQLQueries.findAll(conn).executeQuery();
+
+            while(result.next())
+                users.add(mapper.map(result));
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return users;
+    }
+    
     @Override
     public User find(Long key) {
         User user = null;
@@ -97,20 +111,24 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         throw new NotImplementedException();
     }
 
-    public List<Role> listRoles(){
-        throw new NotImplementedException();
-    }
-
     private static class SQLQueries {
-        private static final String USER_INSERT = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
-        private static final String USER_DELETE = "DELETE FROM users WHERE id_user = ?";
-        private static final String USER_UPDATE = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
-        private static final String USER_SELECT = "Select id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
-        private static final String USER_SELECT_BY_USERNAME = "Select usename, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
+        private static final String INSERT_USER = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        private static final String DELETE_USER = "DELETE FROM users WHERE id_user = ?";
+        private static final String UPDATE_USER = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
+        private static final String SELECT_USER = "SELECT id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
+        private static final String SELECT_BY_NAME_USER = "SELECT user_name, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
+        private static final String SELECT_ALL_USER = "SELECT * from users";
+
+        public static PreparedStatement findAll(Connection conn) throws SQLException{
+
+            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_USER);
+
+            return stmt;
+        }
 
         public static PreparedStatement update(Connection conn, User user) throws SQLException {
             PreparedStatement statement = conn
-                    .prepareStatement(SQLQueries.USER_UPDATE);
+                    .prepareStatement(SQLQueries.UPDATE_USER);
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getEmail());
@@ -122,14 +140,14 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         }
 
         public static PreparedStatement findByUsername(Connection conn, String username) throws SQLException {
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_SELECT_BY_USERNAME);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_BY_NAME_USER);
             statement.setString(1, username);
 
             return  statement;
         }
 
         public static PreparedStatement findByKey(Connection conn, Long key) throws SQLException {
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_SELECT);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_USER);
             statement.setLong(1, key);
 
             return statement;
@@ -149,7 +167,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         }
 
         public static PreparedStatement insert(Connection conn, User user) throws SQLException {
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_INSERT);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_USER);
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getPhone());
@@ -162,7 +180,7 @@ public class UserRepository extends AuthenticatedConnectionProvider implements R
         }
 
         public static PreparedStatement delete(Connection conn, Long key) throws SQLException {
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.USER_DELETE);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.DELETE_USER);
             statement.setLong(1, key);
 
             return statement;

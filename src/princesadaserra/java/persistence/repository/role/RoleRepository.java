@@ -60,15 +60,14 @@ public class RoleRepository extends AuthenticatedConnectionProvider implements R
 
     public List<Role> list(){
 
-        List<Role> roles = new ArrayList<Role>();
+        List<Role> roles = new ArrayList<>();
 
         try(Connection conn = getConnection()){
 
             ResultSet rs = SQLqueries.findAll(conn).executeQuery();
-            while(rs.next()){
-
+            while(rs.next())
                 roles.add(mapper.map(rs));
-            }
+
         } catch (SQLException e){
 
             e.printStackTrace();
@@ -83,10 +82,9 @@ public class RoleRepository extends AuthenticatedConnectionProvider implements R
         try(Connection conn = getConnection()){
 
             ResultSet rs = SQLqueries.findByKey(conn, key).executeQuery();
-            if(rs.next()){
-
+            if(rs.next())
                 role = mapper.map(rs);
-            }
+
         } catch (SQLException e){
 
             e.printStackTrace();
@@ -106,22 +104,22 @@ public class RoleRepository extends AuthenticatedConnectionProvider implements R
 
     private static class SQLqueries {
 
-        private static final String ROLE_INSERT = "INSERT INTO permitions (permition) values (?)";
-        private static final String ROLE_DELETE = "DELETE FROM permitions where id_permition = ?";
-        private static final String ROLE_UPDATE = "UPADATE roles set permition = ? where id_permition = ?";
-        private static final String ROLE_SELECT_BY_KEY = "SELECT * from roles where id_permition = ?";
-        private static final String ROLE_SELECT_ALL = "SELECT * from roles";
+        private static final String INSERT_ROLE = "INSERT INTO roles (role) values (?)";
+        private static final String DELETE_ROLE = "DELETE FROM roles where id_role = ?";
+        private static final String UPDATE_ROLE = "UPADATE roles set role = ? where id_role = ?";
+        private static final String SELECT_BY_KEY_ROLE = "SELECT * from roles where id_role = ?";
+        private static final String SELECT_ALL_ROLE = "SELECT * from roles";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLqueries.ROLE_SELECT_ALL);
+            PreparedStatement stmt = conn.prepareStatement(SQLqueries.SELECT_ALL_ROLE);
 
             return stmt;
         }
 
         public static PreparedStatement findByKey(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLqueries.ROLE_SELECT_BY_KEY);
+            PreparedStatement stmt = conn.prepareStatement(SQLqueries.SELECT_BY_KEY_ROLE);
             stmt.setLong(1, key);
 
             return stmt;
@@ -129,7 +127,7 @@ public class RoleRepository extends AuthenticatedConnectionProvider implements R
 
         public static PreparedStatement insert(Connection conn, Role role) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLqueries.ROLE_INSERT);
+            PreparedStatement stmt = conn.prepareStatement(SQLqueries.INSERT_ROLE);
             stmt.setString(1, role.getName());
 
             return stmt;
@@ -137,7 +135,7 @@ public class RoleRepository extends AuthenticatedConnectionProvider implements R
 
         public static PreparedStatement delete(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLqueries.ROLE_DELETE);
+            PreparedStatement stmt = conn.prepareStatement(SQLqueries.DELETE_ROLE);
             stmt.setLong(1, key);
 
             return stmt;
@@ -145,7 +143,7 @@ public class RoleRepository extends AuthenticatedConnectionProvider implements R
 
         public static PreparedStatement update(Connection conn, Role role) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLqueries.ROLE_UPDATE);
+            PreparedStatement stmt = conn.prepareStatement(SQLqueries.UPDATE_ROLE);
             stmt.setString(1, role.getName());
             stmt.setLong(2, role.getId());
 

@@ -10,4 +10,5 @@ public interface Repository<I, K> {
 
     List<I> find(Specification specification);
     List<I> delete(Specification specification);
+    List<I> list();
 }
