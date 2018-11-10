@@ -4,24 +4,24 @@ import java.util.Date;
 
 public class Bus {
 
-    private int id;
-    private Model model;
+    private Long id;
+    private Long id_model;
     private Date lastMaintenance;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Model getModel() {
-        return model;
+    public Long getId_model() {
+        return id_model;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
+    public void setId_model(Long id_model) {
+        this.id_model = id_model;
     }
 
     public Date getLastMaintenance() {

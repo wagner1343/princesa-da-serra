@@ -17,8 +17,8 @@ public class ModelRepository extends AuthenticatedConnectionProvider implements 
 
     ModelMapper mapper;
 
-    public ModelRepository(String modelName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", modelName, password);
+    public ModelRepository(String userName, String password) {
+        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
         mapper = new ModelMapper();
     }
 
