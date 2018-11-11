@@ -5,7 +5,7 @@ import java.util.Date;
 public class Bus {
 
     private Long id;
-    private Long id_model;
+    private Model model;
     private Date lastMaintenance;
 
     public Long getId() {
@@ -16,12 +16,12 @@ public class Bus {
         this.id = id;
     }
 
-    public Long getId_model() {
-        return id_model;
+    public Model getModel() {
+        return model;
     }
 
-    public void setId_model(Long id_model) {
-        this.id_model = id_model;
+    public void setModel(Model model) {
+        this.model = model;
     }
 
     public Date getLastMaintenance() {

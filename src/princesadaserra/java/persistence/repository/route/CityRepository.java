@@ -1,6 +1,6 @@
-package princesadaserra.java.persistence.repository.vehicle;
+package princesadaserra.java.persistence.repository.route;
 
-import princesadaserra.java.core.vehicle.Bus;
+import princesadaserra.java.core.route.City;
 import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
@@ -13,76 +13,74 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO PROBLEMA COM DATA DO JAVA/SQL
+public class CityRepository extends AuthenticatedConnectionProvider implements Repository<City, Long> {
 
-public class BusRepository extends AuthenticatedConnectionProvider implements Repository<Bus, Long> {
+    CityMapper mapper;
 
-    BusMapper mapper;
-
-    public BusRepository(String userName, String password) {
+    public CityRepository(String userName, String password) {
         super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
-        mapper = new BusMapper();
+        mapper = new CityMapper();
     }
 
     @Override
-    public Bus find(Long key) {
+    public City find(Long key) {
 
-        Bus bus = null;
+        City city = null;
         try(Connection conn = getConnection()) {
 
             ResultSet result = SQLQueries.findByKey(conn, key).executeQuery();
             if(result.next())
-                bus = mapper.map(result);
+                city = mapper.map(result);
 
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return bus;
+        return city;
     }
 
     @Override
-    public void update(Bus bus) {
+    public void update(City city) {
 
         try(Connection conn = getConnection()){
 
-            SQLQueries.update(conn, bus).executeUpdate();
+            SQLQueries.update(conn, city).executeUpdate();
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
     }
 
-    public List<Bus> list(){
+    public List<City> list(){
 
-        List<Bus> buses = new ArrayList<>();
+        List<City> cities = new ArrayList<>();
 
         try(Connection conn = getConnection()) {
 
             ResultSet result = SQLQueries.findAll(conn).executeQuery();
             while(result.next())
-                buses.add(mapper.map(result));
+                cities.add(mapper.map(result));
 
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return buses;
+        return cities;
     }
 
     @Override
-    public Bus add(Bus bus) {
+    public City add(City city) {
 
         try(Connection conn = getConnection()){
 
             conn.setAutoCommit(false);
-            SQLQueries.insert(conn, bus).execute();
+            SQLQueries.insert(conn, city).execute();
             conn.commit();
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return bus;
+        return city;
     }
 
     @Override
@@ -98,58 +96,57 @@ public class BusRepository extends AuthenticatedConnectionProvider implements Re
     }
 
     @Override
-    public List<Bus> find(Specification specification) {
+    public List<City> find(Specification specification) {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<Bus> delete(Specification specification) {
+    public List<City> delete(Specification specification) {
         throw new NotImplementedException();
     }
 
     private static class SQLQueries {
-        private static final String INSERT_BUS = "INSERT INTO buses (id_model, datelastmaintenance) VALUES(?, ?)";
-        private static final String DELETE_BUS = "DELETE FROM buses WHERE id_bus = ?";
-        private static final String UPDATE_BUS = "UPDATE buses datelastmaintenance = ? where id_bus = ?";
-        private static final String SELECT_BUS = "SELECT * from buses b join models m on b.id_model = m.id_model where id_bus = ?";
-        private static final String SELECT_ALL_BUS = "SELECT * from buses b join models m on b.id_model = m.id_model";
+        private static final String INSERT_CITY = "INSERT INTO cities (name) VALUES(?)";
+        private static final String DELETE_CITY = "DELETE FROM cities WHERE id_city = ?";
+        private static final String UPDATE_CITY = "UPDATE cities set name = ? where id_city = ?";
+        private static final String SELECT_CITY = "SELECT * from cities where id_city = ?";
+        private static final String SELECT_ALL_CITY = "SELECT * from cities";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_BUS);
+            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_CITY);
 
             return stmt;
         }
 
-        public static PreparedStatement update(Connection conn, Bus bus) throws SQLException{
+        public static PreparedStatement update(Connection conn, City city) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_BUS);
-            //statement.setDate(1, bus.getLastMaintenance());
-            statement.setLong(2, bus.getId());
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_CITY);
+            statement.setString(1, city.getName());
+            statement.setLong(2, city.getId());
 
             return statement;
         }
 
         public static PreparedStatement findByKey(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_BUS);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_CITY);
             statement.setLong(1, key);
 
             return statement;
         }
 
-        public static PreparedStatement insert(Connection conn, Bus bus) throws SQLException{
+        public static PreparedStatement insert(Connection conn, City city) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_BUS);
-            statement.setLong(1, bus.getModel().getId());
-            //statement.setDate(2, bus.getLastMaintenance());
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_CITY);
+            statement.setString(1, city.getName());
 
             return statement;
         }
 
         public static PreparedStatement delete(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.DELETE_BUS);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.DELETE_CITY);
             statement.setLong(1, key);
 
             return statement;

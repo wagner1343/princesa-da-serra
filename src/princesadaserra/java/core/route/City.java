@@ -2,18 +2,14 @@ package princesadaserra.java.core.route;
 
 public class City {
 
-    private int id;
+    private Long id;
     private String name;
 
-    public City(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

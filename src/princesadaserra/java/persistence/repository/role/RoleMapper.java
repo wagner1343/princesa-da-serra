@@ -14,7 +14,7 @@ public class RoleMapper implements Mapper<ResultSet, Role>{
         Role role = null;
         try{
 
-            role = new Role("");
+            role = new Role();
             role.setId(result.getLong("id_permition"));
             role.setName(result.getString("permition"));
         } catch(SQLException e){
