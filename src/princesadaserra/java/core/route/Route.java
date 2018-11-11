@@ -4,13 +4,9 @@ import java.util.ArrayList;
 
 public class Route {
 
-    private int id;
+    private Long id;
     private String name;
     private ArrayList<Segment> segments;
-
-    public Route() {
-        segments = new ArrayList<>();
-    }
 
     public boolean addSegment(Segment segment) {
         boolean result;
@@ -88,11 +84,11 @@ public class Route {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
