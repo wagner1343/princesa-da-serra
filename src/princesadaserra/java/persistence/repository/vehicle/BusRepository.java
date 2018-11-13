@@ -15,7 +15,7 @@ import java.util.List;
 
 //TODO PROBLEMA COM DATA DO JAVA/SQL
 
-public class BusRepository extends AuthenticatedConnectionProvider implements Repository<Bus, Long> {
+public class BusRepository implements Repository<Bus, Long> {
 
     BusMapper mapper;
 

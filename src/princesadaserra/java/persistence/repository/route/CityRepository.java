@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CityRepository extends AuthenticatedConnectionProvider implements Repository<City, Long> {
+public class CityRepository implements Repository<City, Long> {
 
     CityMapper mapper;
 

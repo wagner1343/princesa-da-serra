@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SegmentRepository extends AuthenticatedConnectionProvider implements Repository<Segment, Long> {
+public class SegmentRepository implements Repository<Segment, Long> {
 
     SegmentMapper mapper;
 
@@ -41,7 +41,7 @@ public class SegmentRepository extends AuthenticatedConnectionProvider implement
 
     public List<Segment> findByCity(Long key){
 
-        List<Segment> segments = new ArrayList<Segment>();
+        List<Segment> segments = new ArrayList<>();
         try(Connection conn = getConnection()){
 
             ResultSet rs = SQLQueries.findByCity(conn, key).executeQuery();

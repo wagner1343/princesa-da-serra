@@ -6,6 +6,7 @@ import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,13 +14,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelRepository extends AuthenticatedConnectionProvider implements Repository<Model, Long> {
+//TODO ARRUMAR A CONEXAO DE TODAS AS OUTRAS REP
+
+public class ModelRepository implements Repository<Model, Long> {
 
     ModelMapper mapper;
+    private ConnectionPoolDataSource dataSource;
 
-    public ModelRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+    public ModelRepository(ConnectionPoolDataSource dataSource) {
+
+        this.dataSource = dataSource;
         mapper = new ModelMapper();
+    }
+
+    public Connection getConnection() throws SQLException {
+
+        return dataSource.getPooledConnection().getConnection();
     }
 
     @Override

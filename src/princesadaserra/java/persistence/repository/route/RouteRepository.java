@@ -13,9 +13,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO TEM Q VER COMO VAI FAZER A PARTE DA LISTA DE SEGMENTOS POR ROTA, E DE PROCURAR POR SEGMENTO DE PARTIDA E SAIDA
+//FIXME TEM Q VER COMO VAI FAZER A PARTE DA LISTA DE SEGMENTOS POR ROTA, E DE PROCURAR POR SEGMENTO DE PARTIDA E SAIDA
 
-public class RouteRepository extends AuthenticatedConnectionProvider implements Repository<Route, Long> {
+public class RouteRepository implements Repository<Route, Long> {
 
     RouteMapper mapper;
 
