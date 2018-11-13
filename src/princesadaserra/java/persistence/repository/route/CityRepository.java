@@ -1,9 +1,8 @@
 package princesadaserra.java.persistence.repository.route;
 
-import princesadaserra.java.core.route.Route;
+import princesadaserra.java.core.route.City;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
-import princesadaserra.java.persistence.repository.user.UserMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.sql.ConnectionPoolDataSource;
@@ -14,81 +13,79 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//FIXME TEM Q VER COMO VAI FAZER A PARTE DA LISTA DE SEGMENTOS POR ROTA, E DE PROCURAR POR SEGMENTO DE PARTIDA E SAIDA
+public class CityRepository implements Repository<City, Long> {
 
-public class RouteRepository implements Repository<Route, Long> {
+    CityMapper mapper;
 
-    RouteMapper mapper;
     private ConnectionPoolDataSource dataSource;
 
-    public RouteRepository(ConnectionPoolDataSource dataSource) {
+    public CityRepository(ConnectionPoolDataSource dataSource) {
         this.dataSource = dataSource;
-        mapper = new RouteMapper();
+        mapper = new CityMapper();
     }
 
     public Connection getConnection() throws SQLException {
         return dataSource.getPooledConnection().getConnection();
     }
-
     @Override
-    public Route find(Long key) {
+    public City find(Long key) {
 
-        Route route = null;
+        City city = null;
         try(Connection conn = getConnection()) {
 
             ResultSet result = SQLQueries.findByKey(conn, key).executeQuery();
             if(result.next())
-                route = mapper.map(result);
+                city = mapper.map(result);
 
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return route;
+        return city;
     }
 
     @Override
-    public void update(Route route) {
+    public void update(City city) {
 
         try(Connection conn = getConnection()){
 
-            SQLQueries.update(conn, route).executeUpdate();
+            SQLQueries.update(conn, city).executeUpdate();
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
     }
 
-    public List<Route> list(){
+    public List<City> list(){
 
-        List<Route> routes = new ArrayList<>();
+        List<City> cities = new ArrayList<>();
 
         try(Connection conn = getConnection()) {
 
             ResultSet result = SQLQueries.findAll(conn).executeQuery();
             while(result.next())
-                routes.add(mapper.map(result));
+                cities.add(mapper.map(result));
 
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return routes;
+        return cities;
     }
 
     @Override
-    public Route add(Route route) {
+    public City add(City city) {
 
         try(Connection conn = getConnection()){
 
             conn.setAutoCommit(false);
-            SQLQueries.insert(conn, route).execute();
+            SQLQueries.insert(conn, city).execute();
             conn.commit();
         } catch (SQLException e) {
 
             e.printStackTrace();
         }
-        return route;
+        return city;
     }
 
     @Override
@@ -104,58 +101,57 @@ public class RouteRepository implements Repository<Route, Long> {
     }
 
     @Override
-    public List<Route> find(Specification specification) {
+    public List<City> find(Specification specification) {
         throw new NotImplementedException();
     }
 
     @Override
-    public List<Route> delete(Specification specification) {
+    public List<City> delete(Specification specification) {
         throw new NotImplementedException();
     }
 
     private static class SQLQueries {
-
-        private static final String INSERT_ROUTE = "INSERT INTO routes (name) VALUES(?)";
-        private static final String DELETE_ROUTE = "DELETE FROM routes WHERE id_route = ?";
-        private static final String UPDATE_ROUTE = "UPDATE routes set name = ? where id_route = ?";
-        private static final String SELECT_ROUTE = "SELECT * from routes where id_route = ?";
-        private static final String SELECT_ALL_ROUTE = "SELECT * from routes";
+        private static final String INSERT_CITY = "INSERT INTO cities (name) VALUES(?)";
+        private static final String DELETE_CITY = "DELETE FROM cities WHERE id_city = ?";
+        private static final String UPDATE_CITY = "UPDATE cities set name = ? where id_city = ?";
+        private static final String SELECT_CITY = "SELECT * from cities where id_city = ?";
+        private static final String SELECT_ALL_CITY = "SELECT * from cities";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_ROUTE);
+            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_CITY);
 
             return stmt;
         }
 
-        public static PreparedStatement update(Connection conn, Route route) throws SQLException{
+        public static PreparedStatement update(Connection conn, City city) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_ROUTE);
-            statement.setString(1, route.getName());
-            statement.setLong(2, route.getId());
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_CITY);
+            statement.setString(1, city.getName());
+            statement.setLong(2, city.getId());
 
             return statement;
         }
 
         public static PreparedStatement findByKey(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_ROUTE);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_CITY);
             statement.setLong(1, key);
 
             return statement;
         }
 
-        public static PreparedStatement insert(Connection conn, Route route) throws SQLException{
+        public static PreparedStatement insert(Connection conn, City city) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_ROUTE);
-            statement.setString(1, route.getName());
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_CITY);
+            statement.setString(1, city.getName());
 
             return statement;
         }
 
         public static PreparedStatement delete(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement statement = conn.prepareStatement(SQLQueries.DELETE_ROUTE);
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.DELETE_CITY);
             statement.setLong(1, key);
 
             return statement;

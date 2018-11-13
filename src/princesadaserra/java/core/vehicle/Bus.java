@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Bus {
 
-    private int id;
+    private Long id;
     private Model model;
     private Date lastMaintenance;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

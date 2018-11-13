@@ -2,24 +2,17 @@ package princesadaserra.java.core.route;
 
 public class Segment {
 
-    private int id;
+    private Long id;
     private City cityOrigin;
     private City cityDestination;
     private int time;
     private double value;
 
-    public Segment(City cityOrigin, City cityDestination, int time, double value) {
-        this.cityOrigin = cityOrigin;
-        this.cityDestination = cityDestination;
-        this.time = time;
-        this.value = value;
-    }
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
