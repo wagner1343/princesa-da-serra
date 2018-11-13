@@ -1,11 +1,12 @@
 package princesadaserra.java.persistence.repository.route;
 
 import princesadaserra.java.core.route.Route;
-import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
+import princesadaserra.java.persistence.repository.user.UserMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +19,15 @@ import java.util.List;
 public class RouteRepository implements Repository<Route, Long> {
 
     RouteMapper mapper;
+    private ConnectionPoolDataSource dataSource;
 
-    public RouteRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+    public RouteRepository(ConnectionPoolDataSource dataSource) {
+        this.dataSource = dataSource;
         mapper = new RouteMapper();
+    }
+
+    public Connection getConnection() throws SQLException {
+        return dataSource.getPooledConnection().getConnection();
     }
 
     @Override

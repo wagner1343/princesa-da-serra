@@ -1,11 +1,11 @@
 package princesadaserra.java.persistence.repository.route;
 
 import princesadaserra.java.core.route.City;
-import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,11 +17,16 @@ public class CityRepository implements Repository<City, Long> {
 
     CityMapper mapper;
 
-    public CityRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+    private ConnectionPoolDataSource dataSource;
+
+    public CityRepository(ConnectionPoolDataSource dataSource) {
+        this.dataSource = dataSource;
         mapper = new CityMapper();
     }
 
+    public Connection getConnection() throws SQLException {
+        return dataSource.getPooledConnection().getConnection();
+    }
     @Override
     public City find(Long key) {
 

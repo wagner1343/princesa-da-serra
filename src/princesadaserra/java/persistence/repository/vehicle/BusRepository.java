@@ -1,11 +1,12 @@
 package princesadaserra.java.persistence.repository.vehicle;
 
 import princesadaserra.java.core.vehicle.Bus;
-import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
+import princesadaserra.java.persistence.repository.user.UserMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,9 +20,15 @@ public class BusRepository implements Repository<Bus, Long> {
 
     BusMapper mapper;
 
-    public BusRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+    private ConnectionPoolDataSource dataSource;
+
+    public BusRepository(ConnectionPoolDataSource dataSource) {
+        this.dataSource = dataSource;
         mapper = new BusMapper();
+    }
+
+    public Connection getConnection() throws SQLException {
+        return dataSource.getPooledConnection().getConnection();
     }
 
     @Override

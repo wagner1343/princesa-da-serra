@@ -1,11 +1,12 @@
 package princesadaserra.java.persistence.repository.route;
 
 import princesadaserra.java.core.route.Segment;
-import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
+import princesadaserra.java.persistence.repository.user.UserMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,10 +17,15 @@ import java.util.List;
 public class SegmentRepository implements Repository<Segment, Long> {
 
     SegmentMapper mapper;
+    private ConnectionPoolDataSource dataSource;
 
-    public SegmentRepository(String userName, String password) {
-        super("jdbc:postgresql://localhost:5432/princesa_da_serra", userName, password);
+    public SegmentRepository(ConnectionPoolDataSource dataSource) {
+        this.dataSource = dataSource;
         mapper = new SegmentMapper();
+    }
+
+    public Connection getConnection() throws SQLException {
+        return dataSource.getPooledConnection().getConnection();
     }
 
     @Override
@@ -125,7 +131,7 @@ public class SegmentRepository implements Repository<Segment, Long> {
     private static class SQLQueries {
         private static final String INSERT_SEGMENT = "INSERT INTO segments (id_citySail, id_cityArrival, estimatedTime, value) VALUES(?, ?, ?, ?)";
         private static final String DELETE_SEGMENT = "DELETE FROM segments WHERE id_segment = ?";
-        private static final String UPDATE_SEGMENT = "UPDATE segments estimatedTime = ?, value = ? where id_segment = ?";
+        private static final String UPDATE_SEGMENT = "UPDATE segments SET estimatedTime = ?, value = ? where id_segment = ?";
         private static final String SELECT_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where id_segment = ?";
         private static final String SELECT_ALL_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city";
         private static final String SELECT_BY_CITY_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where id_citySail = ? or id_cityArrival = ?";

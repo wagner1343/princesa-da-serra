@@ -1,7 +1,6 @@
 package princesadaserra.java.persistence.repository.vehicle;
 
 import princesadaserra.java.core.vehicle.Model;
-import princesadaserra.java.persistence.connection.AuthenticatedConnectionProvider;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
