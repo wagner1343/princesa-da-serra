@@ -127,9 +127,7 @@ public class UserRepository implements Repository<User, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_USER);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_USER);
         }
 
         public static PreparedStatement update(Connection conn, User user) throws SQLException {

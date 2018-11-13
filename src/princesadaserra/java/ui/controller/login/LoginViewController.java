@@ -34,7 +34,7 @@ public class LoginViewController {
     @FXML
     public void initialize(){
         snackbar = new JFXSnackbar(root);
-        loginButton.setOnAction(event -> loginOnClick(event));
+        loginButton.setOnAction(this::loginOnClick);
     }
 
     public void loginOnClick(ActionEvent event){

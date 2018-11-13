@@ -1,5 +1,7 @@
 package princesadaserra.java.core.route;
 
+import java.util.Objects;
+
 public class City {
 
     private Long id;
@@ -28,7 +30,7 @@ public class City {
         if (!(other instanceof City)) return false;
 
         City otherCity = (City) other;
-        return otherCity.getId() == this.getId() && otherCity.getName() == this.getName();
+        return Objects.equals(otherCity.getId(), this.getId()) && Objects.equals(otherCity.getName(), this.getName());
 
     }
 }

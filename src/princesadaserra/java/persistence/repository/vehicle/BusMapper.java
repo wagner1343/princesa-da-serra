@@ -13,7 +13,7 @@ public class BusMapper implements Mapper<ResultSet, Bus>{
     public Bus map(ResultSet result){
 
         Bus bus = null;
-        Model model = null;
+        Model model;
         try{
 
             bus = new Bus();

@@ -119,9 +119,7 @@ public class CityRepository implements Repository<City, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_CITY);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_CITY);
         }
 
         public static PreparedStatement update(Connection conn, City city) throws SQLException{

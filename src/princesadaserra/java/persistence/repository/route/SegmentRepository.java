@@ -146,9 +146,7 @@ public class SegmentRepository implements Repository<Segment, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_SEGMENT);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_SEGMENT);
         }
 
         public static PreparedStatement update(Connection conn, Segment segment) throws SQLException{

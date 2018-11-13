@@ -116,15 +116,13 @@ public class BusRepository implements Repository<Bus, Long> {
     private static class SQLQueries {
         private static final String INSERT_BUS = "INSERT INTO buses (id_model, datelastmaintenance) VALUES(?, ?)";
         private static final String DELETE_BUS = "DELETE FROM buses WHERE id_bus = ?";
-        private static final String UPDATE_BUS = "UPDATE buses datelastmaintenance = ? where id_bus = ?";
+        private static final String UPDATE_BUS = "UPDATE buses SET datelastmaintenance = ? where id_bus = ?";
         private static final String SELECT_BUS = "SELECT * from buses b join models m on b.id_model = m.id_model where id_bus = ?";
         private static final String SELECT_ALL_BUS = "SELECT * from buses b join models m on b.id_model = m.id_model";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_BUS);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_BUS);
         }
 
         public static PreparedStatement update(Connection conn, Bus bus) throws SQLException{

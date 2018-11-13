@@ -122,9 +122,7 @@ public class RouteRepository implements Repository<Route, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_ROUTE);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_ROUTE);
         }
 
         public static PreparedStatement update(Connection conn, Route route) throws SQLException{

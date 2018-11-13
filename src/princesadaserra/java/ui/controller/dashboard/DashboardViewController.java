@@ -49,7 +49,7 @@ public class DashboardViewController {
         this.dataSource = dataSource;
         getUserTask = new GetUserByUsername(dataSource, username);
 
-        getUserTask.addOnSuccessCallback(user -> setSidePaneUserInfo(user));
+        getUserTask.addOnSuccessCallback(this::setSidePaneUserInfo);
     }
 
     @FXML

@@ -13,8 +13,8 @@ public class SegmentMapper implements Mapper<ResultSet, Segment>{
     public Segment map(ResultSet result){
 
         Segment segment = null;
-        City cityS = null;
-        City cityA = null;
+        City cityS;
+        City cityA;
         try{
 
             segment = new Segment();
