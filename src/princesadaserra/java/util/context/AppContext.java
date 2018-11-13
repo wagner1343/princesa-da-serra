@@ -6,6 +6,7 @@ import princesadaserra.java.ui.navigation.Navigator;
 import princesadaserra.java.util.callback.CallbackWithArgument;
 import princesadaserra.java.util.callback.CallbackWithArgumentList;
 
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class AppContext {
@@ -13,7 +14,8 @@ public class AppContext {
     private ResourceBundle resourceBundle;
 
     public AppContext(Stage stage){
-        navigator = new Navigator(stage);
+        resourceBundle = ResourceBundle.getBundle("locale.strings", new Locale("en", "US"));
+        navigator = new Navigator(stage, resourceBundle);
     }
 
     public ResourceBundle getResourceBundle() {

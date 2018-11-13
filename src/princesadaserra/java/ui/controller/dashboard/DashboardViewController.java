@@ -14,7 +14,6 @@ import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
-import princesadaserra.java.util.context.ResourcesHolder;
 import princesadaserra.ui.components.animated.AnimatedHamburguer;
 import princesadaserra.ui.components.pane.UserInfoAdapter;
 import princesadaserra.ui.components.pane.UserSidePane;
@@ -102,51 +101,51 @@ public class DashboardViewController {
     }
 
     private void showClients(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.clients"));
+        setPageName(context.getResourceBundle().getString("page.title.clients"));
     }
 
     private void showTrips(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.trips"));
+        setPageName(context.getResourceBundle().getString("page.title.trips"));
     }
 
     private void showHistory(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.history"));
+        setPageName(context.getResourceBundle().getString("page.title.history"));
     }
 
     private void showOptions(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.options"));
+        setPageName(context.getResourceBundle().getString("page.title.options"));
     }
 
     private void addDrawerButtons(){
 
-        drawerPane.addButton("travels", ResourcesHolder.getResourceBundle().getString("drawer.text.trips"),
+        drawerPane.addButton("travels", context.getResourceBundle().getString("drawer.text.trips"),
                 event -> {
                     showTrips();
                     drawer.close();
                 });
 
-        drawerPane.addButton("history", ResourcesHolder.getResourceBundle().getString("drawer.text.history"),
+        drawerPane.addButton("history", context.getResourceBundle().getString("drawer.text.history"),
                 event -> {
                     showHistory();
                     drawer.close();
                 });
 
-        drawerPane.addButton("clients", ResourcesHolder.getResourceBundle().getString("drawer.text.clients"),
+        drawerPane.addButton("clients", context.getResourceBundle().getString("drawer.text.clients"),
                 event -> {
                     showClients();
                     drawer.close();
                 });
 
-        drawerPane.addButton("options", ResourcesHolder.getResourceBundle().getString("drawer.text.options"),
+        drawerPane.addButton("options", context.getResourceBundle().getString("drawer.text.options"),
                 event -> {
                     showOptions();
                     drawer.close();
                 });
 
-        drawerPane.addButton("logout", ResourcesHolder.getResourceBundle().getString("drawer.text.logout"),
+        drawerPane.addButton("logout", context.getResourceBundle().getString("drawer.text.logout"),
                 event -> doLogout());
 
-        drawerPane.addButton("exit", ResourcesHolder.getResourceBundle().getString("drawer.text.exit"),
+        drawerPane.addButton("exit", context.getResourceBundle().getString("drawer.text.exit"),
                 event -> Platform.exit());
     }
 
