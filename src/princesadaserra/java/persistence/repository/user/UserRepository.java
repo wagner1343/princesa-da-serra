@@ -7,21 +7,25 @@ import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import javax.sql.ConnectionPoolDataSource;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class UserRepository extends PGConnectionPoolDataSource implements Repository<User, Long> {
+public class UserRepository implements Repository<User, Long> {
     private princesadaserra.java.persistence.repository.user.UserMapper mapper;
+    private ConnectionPoolDataSource dataSource;
 
-    public UserRepository(String userName, String password) {
-        super.setUrl("jdbc:postgresql://localhost:5432/princesa_da_serra");
-        super.setUser(userName);
-        super.setPassword(password);
+    public UserRepository(ConnectionPoolDataSource dataSource){
+        this.dataSource = dataSource;
+        mapper = new UserMapper();
+    }
 
-        mapper = new princesadaserra.java.persistence.repository.user.UserMapper();
+    private Connection getConnection() throws SQLException {
+        return dataSource.getPooledConnection().getConnection();
     }
 
     @Override
@@ -29,12 +33,12 @@ public class UserRepository extends PGConnectionPoolDataSource implements Reposi
         User user = null;
 
         try(Connection conn = getConnection()) {
+
             ResultSet result = SQLQueries.findByKey(conn, key).executeQuery();
 
             if(result.next())
                 user = mapper.map(result);
         } catch (SQLException e) { e.printStackTrace(); }
-
         return user;
     }
 

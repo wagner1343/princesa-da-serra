@@ -6,16 +6,20 @@ import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.controller.ScenesTypes;
-import princesadaserra.java.usecases.auth.Logout;
+import princesadaserra.java.ui.controller.login.LoginViewController;
+import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.context.ResourcesHolder;
 import princesadaserra.ui.components.animated.AnimatedHamburguer;
 import princesadaserra.ui.components.pane.UserInfoAdapter;
 import princesadaserra.ui.components.pane.UserSidePane;
+
+import javax.sql.ConnectionPoolDataSource;
 
 public class DashboardViewController {
 
@@ -37,8 +41,22 @@ public class DashboardViewController {
     private JFXSnackbar snackbar;
     private JFXDrawer drawer;
 
+    private ConnectionPoolDataSource dataSource;
+    private GetUserByUsername getUserTask;
+    private AppContext context;
+
+    public DashboardViewController(AppContext context, ConnectionPoolDataSource dataSource, String username){
+        this.context = context;
+        this.dataSource = dataSource;
+        getUserTask = new GetUserByUsername(dataSource, username);
+
+        getUserTask.addOnSuccessCallback(user -> setSidePaneUserInfo(user));
+    }
+
     @FXML
     public void initialize(){
+        getUserTask.start();
+
         drawer = new JFXDrawer();
         snackbar = new JFXSnackbar(dashboardRoot);
         drawerPane = new UserSidePane();
@@ -49,11 +67,10 @@ public class DashboardViewController {
         drawer.setOnDrawerClosed( event -> drawersStack.toBack() );
 
         drawersStack.addDrawer(drawer);
-
         addDrawerButtons();
+        menuButton.setOnMouseClicked(this::menuButtonOnClick);
+
         showTrips();
-        setSidePaneUserInfo(AppContext.getInstance().getCurrentUser());
-        AppContext.getInstance().addOnUserChanged((user) -> setSidePaneUserInfo(user));
     }
 
     private void setSidePaneUserInfo(User user) {
@@ -135,11 +152,11 @@ public class DashboardViewController {
 
     public void doLogout(){
         System.out.println("DashboardViewController.doLogout");
+        context.getNavigator().navigateTo(ScenesTypes.LOGIN, new LoginViewController(context));
+    }
 
-        Logout logout = new Logout();
-        logout.addOnFinishCallback( (result) -> snackbar.enqueue(new JFXSnackbar.SnackbarEvent("")) );
-        logout.addOnSuccessCallback( () -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.LOGIN) );
-        logout.start(AppContext.getInstance());
+    public void menuButtonOnClick(MouseEvent event){
+        toggleDrawer();
     }
 
     public void toggleDrawer(){

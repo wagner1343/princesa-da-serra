@@ -2,11 +2,12 @@ package persistence;
 
 import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
+import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnectionPool;
 import princesadaserra.java.persistence.repository.user.UserRepository;
 
 public class TestUserRepository {
     public static void main(String[] args) {
-        UserRepository repo = new UserRepository("postgres", "13431343");
+        UserRepository repo = new UserRepository(new PDSDatabaseConnectionPool("postgres", "13431343"));
 
         User user = new User();
         user.setRole(new Role("normal_user"));

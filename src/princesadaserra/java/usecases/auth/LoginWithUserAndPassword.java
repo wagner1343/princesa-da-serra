@@ -1,29 +1,36 @@
 package princesadaserra.java.usecases.auth;
 
 import javafx.util.Pair;
+import org.postgresql.ds.PGConnectionPoolDataSource;
 import princesadaserra.java.core.user.User;
+import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnectionPool;
 import princesadaserra.java.persistence.repository.user.UserRepository;
 import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
 
-public class LoginWithUserAndPassword extends Task<Pair<String, String>, User, Integer>{
-    private AppContext context;
+import java.sql.SQLException;
 
-    public LoginWithUserAndPassword(AppContext context){
-        this.context = context;
+public class LoginWithUserAndPassword extends Task<Object, PDSDatabaseConnectionPool, Integer>{
+    private String user;
+    private String password;
+
+    public LoginWithUserAndPassword(String user, String password) {
+        this.user = user;
+        this.password = password;
     }
 
     @Override
-    protected User execute(Pair<String, String> userAndPassword) {
+    protected PDSDatabaseConnectionPool execute(Object obj) {
         System.out.println("LoginWithUserAndPassword.execute");
-        UserRepository userRepository = new UserRepository(userAndPassword.getKey(), userAndPassword.getValue());
-        User user = userRepository.find(userAndPassword.getKey());
+        PDSDatabaseConnectionPool connectionPool = new PDSDatabaseConnectionPool(user, password);
 
-        if(user == null)
+        try {
+            connectionPool.getConnection();
+            setSuccess();
+        } catch (SQLException e) {
+            e.printStackTrace();
             setFailed();
-        else
-            context.setCurrentUser(user);
-
-        return user;
+        }
+        return connectionPool;
     }
 }
