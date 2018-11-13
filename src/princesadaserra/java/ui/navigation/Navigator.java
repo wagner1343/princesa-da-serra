@@ -19,11 +19,16 @@ public class Navigator {
         fxmlLoader = new FXMLLoader();
     }
 
-    public void navigateTo(ScenesTypes sceneType) {
+    public void navigateTo(ScenesTypes sceneType){
+        navigateTo(sceneType, null);
+    }
+    public void navigateTo(ScenesTypes sceneType, Object controller) {
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
         Parent nextRoot;
         try {
-            nextRoot = fxmlLoader.load(getClass().getResource(sceneType.getPath()), ResourcesHolder.getResourceBundle());
+            fxmlLoader = new FXMLLoader(getClass().getResource(sceneType.getPath()), ResourcesHolder.getResourceBundle());
+            fxmlLoader.setController(controller);
+            nextRoot = fxmlLoader.load();
 
             if (rootScene == null) {
                 rootScene = new Scene(nextRoot);
