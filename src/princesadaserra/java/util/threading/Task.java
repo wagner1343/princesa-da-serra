@@ -110,19 +110,19 @@ public abstract class Task<ArgumentType, ResultType, ProgressType> implements Ru
     }
 
     public void setFailed(){
-        setSTATUS(STATUS.FAILED);
+        setSTATUS(TASKSTATUS.FAILED);
     }
 
     public void setSuccess(){
-        setSTATUS(STATUS.SUCCESS);
+        setSTATUS(TASKSTATUS.SUCCESS);
     }
 
     public void setCanceled(){
-        setSTATUS(STATUS.CANCELED);
+        setSTATUS(TASKSTATUS.CANCELED);
     }
 
     public void setExecuting(){
-        setSTATUS(STATUS.EXECUTING);
+        setSTATUS(TASKSTATUS.EXECUTING);
     }
 
     public void setOnSuccessCallback(Callback onSuccessCallback) {

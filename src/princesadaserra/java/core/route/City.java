@@ -28,11 +28,7 @@ public class City {
         if (!(other instanceof City)) return false;
 
         City otherCity = (City) other;
-        if (otherCity.getId() == this.getId() && otherCity.getName() == this.getName()) {
-            return true;
-        } else {
-            return false;
-        }
+        return otherCity.getId() == this.getId() && otherCity.getName() == this.getName();
 
     }
 }

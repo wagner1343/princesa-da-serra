@@ -7,10 +7,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Pair;
 import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.ui.controller.dashboard.DashboardViewController;
-import princesadaserra.java.ui.navigation.Navigator;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
 

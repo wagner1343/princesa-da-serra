@@ -1,11 +1,6 @@
 package princesadaserra.java.usecases.auth;
 
-import javafx.util.Pair;
-import org.postgresql.ds.PGConnectionPoolDataSource;
-import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnectionPool;
-import princesadaserra.java.persistence.repository.user.UserRepository;
-import princesadaserra.java.util.context.AppContext;
 import princesadaserra.java.util.threading.Task;
 
 import java.sql.SQLException;

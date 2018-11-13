@@ -1,10 +1,7 @@
 package princesadaserra.java.util.context;
 
 import javafx.stage.Stage;
-import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.navigation.Navigator;
-import princesadaserra.java.util.callback.CallbackWithArgument;
-import princesadaserra.java.util.callback.CallbackWithArgumentList;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

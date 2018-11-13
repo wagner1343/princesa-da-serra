@@ -3,7 +3,6 @@ package princesadaserra.java.persistence.repository.vehicle;
 import princesadaserra.java.core.vehicle.Bus;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
-import princesadaserra.java.persistence.repository.user.UserMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.sql.ConnectionPoolDataSource;
