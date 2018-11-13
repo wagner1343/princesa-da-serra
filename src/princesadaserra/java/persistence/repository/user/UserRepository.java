@@ -14,7 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 //TODO USER_PERMITION
 
 public class UserRepository implements Repository<User, Long> {
@@ -30,6 +29,7 @@ public class UserRepository implements Repository<User, Long> {
     public Connection getConnection() throws SQLException {
         return dataSource.getPooledConnection().getConnection();
     }
+
     public List<User> list(){
 
         List<User> users = new ArrayList<>();

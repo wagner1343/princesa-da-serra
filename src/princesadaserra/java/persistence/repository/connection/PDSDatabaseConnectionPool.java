@@ -2,14 +2,16 @@ package princesadaserra.java.persistence.repository.connection;
 
 import org.postgresql.ds.PGConnectionPoolDataSource;
 
-import javax.sql.ConnectionPoolDataSource;
-
 public class PDSDatabaseConnectionPool extends PGConnectionPoolDataSource {
-    private static final String CONNECTION_URL = "jdbc:postgresql://localhost:5432/princesa_da_serra";
+    private static final String SERVER_NAME = "localhost";
+    private static final int PORT_NUMBER = 5432;
+    private static final String DATABASE = "princesa_da_serra";
 
     public PDSDatabaseConnectionPool(String user, String password){
         super();
-        super.setURL(CONNECTION_URL);
+        setServerName(SERVER_NAME);
+        setPortNumber(PORT_NUMBER);
+        setDatabaseName(DATABASE);
         super.setUser(user);
         super.setPassword(password);
     }
