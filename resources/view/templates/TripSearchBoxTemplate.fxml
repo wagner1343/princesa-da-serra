@@ -4,11 +4,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0" prefWidth="625.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #8AE664;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <JFXTextField fx:id="OriginTextField" layoutX="40.0" layoutY="14.0" minWidth="-Infinity" prefHeight="25.0" prefWidth="414.0" promptText="Origem" />
-      <JFXTextField fx:id="DestinyTextField" layoutX="40.0" layoutY="44.0" prefWidth="414.0" promptText="Destino" />
-      <JFXTextField fx:id="DateTextField" layoutX="512.0" layoutY="14.0" prefWidth="85.0" promptText="dd/mm/aaaa" />
-      <JFXTextField fx:id="TimeTextField" layoutX="512.0" layoutY="44.0" prefWidth="85.0" promptText="hh:mm" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="87.0"
+            prefWidth="625.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #8AE664;"
+            xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <JFXTextField fx:id="OriginTextField" layoutX="40.0" layoutY="14.0" minWidth="-Infinity" prefHeight="25.0"
+                  prefWidth="414.0" promptText="Origem"/>
+    <JFXTextField fx:id="DestinyTextField" layoutX="40.0" layoutY="44.0" prefWidth="414.0" promptText="Destino"/>
+    <JFXTextField fx:id="DateTextField" layoutX="512.0" layoutY="14.0" prefWidth="85.0" promptText="dd/mm/aaaa"/>
+    <JFXTextField fx:id="TimeTextField" layoutX="512.0" layoutY="44.0" prefWidth="85.0" promptText="hh:mm"/>
 </AnchorPane>

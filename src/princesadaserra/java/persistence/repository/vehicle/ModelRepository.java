@@ -123,16 +123,14 @@ public class ModelRepository implements Repository<Model, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_MODEL);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_MODEL);
         }
 
         public static PreparedStatement update(Connection conn, Model model) throws SQLException{
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_MODEL);
-            statement.setInt(1, model.getAmntAxis());
-            statement.setInt(2, model.getAmntSeats());
+            statement.setInt(1, model.getAxisAmount());
+            statement.setInt(2, model.getSeatAmount());
             statement.setLong(3, model.getId());
 
             return statement;
@@ -149,8 +147,8 @@ public class ModelRepository implements Repository<Model, Long> {
         public static PreparedStatement insert(Connection conn, Model model) throws SQLException{
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_MODEL);
-            statement.setInt(1, model.getAmntAxis());
-            statement.setInt(2, model.getAmntSeats());
+            statement.setInt(1, model.getAxisAmount());
+            statement.setInt(2, model.getSeatAmount());
 
             return statement;
         }

@@ -28,6 +28,7 @@ public class UserRepository implements Repository<User, Long> {
     public Connection getConnection() throws SQLException {
         return dataSource.getPooledConnection().getConnection();
     }
+
     public List<User> list(){
 
         List<User> users = new ArrayList<>();
@@ -47,12 +48,12 @@ public class UserRepository implements Repository<User, Long> {
         User user = null;
 
         try(Connection conn = getConnection()) {
+
             ResultSet result = SQLQueries.findByKey(conn, key).executeQuery();
 
             if(result.next())
                 user = mapper.map(result);
         } catch (SQLException e) { e.printStackTrace(); }
-
         return user;
     }
 
@@ -126,9 +127,7 @@ public class UserRepository implements Repository<User, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_USER);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_USER);
         }
 
         public static PreparedStatement update(Connection conn, User user) throws SQLException {

@@ -3,7 +3,6 @@ package princesadaserra.java.persistence.repository.route;
 import princesadaserra.java.core.route.Route;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
-import princesadaserra.java.persistence.repository.user.UserMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.sql.ConnectionPoolDataSource;
@@ -123,9 +122,7 @@ public class RouteRepository implements Repository<Route, Long> {
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_ALL_ROUTE);
-
-            return stmt;
+            return conn.prepareStatement(SQLQueries.SELECT_ALL_ROUTE);
         }
 
         public static PreparedStatement update(Connection conn, Route route) throws SQLException{

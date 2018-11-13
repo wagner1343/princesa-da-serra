@@ -6,23 +6,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import princesadaserra.ui.components.animated.AnimatedHamburguer?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="/view/templates/DashboardTemplate.css" fx:id="dashboardRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="princesadaserra.java.ui.controller.dashboard.DashboardViewController">
-   <children>
-       <JFXDrawersStack fx:id="drawersStack" prefHeight="0.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
-       <AnchorPane fx:id="contentRoot" layoutX="300.0" layoutY="194.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
-      <AnchorPane styleClass="app-bar" fx:id="AppBarRoot" layoutX="0.0" layoutY="0.0" prefHeight="50.0"  AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnimatedHamburguer prefWidth="26" prefHeight="20" styleClass="icon" fx:id="menuButton" layoutX="20.0" layoutY="16.0" onMouseClicked="#toggleDrawer" />
-            <Text fx:id="appBarTitle" styleClass="title" layoutX="88.0" layoutY="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PageName" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="10.0">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Text>
-         </children>
-         <effect>
-            <DropShadow color="#0000007e" />
-         </effect>
-      </AnchorPane>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="/view/templates/DashboardTemplate.css"
+            fx:id="dashboardRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1">
+   <JFXDrawersStack fx:id="drawersStack" prefHeight="0.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
+   <AnchorPane fx:id="contentRoot" layoutX="300.0" layoutY="194.0" prefHeight="200.0" prefWidth="200.0"
+               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+               AnchorPane.topAnchor="50.0"/>
+   <AnchorPane styleClass="app-bar" fx:id="AppBarRoot" prefHeight="50.0" AnchorPane.leftAnchor="0.0"
+               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <effect>
+         <DropShadow color="#0000007e"/>
+      </effect>
+      <AnimatedHamburguer prefWidth="26" prefHeight="20" styleClass="icon" fx:id="menuButton" layoutX="20.0"
+                          layoutY="16.0"/>
+      <Text fx:id="appBarTitle" styleClass="title" layoutX="88.0" strokeType="OUTSIDE"
+            strokeWidth="0.0" text="PageName" AnchorPane.leftAnchor="86.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="22.0"/>
+         </font>
+      </Text>
+   </AnchorPane>
 
-   </children>
 </AnchorPane>

@@ -1,29 +1,22 @@
 package princesadaserra.java.util.context;
 
-import princesadaserra.java.core.user.User;
+import javafx.stage.Stage;
 import princesadaserra.java.ui.navigation.Navigator;
-import princesadaserra.java.util.callback.CallbackWithArgument;
-import princesadaserra.java.util.callback.CallbackWithArgumentList;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class AppContext {
-    private static final String CONFIG_PATH = "/config.txt";
-    private static AppContext instance;
     private Navigator navigator;
-    private User currentUser;
-    private CallbackWithArgumentList<User> onUserChanged;
+    private ResourceBundle resourceBundle;
 
-    public AppContext(){
-        onUserChanged = new CallbackWithArgumentList<>();
+    public AppContext(Stage stage){
+        resourceBundle = ResourceBundle.getBundle("locale.strings", new Locale("en", "US"));
+        navigator = new Navigator(stage, resourceBundle);
     }
 
-    public static AppContext getInstance() {
-        if(instance == null)
-            instance = new AppContext();
-        return instance;
-    }
-
-    public void addOnUserChanged(CallbackWithArgument<User> callback) {
-        onUserChanged.addCallback(callback);
+    public ResourceBundle getResourceBundle() {
+        return resourceBundle;
     }
 
     public Navigator getNavigator() {
@@ -32,14 +25,5 @@ public class AppContext {
 
     public void setNavigator(Navigator navigator) {
         this.navigator = navigator;
-    }
-
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
-        onUserChanged.executeAll(currentUser);
     }
 }

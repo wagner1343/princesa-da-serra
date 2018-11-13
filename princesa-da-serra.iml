@@ -13,6 +13,6 @@
     <orderEntry type="library" name="com.jfoenix:jfoenix:8.0.7" level="project" />
     <orderEntry type="module" module-name="princesa-da-serra-components" />
     <orderEntry type="library" name="postgresql-42.2.5" level="application" />
-    <orderEntry type="library" name="postgresql:postgresql:9.1-901-1.jdbc4" level="project" />
+    <orderEntry type="library" name="postgresql:postgresql:Latest" level="project" />
   </component>
 </module>

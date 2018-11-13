@@ -1,12 +1,14 @@
 package princesadaserra.java.ui.controller.login;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Pair;
 import princesadaserra.java.ui.controller.ScenesTypes;
+import princesadaserra.java.ui.controller.dashboard.DashboardViewController;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
 
@@ -19,21 +21,38 @@ public class LoginViewController {
     @FXML
     private JFXPasswordField passwordTextField;
 
+    @FXML
+    private JFXButton loginButton;
+
     private JFXSnackbar snackbar;
-    LoginWithUserAndPassword loginTask;
+    private AppContext context;
+
+    public LoginViewController(AppContext context){
+        this.context = context;
+    }
 
     @FXML
     public void initialize(){
         snackbar = new JFXSnackbar(root);
+        loginButton.setOnAction(this::loginOnClick);
     }
 
-    public void loginOnClick(){
+    public void loginOnClick(ActionEvent event){
         System.out.println("LoginViewController.loginOnClick");
 
-        loginTask = new LoginWithUserAndPassword(AppContext.getInstance());
-        loginTask.addOnSuccessCallback( result -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.DASHBOARD) );
+        String user = userTextField.getText();
+        String password = passwordTextField.getText();
+
+        LoginWithUserAndPassword loginTask = new LoginWithUserAndPassword(user, password);
+
+        loginTask.addOnSuccessCallback(
+                connectionPool -> context.getNavigator().navigateTo(ScenesTypes.DASHBOARD, new DashboardViewController(context, connectionPool, user))
+        );
+
         loginTask.addOnFailedCallback(
-                () -> { snackbar.enqueue(new JFXSnackbar.SnackbarEvent("Login failed")); });
-        loginTask.start(new Pair<>(userTextField.getText(), passwordTextField.getText()));
+                () -> snackbar.enqueue(new JFXSnackbar.SnackbarEvent("Login failed"))
+        );
+
+        loginTask.start();
     }
 }

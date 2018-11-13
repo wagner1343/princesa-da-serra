@@ -3,8 +3,8 @@ package princesadaserra.java.core.vehicle;
 public class Model {
 
     private Long id;
-    private int amntAxis;
-    private int amntSeats;
+    private int axisAmount;
+    private int seatAmount;
 
     public Long getId() {
         return id;
@@ -14,19 +14,19 @@ public class Model {
         this.id = id;
     }
 
-    public int getAmntAxis() {
-        return amntAxis;
+    public int getAxisAmount() {
+        return axisAmount;
     }
 
-    public void setAmntAxis(int amntAxis) {
-        this.amntAxis = amntAxis;
+    public void setAxisAmount(int axisAmount) {
+        this.axisAmount = axisAmount;
     }
 
-    public int getAmntSeats() {
-        return amntSeats;
+    public int getSeatAmount() {
+        return seatAmount;
     }
 
-    public void setAmntSeats(int amntSeats) {
-        this.amntSeats = amntSeats;
+    public void setSeatAmount(int seatAmount) {
+        this.seatAmount = seatAmount;
     }
 }

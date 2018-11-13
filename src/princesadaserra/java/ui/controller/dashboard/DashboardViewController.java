@@ -6,16 +6,19 @@ import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.controller.ScenesTypes;
-import princesadaserra.java.usecases.auth.Logout;
+import princesadaserra.java.ui.controller.login.LoginViewController;
+import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
-import princesadaserra.java.util.context.ResourcesHolder;
 import princesadaserra.ui.components.animated.AnimatedHamburguer;
 import princesadaserra.ui.components.pane.UserInfoAdapter;
 import princesadaserra.ui.components.pane.UserSidePane;
+
+import javax.sql.ConnectionPoolDataSource;
 
 public class DashboardViewController {
 
@@ -37,8 +40,22 @@ public class DashboardViewController {
     private JFXSnackbar snackbar;
     private JFXDrawer drawer;
 
+    private ConnectionPoolDataSource dataSource;
+    private GetUserByUsername getUserTask;
+    private AppContext context;
+
+    public DashboardViewController(AppContext context, ConnectionPoolDataSource dataSource, String username){
+        this.context = context;
+        this.dataSource = dataSource;
+        getUserTask = new GetUserByUsername(dataSource, username);
+
+        getUserTask.addOnSuccessCallback(this::setSidePaneUserInfo);
+    }
+
     @FXML
     public void initialize(){
+        getUserTask.start();
+
         drawer = new JFXDrawer();
         snackbar = new JFXSnackbar(dashboardRoot);
         drawerPane = new UserSidePane();
@@ -49,10 +66,10 @@ public class DashboardViewController {
         drawer.setOnDrawerClosed( event -> drawersStack.toBack() );
 
         drawersStack.addDrawer(drawer);
-
         addDrawerButtons();
+        menuButton.setOnMouseClicked(this::menuButtonOnClick);
+
         showTrips();
-        AppContext.getInstance().addOnUserChanged((user) -> setSidePaneUserInfo(user));
     }
 
     private void setSidePaneUserInfo(User user) {
@@ -84,61 +101,61 @@ public class DashboardViewController {
     }
 
     private void showClients(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.clients"));
+        setPageName(context.getResourceBundle().getString("page.title.clients"));
     }
 
     private void showTrips(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.trips"));
+        setPageName(context.getResourceBundle().getString("page.title.trips"));
     }
 
     private void showHistory(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.history"));
+        setPageName(context.getResourceBundle().getString("page.title.history"));
     }
 
     private void showOptions(){
-        setPageName(ResourcesHolder.getResourceBundle().getString("page.title.options"));
+        setPageName(context.getResourceBundle().getString("page.title.options"));
     }
 
     private void addDrawerButtons(){
 
-        drawerPane.addButton("travels", ResourcesHolder.getResourceBundle().getString("drawer.text.trips"),
+        drawerPane.addButton("travels", context.getResourceBundle().getString("drawer.text.trips"),
                 event -> {
                     showTrips();
                     drawer.close();
                 });
 
-        drawerPane.addButton("history", ResourcesHolder.getResourceBundle().getString("drawer.text.history"),
+        drawerPane.addButton("history", context.getResourceBundle().getString("drawer.text.history"),
                 event -> {
                     showHistory();
                     drawer.close();
                 });
 
-        drawerPane.addButton("clients", ResourcesHolder.getResourceBundle().getString("drawer.text.clients"),
+        drawerPane.addButton("clients", context.getResourceBundle().getString("drawer.text.clients"),
                 event -> {
                     showClients();
                     drawer.close();
                 });
 
-        drawerPane.addButton("options", ResourcesHolder.getResourceBundle().getString("drawer.text.options"),
+        drawerPane.addButton("options", context.getResourceBundle().getString("drawer.text.options"),
                 event -> {
                     showOptions();
                     drawer.close();
                 });
 
-        drawerPane.addButton("logout", ResourcesHolder.getResourceBundle().getString("drawer.text.logout"),
+        drawerPane.addButton("logout", context.getResourceBundle().getString("drawer.text.logout"),
                 event -> doLogout());
 
-        drawerPane.addButton("exit", ResourcesHolder.getResourceBundle().getString("drawer.text.exit"),
+        drawerPane.addButton("exit", context.getResourceBundle().getString("drawer.text.exit"),
                 event -> Platform.exit());
     }
 
     public void doLogout(){
         System.out.println("DashboardViewController.doLogout");
+        context.getNavigator().navigateTo(ScenesTypes.LOGIN, new LoginViewController(context));
+    }
 
-        Logout logout = new Logout();
-        logout.addOnFinishCallback( (result) -> snackbar.enqueue(new JFXSnackbar.SnackbarEvent("")) );
-        logout.addOnSuccessCallback( () -> AppContext.getInstance().getNavigator().navigateTo(ScenesTypes.LOGIN) );
-        logout.start(AppContext.getInstance());
+    public void menuButtonOnClick(MouseEvent event){
+        toggleDrawer();
     }
 
     public void toggleDrawer(){

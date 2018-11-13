@@ -109,15 +109,13 @@ public class RoleRepository implements Repository<Role, Long>{
 
         private static final String INSERT_ROLE = "INSERT INTO roles (role) values (?)";
         private static final String DELETE_ROLE = "DELETE FROM roles where id_role = ?";
-        private static final String UPDATE_ROLE = "UPADATE roles set role = ? where id_role = ?";
+        private static final String UPDATE_ROLE = "UPDATE roles set role = ? where id_role = ?";
         private static final String SELECT_BY_KEY_ROLE = "SELECT * from roles where id_role = ?";
         private static final String SELECT_ALL_ROLE = "SELECT * from roles";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLqueries.SELECT_ALL_ROLE);
-
-            return stmt;
+            return conn.prepareStatement(SQLqueries.SELECT_ALL_ROLE);
         }
 
         public static PreparedStatement findByKey(Connection conn, Long key) throws SQLException{
