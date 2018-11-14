@@ -9,19 +9,16 @@ import princesadaserra.java.util.threading.Task;
 
 public class CreateNewModel extends Task<Model, String, Integer> {
 
-    private String user;
-    private String password;
+    private PDSDatabaseConnectionPool connectionPool = null;
 
-    public CreateNewModel(String user, String password){
+    public CreateNewModel(PDSDatabaseConnectionPool connectionPool){
 
-        this.user = user;
-        this.password = password;
+        this.connectionPool = connectionPool;
     }
 
     @Override
     protected String execute(Model model) {
 
-        PDSDatabaseConnectionPool connectionPool = new PDSDatabaseConnectionPool(user, password);
         ModelRepository modelRepository = null;
         try{
 

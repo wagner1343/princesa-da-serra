@@ -10,19 +10,16 @@ import java.util.List;
 
 public class LoadAllModels extends Task<String, List<Model>, Integer> {
 
-    private String user;
-    private String password;
+    private PDSDatabaseConnectionPool connectionPool = null;
 
-    public LoadAllModels(String user, String password){
+    public LoadAllModels(PDSDatabaseConnectionPool connectionPool){
 
-        this.user = user;
-        this.password = password;
+        this.connectionPool = connectionPool;
     }
 
     @Override
     protected List<Model> execute(String x){
 
-        PDSDatabaseConnectionPool connectionPool = new PDSDatabaseConnectionPool(user, password);
         ModelRepository modelRepository = null;
         List<Model> models = new ArrayList<>();
         try{
