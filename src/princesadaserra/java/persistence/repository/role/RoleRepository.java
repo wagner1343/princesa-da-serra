@@ -16,6 +16,7 @@ public class RoleRepository implements Repository<Role, Long>{
     private ConnectionPoolDataSource dataSource;
 
     public RoleRepository(ConnectionPoolDataSource dataSource) {
+
         this.dataSource = dataSource;
     }
 
