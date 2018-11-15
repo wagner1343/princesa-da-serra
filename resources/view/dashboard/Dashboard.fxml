@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import princesadaserra.ui.components.animated.AnimatedHamburguer?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="/view/templates/DashboardTemplate.css"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" stylesheets="/view/dashboard/Dashboard.css"
             fx:id="dashboardRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
             prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1">
    <JFXDrawersStack fx:id="drawersStack" prefHeight="0.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0"

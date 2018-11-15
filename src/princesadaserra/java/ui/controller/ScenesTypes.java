@@ -7,9 +7,9 @@ public enum ScenesTypes {
     public String getPath(){
         switch (this) {
             case DASHBOARD:
-                return "/view/templates/DashboardTemplate.fxml";
+                return "/view/dashboard/Dashboard.fxml";
             case LOGIN:
-                return "/view/login/LoginScreen.fxml";
+                return "/view/login/Login.fxml";
             default:
                 return null;
         }

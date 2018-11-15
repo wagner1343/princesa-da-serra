@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" id="root" cacheHint="SPEED" maxHeight="-Infinity"
-            maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@LoginScreen.css"
+            maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@Login.css"
             xmlns="http://javafx.com/javafx/10.0.1">
     <HBox alignment="CENTER" cacheHint="SPEED" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0"
           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

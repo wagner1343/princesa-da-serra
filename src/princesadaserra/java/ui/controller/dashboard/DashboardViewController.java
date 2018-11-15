@@ -21,8 +21,6 @@ import princesadaserra.ui.components.pane.UserSidePane;
 import javax.sql.ConnectionPoolDataSource;
 
 public class DashboardViewController {
-
-    public static final String FXML_PATH = "/view/templates/DashboardTemplate,fxml";
     @FXML
     private JFXDrawersStack drawersStack;
     @FXML

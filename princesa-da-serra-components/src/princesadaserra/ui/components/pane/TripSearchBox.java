@@ -21,7 +21,6 @@ public class TripSearchBox extends AnchorPane {
     private String originTextFieldPrompt;
 
     public TripSearchBox() {
-        //getStylesheets().add("/view/templates/TripSearchBoxTemplate.css");
         OriginTextField = new JFXTextField();
         DestinyTextField = new JFXTextField();
         DateTextField = new JFXTextField();
