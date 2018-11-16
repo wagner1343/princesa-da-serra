@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO PROBLEMA COM DATA DO JAVA/SQL
-
 public class BusRepository implements Repository<Bus, Long> {
 
     BusMapper mapper;
@@ -116,7 +114,7 @@ public class BusRepository implements Repository<Bus, Long> {
     private static class SQLQueries {
         private static final String INSERT_BUS = "INSERT INTO buses (id_model, datelastmaintenance) VALUES(?, ?)";
         private static final String DELETE_BUS = "DELETE FROM buses WHERE id_bus = ?";
-        private static final String UPDATE_BUS = "UPDATE buses SET datelastmaintenance = ? where id_bus = ?";
+        private static final String UPDATE_BUS = "UPDATE buses SET id_model = ?, datelastmaintenance = ? where id_bus = ?";
         private static final String SELECT_BUS = "SELECT * from buses b join models m on b.id_model = m.id_model where id_bus = ?";
         private static final String SELECT_ALL_BUS = "SELECT * from buses b join models m on b.id_model = m.id_model";
 
@@ -128,8 +126,9 @@ public class BusRepository implements Repository<Bus, Long> {
         public static PreparedStatement update(Connection conn, Bus bus) throws SQLException{
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_BUS);
-            //statement.setDate(1, bus.getLastMaintenance());
-            statement.setLong(2, bus.getId());
+            statement.setLong(1, bus.getModel().getId());
+            statement.setDate(2, bus.getLastMaintenance());
+            statement.setLong(3, bus.getId());
 
             return statement;
         }
@@ -146,7 +145,7 @@ public class BusRepository implements Repository<Bus, Long> {
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_BUS);
             statement.setLong(1, bus.getModel().getId());
-            //statement.setDate(2, bus.getLastMaintenance());
+            statement.setDate(2, bus.getLastMaintenance());
 
             return statement;
         }

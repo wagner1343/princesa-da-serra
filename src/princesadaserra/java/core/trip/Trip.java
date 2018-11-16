@@ -4,10 +4,10 @@ import princesadaserra.java.core.route.Route;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.core.vehicle.Bus;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Trip {
-    private int id;
+    private Long id;
     private Route route;
     private Date dateStart;
     private Date dateFinish;
@@ -23,11 +23,11 @@ public class Trip {
         this.driver = driver;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
