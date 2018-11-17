@@ -1,6 +1,6 @@
 package princesadaserra.java.core.vehicle;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Bus {
 

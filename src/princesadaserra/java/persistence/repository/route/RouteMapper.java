@@ -6,6 +6,8 @@ import princesadaserra.java.util.mapping.Mapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//TODO ROUTE_SEGMETN
+
 public class RouteMapper implements Mapper<ResultSet, Route>{
 
     @Override

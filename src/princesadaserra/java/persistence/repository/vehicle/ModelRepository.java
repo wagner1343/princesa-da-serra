@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//TODO ARRUMAR A CONEXAO DE TODAS AS OUTRAS REP
-
 public class ModelRepository implements Repository<Model, Long> {
 
     ModelMapper mapper;
