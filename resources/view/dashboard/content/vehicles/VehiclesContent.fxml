@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="678.0" prefWidth="866.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets bottom="32.0" left="64.0" right="64.0" top="32.0" />
+         </VBox.margin>
+         <children>
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="722.0" minWidth="-Infinity" prefWidth="722.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
+               
+               <HBox.margin>
+                  <Insets bottom="12.0" right="12.0" top="12.0" />
+               </HBox.margin>
+               <children>
+                  <AnchorPane prefHeight="79.0" prefWidth="283.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow color="#00000047" height="33.44" radius="15.442499999999999" spread="0.29" width="30.33" />
+                     </effect>
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="79.0" prefWidth="405.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXTextField prefHeight="31.0" prefWidth="47.0" text="Assentos" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </HBox.margin>
+                              </JFXTextField>
+                              <JFXTextField prefHeight="31.0" prefWidth="29.0" text="Eixos" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </HBox.margin>
+                              </JFXTextField>
+                              <JFXTextField prefHeight="31.0" prefWidth="33.0" text="Ano" />
+                              <JFXButton mnemonicParsing="false" text="Adicionar Modelo">
+                                 <HBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </HBox.margin>
+                     <effect>
+                        <DropShadow color="#00000047" height="33.44" radius="15.442499999999999" spread="0.29" width="30.33" />
+                     </effect>
+                     <children>
+                        <HBox alignment="CENTER" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXComboBox prefHeight="31.0" prefWidth="88.0" promptText="Modelo" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </HBox.margin>
+                              </JFXComboBox>
+                              <JFXButton mnemonicParsing="false" text="Adicionar Veiculo">
+                                 <HBox.margin>
+                                    <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane maxWidth="1024.0" minWidth="640.0" style="-fx-background-radius: 5;">
+         <children>
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="62.0" prefWidth="738.0" style="-fx-border-radius: 0; -fx-background-radius: 5 5 0 0; -fx-background-color: #8AE664;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <children>
+                      <JFXTextField fx:id="OriginTextField" minWidth="-Infinity" prefHeight="31.0" prefWidth="100.0" promptText="Origem" text="Assentos" HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </HBox.margin></JFXTextField>
+                      <JFXTextField fx:id="DestinyTextField" prefHeight="31.0" prefWidth="91.0" promptText="Destino" text="Eixos" HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </HBox.margin>
+                     </JFXTextField>
+                      <JFXTextField fx:id="DateTextField" prefHeight="31.0" prefWidth="63.0" promptText="dd/mm/aaaa" text="Ano" HBox.hgrow="ALWAYS">
+                        <HBox.margin>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </HBox.margin></JFXTextField>
+                     <JFXComboBox prefWidth="150.0" promptText="Modelo">
+                        <HBox.margin>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </HBox.margin>
+                     </JFXComboBox>
+                     <JFXDatePicker prefHeight="31.0" prefWidth="136.0" promptText="Manutenção">
+                        <HBox.margin>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </HBox.margin></JFXDatePicker>
+                     <JFXButton mnemonicParsing="false" text="B">
+                        <HBox.margin>
+                           <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        </HBox.margin>
+                     </JFXButton>
+                  </children>
+               </HBox>
+
+               <padding>
+                  <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+               </padding>
+            </AnchorPane>
+            <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+               <columns>
+                  <TableColumn maxWidth="1000.0" prefWidth="75.0" text="Assentos" />
+                  <TableColumn maxWidth="1000.0" minWidth="-Infinity" prefWidth="75.0" text="Eixos" />
+                  <TableColumn maxWidth="1000.0" prefWidth="75.0" text="Ano" />
+                  <TableColumn maxWidth="1000.0" prefWidth="118.0" text="Modelo" />
+                  <TableColumn maxWidth="2000.0" prefWidth="118.0" text="Manutenção" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+         <VBox.margin>
+            <Insets bottom="32.0" left="64.0" right="64.0" top="32.0" />
+         </VBox.margin>
+         <effect>
+            <DropShadow color="#00000036" height="30.33" radius="15.442499999999999" spread="0.32" width="33.44" />
+         </effect>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -5,9 +5,11 @@ import com.jfoenix.controls.JFXDrawersStack;
 import com.jfoenix.controls.JFXSnackbar;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.controller.ScenesTypes;
@@ -19,6 +21,7 @@ import princesadaserra.ui.components.pane.UserInfoAdapter;
 import princesadaserra.ui.components.pane.UserSidePane;
 
 import javax.sql.ConnectionPoolDataSource;
+import java.io.IOException;
 
 public class DashboardViewController {
     @FXML
@@ -33,6 +36,10 @@ public class DashboardViewController {
     private AnchorPane AppBarRoot;
     @FXML
     private Text appBarTitle;
+
+    private Pane tripsContent;
+    private Pane usersContent;
+    private Pane vehiclesContent;
 
     private UserSidePane drawerPane;
     private JFXSnackbar snackbar;
@@ -98,16 +105,49 @@ public class DashboardViewController {
         appBarTitle.setText(name);
     }
 
-    private void showClients(){
+    private void showUsers(){
+        if(usersContent == null) {
+            try {
+                usersContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/users/UsersContent.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+
+        contentRoot.getChildren().removeAll(contentRoot.getChildren());
+        contentRoot.getChildren().add(usersContent);
         setPageName(context.getResourceBundle().getString("page.title.clients"));
     }
 
     private void showTrips(){
+        if(tripsContent == null) {
+            try {
+                tripsContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/tripsales/TripSalesContent.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+
+        contentRoot.getChildren().removeAll(contentRoot.getChildren());
+        contentRoot.getChildren().add(tripsContent);
         setPageName(context.getResourceBundle().getString("page.title.trips"));
     }
 
-    private void showHistory(){
-        setPageName(context.getResourceBundle().getString("page.title.history"));
+    private void showVehicles(){
+        if(vehiclesContent == null) {
+            try {
+                vehiclesContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/vehicles/VehiclesContent.fxml"));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+
+        contentRoot.getChildren().removeAll(contentRoot.getChildren());
+        contentRoot.getChildren().add(vehiclesContent);
+        setPageName(context.getResourceBundle().getString("page.title.vehicles"));
     }
 
     private void showOptions(){
@@ -122,15 +162,15 @@ public class DashboardViewController {
                     drawer.close();
                 });
 
-        drawerPane.addButton("history", context.getResourceBundle().getString("drawer.text.history"),
+        drawerPane.addButton("vehicles", context.getResourceBundle().getString("drawer.text.vehicles"),
                 event -> {
-                    showHistory();
+                    showVehicles();
                     drawer.close();
                 });
 
         drawerPane.addButton("clients", context.getResourceBundle().getString("drawer.text.clients"),
                 event -> {
-                    showClients();
+                    showUsers();
                     drawer.close();
                 });
 

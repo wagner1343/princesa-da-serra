@@ -33,7 +33,7 @@ public class Navigator {
             nextRoot = fxmlLoader.load();
 
             if (rootScene == null) {
-                rootScene = new Scene(nextRoot);
+                rootScene = new Scene(nextRoot, 1024, 768);
                 stage.setScene(rootScene);
             }
             else rootScene.setRoot(nextRoot);
