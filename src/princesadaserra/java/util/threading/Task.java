@@ -22,7 +22,7 @@ public abstract class Task<ArgumentType, ResultType, ProgressType> implements Ru
     private CallbackWithArgumentList<ProgressType> onProgressChangedCallbackList;
     private CallbackList onExecutingCallbackList;
 
-    private CallbackWithArgument<ResultType> onSuccessCallback;
+    protected CallbackWithArgument<ResultType> onSuccessCallback;
     private CallbackWithArgument<ResultType> onFailedCallback;
     private CallbackWithArgument<ResultType> onCanceledCallback;
     private CallbackWithArgument<ResultType> onFinishCallback;

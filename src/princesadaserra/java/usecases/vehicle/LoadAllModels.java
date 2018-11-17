@@ -1,4 +1,4 @@
-package princesadaserra.java.usecases.model;
+package princesadaserra.java.usecases.vehicle;
 
 import princesadaserra.java.core.vehicle.Model;
 import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnectionPool;
@@ -8,7 +8,7 @@ import princesadaserra.java.util.threading.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoadAllModels extends Task<String, List<Model>, Integer> {
+public class LoadAllModels extends Task<Boolean, List<Model>, Integer> {
 
     private PDSDatabaseConnectionPool connectionPool = null;
 
@@ -18,7 +18,7 @@ public class LoadAllModels extends Task<String, List<Model>, Integer> {
     }
 
     @Override
-    protected List<Model> execute(String x){
+    protected List<Model> execute(Boolean useless){
 
         ModelRepository modelRepository = null;
         List<Model> models = new ArrayList<>();
