@@ -14,10 +14,7 @@ import princesadaserra.java.ui.controller.dashboard.DashboardViewController;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class LoginViewController {
     public static final String FXML_PATH = "/view/login/Login.fxml";
@@ -36,7 +33,12 @@ public class LoginViewController {
 
     private JFXSnackbar snackbar;
     private AppContext context;
+    private Map<String, Object> savedState;
 
+    public LoginViewController(AppContext context, Map<String, Object> savedState){
+        this(context);
+        this.savedState = savedState;
+    }
     public LoginViewController(AppContext context){
         this.context = context;
     }
@@ -45,17 +47,32 @@ public class LoginViewController {
     public void initialize(){
         snackbar = new JFXSnackbar(root);
 
-        for(String language:context.getLanguageList())
-            languageComboBox.getItems().add(language);
-
+        languageComboBox.getItems().addAll(context.getLanguageList());
         languageComboBox.valueProperty().addListener(this::languageComboBoxValueChanged);
+
         loginButton.setOnAction(this::loginOnClick);
+
+        if(this.savedState != null)
+            loadState(savedState);
+    }
+
+    public void loadState(Map<String, Object> savedState){
+        System.out.println("LoginViewController.loadState");
+        this.userTextField.setText(((JFXTextField) savedState.get("userTextField")).getText());
+        this.passwordTextField.setText(((JFXPasswordField) savedState.get("passwordTextField")).getText());
+    }
+
+    public Map<String, Object> getState(){
+        Map<String, Object> map = new TreeMap<>();
+        map.put("userTextField", userTextField);
+        map.put("passwordTextField", passwordTextField);
+        return map;
     }
 
     public void languageComboBoxValueChanged(ObservableValue<? extends String> observable, String oldValue, String newValue) {
         System.out.println("newValue.getText() = " + newValue);
         context.setLocale(new Locale(newValue));
-        context.getNavigator().reload();
+        context.getNavigator().navigateTo(ScenesTypes.LOGIN, new LoginViewController(context, getState()));
     }
 
     public void loginOnClick(ActionEvent event){
