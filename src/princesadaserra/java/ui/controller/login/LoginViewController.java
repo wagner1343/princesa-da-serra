@@ -29,7 +29,7 @@ public class LoginViewController {
     private JFXPasswordField passwordTextField;
 
     @FXML
-    private JFXComboBox<Label> languageComboBox;
+    private JFXComboBox<String> languageComboBox;
 
     @FXML
     private JFXButton loginButton;
@@ -44,18 +44,18 @@ public class LoginViewController {
     @FXML
     public void initialize(){
         snackbar = new JFXSnackbar(root);
+
+        for(String language:context.getLanguageList())
+            languageComboBox.getItems().add(language);
+
+        languageComboBox.valueProperty().addListener(this::languageComboBoxValueChanged);
         loginButton.setOnAction(this::loginOnClick);
+    }
 
-        for(String language:context.getLanguageList()){
-            languageComboBox.getItems().add(new Label(language));
-        }
-
-        languageComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("newValue.getText() = " + newValue.getText());
-            context.setLocale(new Locale(newValue.getText()));
-            context.getNavigator().reload();
-        });
-
+    public void languageComboBoxValueChanged(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+        System.out.println("newValue.getText() = " + newValue);
+        context.setLocale(new Locale(newValue));
+        context.getNavigator().reload();
     }
 
     public void loginOnClick(ActionEvent event){
