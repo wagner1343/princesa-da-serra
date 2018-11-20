@@ -14,6 +14,8 @@ public class Navigator {
     private Scene rootScene;
     private FXMLLoader fxmlLoader;
     private ResourceBundle resourceBundle;
+    private ScenesTypes lastScenetype;
+    private Object lastController;
 
     public Navigator(Stage stage, ResourceBundle resourceBundle) {
         this.stage = stage;
@@ -21,10 +23,15 @@ public class Navigator {
         fxmlLoader = new FXMLLoader();
     }
 
+    public void reload(){
+        navigateTo(lastScenetype, lastController);
+    }
+
     public void navigateTo(ScenesTypes sceneType){
         navigateTo(sceneType, null);
     }
     public void navigateTo(ScenesTypes sceneType, Object controller) {
+
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
         Parent nextRoot;
         try {
@@ -39,6 +46,9 @@ public class Navigator {
             else rootScene.setRoot(nextRoot);
 
             if (!stage.isShowing()) stage.show();
+
+            lastScenetype = sceneType;
+            lastController = controller;
         } catch (IOException e) {
             e.printStackTrace();
         }
