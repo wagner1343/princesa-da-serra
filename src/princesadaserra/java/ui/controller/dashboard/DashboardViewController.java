@@ -12,7 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
-import princesadaserra.java.ui.controller.ScenesTypes;
+import princesadaserra.java.ui.controller.Views;
 import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
@@ -189,7 +189,7 @@ public class DashboardViewController {
 
     public void doLogout(){
         System.out.println("DashboardViewController.doLogout");
-        context.getNavigator().navigateTo(ScenesTypes.LOGIN, new LoginViewController(context));
+        context.getNavigator().navigateTo(Views.LOGIN, new LoginViewController(context));
     }
 
     public void menuButtonOnClick(MouseEvent event){

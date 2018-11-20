@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import princesadaserra.java.ui.controller.ScenesTypes;
+import princesadaserra.java.ui.controller.Views;
 import princesadaserra.java.util.context.AppContext;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class Navigator {
     private Scene rootScene;
     private FXMLLoader fxmlLoader;
     private AppContext context;
-    private ScenesTypes lastScenetype;
+    private Views lastScenetype;
     private Object lastController;
 
     public Navigator(Stage stage, AppContext context) {
@@ -27,10 +27,10 @@ public class Navigator {
         navigateTo(lastScenetype, lastController);
     }
 
-    public void navigateTo(ScenesTypes sceneType){
+    public void navigateTo(Views sceneType){
         navigateTo(sceneType, null);
     }
-    public void navigateTo(ScenesTypes sceneType, Object controller) {
+    public void navigateTo(Views sceneType, Object controller) {
 
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
         Parent nextRoot;
