@@ -8,11 +8,16 @@ import java.util.ResourceBundle;
 
 public class AppContext {
     private Navigator navigator;
+
+    public void setResourceBundle(ResourceBundle resourceBundle) {
+        this.resourceBundle = resourceBundle;
+    }
+
     private ResourceBundle resourceBundle;
 
     public AppContext(Stage stage){
         resourceBundle = ResourceBundle.getBundle("locale.strings", new Locale("en", "US"));
-        navigator = new Navigator(stage, resourceBundle);
+        navigator = new Navigator(stage, this);
     }
 
     public ResourceBundle getResourceBundle() {

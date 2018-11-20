@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import princesadaserra.java.ui.controller.ScenesTypes;
+import princesadaserra.java.util.context.AppContext;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
@@ -13,13 +14,13 @@ public class Navigator {
     private Stage stage;
     private Scene rootScene;
     private FXMLLoader fxmlLoader;
-    private ResourceBundle resourceBundle;
+    private AppContext context;
     private ScenesTypes lastScenetype;
     private Object lastController;
 
-    public Navigator(Stage stage, ResourceBundle resourceBundle) {
+    public Navigator(Stage stage, AppContext context) {
         this.stage = stage;
-        this.resourceBundle = resourceBundle;
+        this.context = context;
         fxmlLoader = new FXMLLoader();
     }
 
@@ -35,7 +36,7 @@ public class Navigator {
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
         Parent nextRoot;
         try {
-            fxmlLoader = new FXMLLoader(getClass().getResource(sceneType.getPath()), resourceBundle);
+            fxmlLoader = new FXMLLoader(getClass().getResource(sceneType.getPath()), context.getResourceBundle());
             fxmlLoader.setController(controller);
             nextRoot = fxmlLoader.load();
 
