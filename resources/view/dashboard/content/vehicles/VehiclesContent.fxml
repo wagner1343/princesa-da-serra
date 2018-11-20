@@ -12,14 +12,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="678.0" prefWidth="866.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" prefHeight="678.0" prefWidth="866.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane VBox.vgrow="NEVER">
+      <AnchorPane maxWidth="1.7976931348623157E308" minWidth="600.0" VBox.vgrow="NEVER">
          <VBox.margin>
-            <Insets bottom="32.0" left="64.0" right="64.0" top="32.0" />
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </VBox.margin>
          <children>
-            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="722.0" minWidth="-Infinity" prefWidth="722.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="722.0" minWidth="-Infinity" prefWidth="722.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
                
                <HBox.margin>
                   <Insets bottom="12.0" right="12.0" top="12.0" />
@@ -27,7 +27,7 @@
                <children>
                   <AnchorPane prefHeight="79.0" prefWidth="283.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        <Insets />
                      </HBox.margin>
                      <effect>
                         <DropShadow color="#00000047" height="33.44" radius="15.442499999999999" spread="0.29" width="30.33" />
@@ -60,7 +60,7 @@
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        <Insets />
                      </HBox.margin>
                      <effect>
                         <DropShadow color="#00000047" height="33.44" radius="15.442499999999999" spread="0.29" width="30.33" />
@@ -89,7 +89,7 @@
             </HBox>
          </children>
       </AnchorPane>
-      <AnchorPane maxWidth="1024.0" minWidth="640.0" style="-fx-background-radius: 5;">
+      <AnchorPane maxWidth="1.7976931348623157E308" minWidth="600.0" style="-fx-background-radius: 5;" VBox.vgrow="SOMETIMES">
          <children>
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="62.0" prefWidth="738.0" style="-fx-border-radius: 0; -fx-background-radius: 5 5 0 0; -fx-background-color: #8AE664;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="36.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -128,7 +128,7 @@
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </padding>
             </AnchorPane>
-            <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+            <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
                <columns>
                   <TableColumn maxWidth="1000.0" prefWidth="75.0" text="Assentos" />
                   <TableColumn maxWidth="1000.0" minWidth="-Infinity" prefWidth="75.0" text="Eixos" />
@@ -142,11 +142,14 @@
             </TableView>
          </children>
          <VBox.margin>
-            <Insets bottom="32.0" left="64.0" right="64.0" top="32.0" />
+            <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </VBox.margin>
          <effect>
             <DropShadow color="#00000036" height="30.33" radius="15.442499999999999" spread="0.32" width="33.44" />
          </effect>
       </AnchorPane>
    </children>
+   <padding>
+      <Insets left="32.0" right="32.0" />
+   </padding>
 </VBox>
