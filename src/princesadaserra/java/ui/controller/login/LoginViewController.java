@@ -52,7 +52,7 @@ public class LoginViewController {
 
         languageComboBox.valueProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("newValue.getText() = " + newValue.getText());
-            context.setResourceBundle(ResourceBundle.getBundle("locale.strings", new Locale(newValue.getText())));
+            context.setLocale(new Locale(newValue.getText()));
             context.getNavigator().reload();
         });
 

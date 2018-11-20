@@ -117,7 +117,7 @@ public class DashboardViewController {
 
         contentRoot.getChildren().removeAll(contentRoot.getChildren());
         contentRoot.getChildren().add(usersContent);
-        setPageName(context.getResourceBundle().getString("page.title.clients"));
+        setPageName(context.getLocaleBundle().getString("page.title.clients"));
     }
 
     private void showTrips(){
@@ -132,7 +132,7 @@ public class DashboardViewController {
 
         contentRoot.getChildren().removeAll(contentRoot.getChildren());
         contentRoot.getChildren().add(tripsContent);
-        setPageName(context.getResourceBundle().getString("page.title.trips"));
+        setPageName(context.getLocaleBundle().getString("page.title.trips"));
     }
 
     private void showVehicles(){
@@ -147,43 +147,43 @@ public class DashboardViewController {
 
         contentRoot.getChildren().removeAll(contentRoot.getChildren());
         contentRoot.getChildren().add(vehiclesContent);
-        setPageName(context.getResourceBundle().getString("page.title.vehicles"));
+        setPageName(context.getLocaleBundle().getString("page.title.vehicles"));
     }
 
     private void showOptions(){
-        setPageName(context.getResourceBundle().getString("page.title.options"));
+        setPageName(context.getLocaleBundle().getString("page.title.options"));
     }
 
     private void addDrawerButtons(){
 
-        drawerPane.addButton("travels", context.getResourceBundle().getString("drawer.text.trips"),
+        drawerPane.addButton("travels", context.getLocaleBundle().getString("drawer.text.trips"),
                 event -> {
                     showTrips();
                     drawer.close();
                 });
 
-        drawerPane.addButton("vehicles", context.getResourceBundle().getString("drawer.text.vehicles"),
+        drawerPane.addButton("vehicles", context.getLocaleBundle().getString("drawer.text.vehicles"),
                 event -> {
                     showVehicles();
                     drawer.close();
                 });
 
-        drawerPane.addButton("clients", context.getResourceBundle().getString("drawer.text.clients"),
+        drawerPane.addButton("clients", context.getLocaleBundle().getString("drawer.text.clients"),
                 event -> {
                     showUsers();
                     drawer.close();
                 });
 
-        drawerPane.addButton("options", context.getResourceBundle().getString("drawer.text.options"),
+        drawerPane.addButton("options", context.getLocaleBundle().getString("drawer.text.options"),
                 event -> {
                     showOptions();
                     drawer.close();
                 });
 
-        drawerPane.addButton("logout", context.getResourceBundle().getString("drawer.text.logout"),
+        drawerPane.addButton("logout", context.getLocaleBundle().getString("drawer.text.logout"),
                 event -> doLogout());
 
-        drawerPane.addButton("exit", context.getResourceBundle().getString("drawer.text.exit"),
+        drawerPane.addButton("exit", context.getLocaleBundle().getString("drawer.text.exit"),
                 event -> Platform.exit());
     }
 

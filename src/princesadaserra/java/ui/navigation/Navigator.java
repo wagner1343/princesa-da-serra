@@ -8,7 +8,6 @@ import princesadaserra.java.ui.controller.ScenesTypes;
 import princesadaserra.java.util.context.AppContext;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 public class Navigator {
     private Stage stage;
@@ -36,7 +35,7 @@ public class Navigator {
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
         Parent nextRoot;
         try {
-            fxmlLoader = new FXMLLoader(getClass().getResource(sceneType.getPath()), context.getResourceBundle());
+            fxmlLoader = new FXMLLoader(getClass().getResource(sceneType.getPath()), context.getLocaleBundle());
             fxmlLoader.setController(controller);
             nextRoot = fxmlLoader.load();
 
