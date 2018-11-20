@@ -1,82 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="root" id="root" cacheHint="SPEED" maxHeight="-Infinity"
-            maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@Login.css"
-            xmlns="http://javafx.com/javafx/10.0.1">
-    <HBox alignment="CENTER" cacheHint="SPEED" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0"
-          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <VBox cacheHint="SPEED">
-            <AnchorPane cacheHint="SPEED" prefHeight="600.0" prefWidth="412.0">
-                <AnchorPane cacheHint="SPEED" prefHeight="48.0" prefWidth="400.0"
-                            style="-fx-background-color: #8AE664a6; -fx-background-radius: 0;"
-                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                            AnchorPane.topAnchor="0.0">
-                    <effect>
-                        <DropShadow color="#00000036" height="12.1" offsetY="1.5" radius="5.55" width="12.1"/>
-                    </effect>
-                    <Text cache="true" cacheHint="SPEED" fill="WHITE" layoutX="55.0" layoutY="41.0"
-                          strokeType="OUTSIDE" strokeWidth="0.0" text="Princesa da Serra">
-                        <font>
-                            <Font name="Segoe UI" size="40.0"/>
-                        </font>
-                        <effect>
-                            <Glow level="0.47"/>
-                        </effect>
-                    </Text>
-                </AnchorPane>
-                <AnchorPane cacheHint="SPEED" layoutX="11.0" layoutY="357.0" minHeight="0.0" minWidth="0.0"
-                            prefHeight="240.0" prefWidth="400.0"
-                            style="-fx-background-color: #8AE664a6; -fx-background-radius: 0;"
-                            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                            AnchorPane.rightAnchor="0.0">
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <effect>
-                        <DropShadow blurType="GAUSSIAN" color="#0000007f" height="25.62" offsetY="2.0"
-                                    radius="12.58" spread="0.15" width="26.7"/>
-                    </effect>
-                    <AnchorPane fx:id="loginPane" cacheHint="SPEED" layoutX="81.0" layoutY="48.0"
-                                maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                minWidth="-Infinity" prefHeight="144.0" prefWidth="251.0"
-                                style="-fx-background-radius: 5; -fx-background-color: white;">
-                        <effect>
-                            <DropShadow color="#00000035" height="30.94" offsetY="3.0"
-                                        radius="15.942499999999999" width="34.83"/>
-                        </effect>
-                        <JFXTextField fx:id="userTextField" cacheHint="SPEED" focusColor="#757575"
-                                      layoutX="37.0" layoutY="16.0" maxHeight="-Infinity"
-                                      maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                      prefHeight="21.0" prefWidth="180.0" promptText="%textfield.user.prompt"
-                                      unFocusColor="#00000061"/>
-                        <JFXPasswordField fx:id="passwordTextField" cacheHint="SPEED" focusColor="#757575"
-                                          layoutX="37.0" layoutY="48.0" maxHeight="-Infinity"
-                                          maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                                          prefHeight="25.0" prefWidth="180.0"
-                                          promptText="%textfield.password.prompt" unFocusColor="#00000061"/>
-                        <JFXButton fx:id="loginButton" cacheHint="SPEED" layoutX="20.0" layoutY="93.0"
-                                   maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-                                   minWidth="-Infinity" prefHeight="32.0"
-                                   prefWidth="208.0"
-                                   style="-fx-background-color: #C4FF39; -fx-background-radius: 5;"
-                                   text="%button.username.text" textFill="WHITE">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                        </JFXButton>
-                    </AnchorPane>
-                </AnchorPane>
+<?import javafx.scene.control.ComboBox?>
+<AnchorPane id="root" fx:id="root" cacheHint="SPEED" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="root" stylesheets="@Login.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox alignment="CENTER" cacheHint="SPEED" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="2196.0" VBox.vgrow="SOMETIMES">
+               <children>
+                      <AnchorPane cacheHint="SPEED" layoutX="5.0" layoutY="6.1640625" prefHeight="48.0" prefWidth="400.0" style="-fx-background-color: #8AE664a6; -fx-background-radius: 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <effect>
+                              <DropShadow color="#00000036" height="12.1" offsetY="1.5" radius="5.55" width="12.1" />
+                          </effect>
+                          <Text cache="true" cacheHint="SPEED" fill="WHITE" layoutX="55.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Princesa da Serra">
+                              <font>
+                                  <Font name="Segoe UI" size="40.0" />
+                              </font>
+                              <effect>
+                                  <Glow level="0.47" />
+                              </effect>
+                          </Text>
+                      </AnchorPane>
+               </children>
             </AnchorPane>
-        </VBox>
+            <AnchorPane prefHeight="2196.0" VBox.vgrow="ALWAYS">
+               <children>
+                      <AnchorPane cacheHint="SPEED" layoutX="13.0" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="248.0" prefWidth="400.0" style="-fx-background-color: #8AE664a6; -fx-background-radius: 0;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <opaqueInsets>
+                              <Insets />
+                          </opaqueInsets>
+                          <effect>
+                              <DropShadow blurType="GAUSSIAN" color="#0000007f" height="25.62" offsetY="2.0" radius="12.58" spread="0.15" width="26.7" />
+                          </effect>
+                          <AnchorPane fx:id="loginPane" cacheHint="SPEED" layoutX="81.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="251.0" style="-fx-background-radius: 5; -fx-background-color: white;">
+                              <effect>
+                                  <DropShadow color="#00000035" height="30.94" offsetY="3.0" radius="15.942499999999999" width="34.83" />
+                              </effect>
+                              <JFXTextField fx:id="userTextField" cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="16.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="21.0" prefWidth="180.0" promptText="%textfield.user.prompt" unFocusColor="#00000061" />
+                              <JFXPasswordField fx:id="passwordTextField" cacheHint="SPEED" focusColor="#757575" layoutX="37.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" promptText="%textfield.password.prompt" unFocusColor="#00000061" />
+                              <JFXButton fx:id="loginButton" cacheHint="SPEED" layoutX="20.0" layoutY="93.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="208.0" style="-fx-background-color: #C4FF39; -fx-background-radius: 5;" text="%button.login.text" textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </JFXButton>
+                          </AnchorPane>
+                      </AnchorPane>
+               </children>
+            </AnchorPane>
+            <JFXComboBox fx:id="languageComboBox" prefHeight="25.0" prefWidth="73.0" promptText="Language" styleClass="input" stylesheets="@Login.css">
+               <padding>
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+               </padding>
+            </JFXComboBox>
+         </children>
+      </VBox>
     </HBox>
 </AnchorPane>
