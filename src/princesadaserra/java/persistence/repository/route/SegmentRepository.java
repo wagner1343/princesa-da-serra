@@ -44,12 +44,29 @@ public class SegmentRepository implements Repository<Segment, Long> {
         return segment;
     }
 
-    public List<Segment> findByCity(Long key){
+    public List<Segment> findByCityArrival(Long key){
 
         List<Segment> segments = new ArrayList<>();
         try(Connection conn = getConnection()){
 
-            ResultSet rs = SQLQueries.findByCity(conn, key).executeQuery();
+            ResultSet rs = SQLQueries.findByCityArrival(conn, key).executeQuery();
+            while(rs.next())
+                segments.add((mapper.map(rs)));
+
+        } catch(SQLException e){
+
+            e.printStackTrace();
+        }
+
+        return segments;
+    }
+
+    public List<Segment> findByCitySail(Long key){
+
+        List<Segment> segments = new ArrayList<>();
+        try(Connection conn = getConnection()){
+
+            ResultSet rs = SQLQueries.findByCitySail(conn, key).executeQuery();
             while(rs.next())
                 segments.add((mapper.map(rs)));
 
@@ -133,13 +150,22 @@ public class SegmentRepository implements Repository<Segment, Long> {
         private static final String UPDATE_SEGMENT = "UPDATE segments SET estimatedTime = ?, value = ? where id_segment = ?";
         private static final String SELECT_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where id_segment = ?";
         private static final String SELECT_ALL_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city";
-        private static final String SELECT_BY_CITY_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where id_citySail = ? or id_cityArrival = ?";
+        private static final String SELECT_BY_CITY_ARRIVAL_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where id_cityArrival = ?";
+        private static final String SELECT_BY_CITY_SAIL_SEGMENT = "SELECT *, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from segments s join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where id_citySail = ?";
 
-        public static PreparedStatement findByCity(Connection conn, Long key) throws SQLException{
 
-            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_BY_CITY_SEGMENT);
+        public static PreparedStatement findByCityArrival(Connection conn, Long key) throws SQLException{
+
+            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_BY_CITY_ARRIVAL_SEGMENT);
             stmt.setLong(1, key);
-            stmt.setLong(2, key);
+
+            return stmt;
+        }
+
+        public static PreparedStatement findByCitySail(Connection conn, Long key) throws SQLException{
+
+            PreparedStatement stmt = conn.prepareStatement(SQLQueries.SELECT_BY_CITY_SAIL_SEGMENT);
+            stmt.setLong(1, key);
 
             return stmt;
         }
@@ -152,7 +178,7 @@ public class SegmentRepository implements Repository<Segment, Long> {
         public static PreparedStatement update(Connection conn, Segment segment) throws SQLException{
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_SEGMENT);
-            statement.setInt(1, segment.getTime());
+            statement.setTime(1, segment.getTime());
             statement.setDouble(2, segment.getValue());
             statement.setLong(3, segment.getId());
 
@@ -172,7 +198,7 @@ public class SegmentRepository implements Repository<Segment, Long> {
             PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_SEGMENT);
             statement.setLong(1, segment.getCityOrigin().getId());
             statement.setLong(2, segment.getCityDestination().getId());
-            statement.setInt(3, segment.getTime());
+            statement.setTime(3, segment.getTime());
             statement.setDouble(4, segment.getValue());
 
             return statement;

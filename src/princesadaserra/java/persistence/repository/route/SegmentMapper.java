@@ -22,11 +22,11 @@ public class SegmentMapper implements Mapper<ResultSet, Segment>{
             cityA = new City();
 
             segment.setId(result.getLong("id_segment"));
-            cityS.setId(result.getLong("id_citys"));
+            cityS.setId(result.getLong("id_cityS"));
             cityS.setName(result.getString("names"));
-            cityA.setId(result.getLong("id_citia"));
+            cityA.setId(result.getLong("id_cityA"));
             cityA.setName(result.getString("namea"));
-            segment.setTime(result.getInt("estimatedTime"));
+            segment.setTime(result.getTime("estimatedTime"));
             segment.setValue(result.getDouble("value"));
             segment.setCityDestination(cityA);
             segment.setCityOrigin(cityS);

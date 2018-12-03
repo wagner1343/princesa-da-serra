@@ -1,6 +1,7 @@
 package princesadaserra.java.persistence.repository.route;
 
 import princesadaserra.java.core.route.Route;
+import princesadaserra.java.core.route.Segment;
 import princesadaserra.java.util.mapping.Mapper;
 
 import java.sql.ResultSet;
@@ -25,4 +26,5 @@ public class RouteMapper implements Mapper<ResultSet, Route>{
         }
         return route;
     }
+
 }
