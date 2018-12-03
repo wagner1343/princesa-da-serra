@@ -15,7 +15,7 @@
    <children>
       <AnchorPane maxHeight="-Infinity" prefHeight="36.0" prefWidth="802.0" style="-fx-background-color: white; -fx-background-radius: 5;" VBox.vgrow="NEVER">
          <children>
-            <JFXButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="16.0" prefWidth="802.0" style="-fx-background-color: white; -fx-background-radius: 5;" text="Adicionar usuário" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <JFXButton fx:id="addUserButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="16.0" prefWidth="802.0" style="-fx-background-color: white; -fx-background-radius: 5;" text="Adicionar usuário" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
          <effect>
             <DropShadow color="#0000004d" height="30.0" radius="14.5" spread="0.3" width="30.0" />

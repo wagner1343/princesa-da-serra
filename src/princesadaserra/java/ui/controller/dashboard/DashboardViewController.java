@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.controller.View;
+import princesadaserra.java.ui.controller.dashboard.content.UsersContentController;
 import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
@@ -108,7 +109,8 @@ public class DashboardViewController {
     private void showUsers(){
         if(usersContent == null) {
             try {
-                usersContent = (Pane) context.getNavigator().loadView(View.USERS_CONTENT);
+                usersContent = (Pane) context.getNavigator()
+                        .loadView(View.USERS_CONTENT, new UsersContentController(context, dataSource), context);
             } catch (IOException e) {
                 e.printStackTrace();
             }
