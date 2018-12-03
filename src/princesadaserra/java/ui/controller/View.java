@@ -1,6 +1,6 @@
 package princesadaserra.java.ui.controller;
 
-public enum Views {
+public enum View {
     REGISTER_USER_POPUP,
     TRIPS_CONTENT,
     USERS_CONTENT,

@@ -5,7 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import princesadaserra.java.ui.controller.Views;
+import princesadaserra.java.ui.controller.View;
 import princesadaserra.java.ui.controller.dashboard.DashboardViewController;
 import princesadaserra.java.usecases.auth.LoginWithUserAndPassword;
 import princesadaserra.java.util.context.AppContext;
@@ -68,7 +68,7 @@ public class LoginViewController {
     public void languageComboBoxValueChanged(ObservableValue<? extends String> observable, String oldValue, String newValue) {
         System.out.println("newValue.getText() = " + newValue);
         context.setLocale(new Locale(newValue));
-        context.getNavigator().navigateTo(Views.LOGIN, new LoginViewController(context, getState()));
+        context.getNavigator().navigateTo(View.LOGIN, new LoginViewController(context, getState()));
     }
 
     public void loginOnClick(ActionEvent event){
@@ -80,7 +80,7 @@ public class LoginViewController {
         LoginWithUserAndPassword loginTask = new LoginWithUserAndPassword(user, password);
 
         loginTask.addOnSuccessCallback(
-                connectionPool -> context.getNavigator().navigateTo(Views.DASHBOARD, new DashboardViewController(context, connectionPool, user))
+                connectionPool -> context.getNavigator().navigateTo(View.DASHBOARD, new DashboardViewController(context, connectionPool, user))
         );
 
         loginTask.addOnFailedCallback(
