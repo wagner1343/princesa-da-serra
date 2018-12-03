@@ -127,7 +127,7 @@ public class BusRepository implements Repository<Bus, Long> {
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_BUS);
             statement.setLong(1, bus.getModel().getId());
-            statement.setDate(2, bus.getLastMaintenance());
+            statement.setTime(2, bus.getLastMaintenance());
             statement.setLong(3, bus.getId());
 
             return statement;
@@ -145,7 +145,7 @@ public class BusRepository implements Repository<Bus, Long> {
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_BUS);
             statement.setLong(1, bus.getModel().getId());
-            statement.setDate(2, bus.getLastMaintenance());
+            statement.setTime(2, bus.getLastMaintenance());
 
             return statement;
         }

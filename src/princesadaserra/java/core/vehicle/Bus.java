@@ -1,12 +1,12 @@
 package princesadaserra.java.core.vehicle;
 
-import java.sql.Date;
+import java.sql.Time;
 
 public class Bus {
 
     private Long id;
     private Model model;
-    private Date lastMaintenance;
+    private Time lastMaintenance;
 
     public Long getId() {
         return id;
@@ -24,11 +24,11 @@ public class Bus {
         this.model = model;
     }
 
-    public Date getLastMaintenance() {
+    public Time getLastMaintenance() {
         return lastMaintenance;
     }
 
-    public void setLastMaintenance(Date lastMaintenance) {
+    public void setLastMaintenance(Time lastMaintenance) {
         this.lastMaintenance = lastMaintenance;
     }
 }
