@@ -14,8 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//FIXME TEM Q VER COMO VAI FAZER A PARTE DE PROCURAR POR SEGMENTO DE PARTIDA E SAIDA. VER EM OUTRAS CLASSES TAMBEM
-
 public class RouteRepository implements Repository<Route, Long> {
 
     RouteMapper mapper;
