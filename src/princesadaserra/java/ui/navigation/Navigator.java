@@ -6,7 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import princesadaserra.java.ui.controller.View;
-import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.util.context.AppContext;
 
 import java.io.IOException;
@@ -28,22 +27,23 @@ public class Navigator {
         if (!stage.isShowing()) stage.show();
     }
 
-    public void reload(){
+    public void reload() {
         navigateTo(lastScenetype, lastController);
     }
 
-    public void navigateTo(View sceneType){
+    public void navigateTo(View sceneType) {
         navigateTo(sceneType, null);
     }
 
     public Parent loadView(View view, Object controller, AppContext context) throws IOException {
         fxmlLoader = new FXMLLoader(getClass().getResource(view.getPath()), context.getLocaleBundle());
         fxmlLoader.setController(controller);
-        return  fxmlLoader.load();
+        return fxmlLoader.load();
     }
-    public void navigateTo(View sceneType, Object controller) {
 
+    public void navigateTo(View sceneType, Object controller) {
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
+
         try {
             rootScene.setRoot(loadView(sceneType, controller, context));
             lastScenetype = sceneType;
@@ -51,7 +51,5 @@ public class Navigator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }
