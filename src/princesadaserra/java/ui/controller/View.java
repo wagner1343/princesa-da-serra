@@ -21,7 +21,7 @@ public enum View {
             case VEHICLES_CONTENT:
                 return "/view/dashboard/content/vehicles/VehiclesContent.fxml";
             case REGISTER_USER_POPUP:
-                return "/view/popups/RegisterUserPopup.fxml";
+                return "/view/dashboard/content/users/UserRegisterPane.fxml";
             default:
                 return null;
         }

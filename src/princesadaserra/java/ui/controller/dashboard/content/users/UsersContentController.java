@@ -1,4 +1,4 @@
-package princesadaserra.java.ui.controller.dashboard.content;
+package princesadaserra.java.ui.controller.dashboard.content.users;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -10,6 +10,7 @@ import princesadaserra.java.util.context.AppContext;
 import javax.sql.ConnectionPoolDataSource;
 import java.io.IOException;
 
+// TODO finish implementing TripsRegisterPaneController
 public class UsersContentController {
     @FXML
     private JFXButton addUserButton;

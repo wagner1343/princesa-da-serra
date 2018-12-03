@@ -46,7 +46,7 @@
                                  </HBox.margin>
                               </JFXTextField>
                               <JFXTextField prefHeight="31.0" prefWidth="33.0" text="Ano" />
-                              <JFXButton mnemonicParsing="false" text="Adicionar Modelo">
+                              <JFXButton fx:id="AddModelButton" mnemonicParsing="false" text="Adicionar Modelo">
                                  <HBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </HBox.margin>
@@ -73,7 +73,7 @@
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </HBox.margin>
                               </JFXComboBox>
-                              <JFXButton mnemonicParsing="false" text="Adicionar Veiculo">
+                              <JFXButton fx:id="AddVehicleButton" mnemonicParsing="false" text="Adicionar Veiculo">
                                  <HBox.margin>
                                     <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                                  </HBox.margin>
@@ -133,7 +133,6 @@
                   <TableColumn maxWidth="1000.0" prefWidth="75.0" text="Assentos" />
                   <TableColumn maxWidth="1000.0" minWidth="-Infinity" prefWidth="75.0" text="Eixos" />
                   <TableColumn maxWidth="1000.0" prefWidth="75.0" text="Ano" />
-                  <TableColumn maxWidth="1000.0" prefWidth="118.0" text="Modelo" />
                   <TableColumn maxWidth="2000.0" prefWidth="118.0" text="Manutenção" />
                </columns>
                <columnResizePolicy>

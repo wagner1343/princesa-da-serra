@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.controller.View;
-import princesadaserra.java.ui.controller.dashboard.content.UsersContentController;
+import princesadaserra.java.ui.controller.dashboard.content.users.UsersContentController;
 import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
@@ -124,7 +124,7 @@ public class DashboardViewController {
     private void showTrips(){
         if(tripsContent == null) {
             try {
-                tripsContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/tripsales/TripSalesContent.fxml"));
+                tripsContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/trips/TripsContent.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
