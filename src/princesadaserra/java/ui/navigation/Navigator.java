@@ -40,6 +40,10 @@ public class Navigator {
         return fxmlLoader.load();
     }
 
+    public Parent loadView(View view) throws IOException {
+        return loadView(view, null, context);
+    }
+
     public void navigateTo(View sceneType, Object controller) {
         System.out.println("Navigator.navigateTo:" + "sceneType = [" + sceneType + "]");
 

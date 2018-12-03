@@ -108,16 +108,15 @@ public class DashboardViewController {
     private void showUsers(){
         if(usersContent == null) {
             try {
-                usersContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/users/UsersContent.fxml"));
+                usersContent = (Pane) context.getNavigator().loadView(View.USERS_CONTENT);
             } catch (IOException e) {
                 e.printStackTrace();
-                return;
             }
         }
 
         contentRoot.getChildren().removeAll(contentRoot.getChildren());
         contentRoot.getChildren().add(usersContent);
-        setPageName(context.getLocaleBundle().getString("page.title.clients"));
+        setPageName(context.getLocaleBundle().getString("page.title.users"));
     }
 
     private void showTrips(){
@@ -168,7 +167,7 @@ public class DashboardViewController {
                     drawer.close();
                 });
 
-        drawerPane.addButton("clients", context.getLocaleBundle().getString("drawer.text.clients"),
+        drawerPane.addButton("clients", context.getLocaleBundle().getString("drawer.text.users"),
                 event -> {
                     showUsers();
                     drawer.close();
