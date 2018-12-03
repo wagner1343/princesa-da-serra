@@ -9,7 +9,6 @@ import princesadaserra.java.ui.controller.View;
 import princesadaserra.java.util.context.AppContext;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 public class Navigator {
     private Scene rootScene;
