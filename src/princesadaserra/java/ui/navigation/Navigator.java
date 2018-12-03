@@ -39,7 +39,6 @@ public class Navigator {
     public Parent loadView(View view, Object controller, AppContext context) throws IOException {
         fxmlLoader = new FXMLLoader(getClass().getResource(view.getPath()), context.getLocaleBundle());
         fxmlLoader.setController(controller);
-        System.out.println("context == null = " + context == null);
         return  fxmlLoader.load();
     }
     public void navigateTo(View sceneType, Object controller) {
