@@ -53,4 +53,9 @@ public class Segment {
     public boolean connectsTo(Segment other) {
         return getCityDestination().getId() == other.getCityOrigin().getId();
     }
+
+    @Override
+    public String toString() {
+        return cityOrigin + " - " + cityDestination + ", " + value;
+    }
 }

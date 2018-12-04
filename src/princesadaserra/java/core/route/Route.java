@@ -1,5 +1,6 @@
 package princesadaserra.java.core.route;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Route {
@@ -8,33 +9,40 @@ public class Route {
     private String name;
     private List<Segment> segments;
 
-    public int findCityStart(City start){ //retorna o indice do vetor de segmentos que representa a posição do banco, para respeitar a ordem dos segmentos
+    public Route(){
+        segments = new ArrayList<>();
+    }
 
-        for(int x = 0; x < segments.size(); x++)
-            if(segments.get(x).getCityOrigin().getId() == start.getId())
+    public int findCityStart(City start) { //retorna o indice do vetor de segmentos que representa a posição do banco, para respeitar a ordem dos segmentos
+
+        for (int x = 0; x < segments.size(); x++)
+            if (segments.get(x).getCityOrigin().getId() == start.getId())
                 return x;
 
         return -1;
     }
 
-    public int findCityFinish(City finish){ //retorna o indice do vetor de segmentos que representa a posição do banco, para respeitar a ordem dos segmentos
+    public int findCityFinish(City finish) { //retorna o indice do vetor de segmentos que representa a posição do banco, para respeitar a ordem dos segmentos
 
-        for(int x = 0; x < segments.size(); x++)
-            if(segments.get(x).getCityDestination().getId() == finish.getId())
+        for (int x = 0; x < segments.size(); x++)
+            if (segments.get(x).getCityDestination().getId() == finish.getId())
                 return x;
 
         return -1;
     }
 
     public boolean addSegment(Segment segment) {
-        boolean result;
 
-        if (result = isEmpty())
-            segments.add(segment);
-        else if (result = getLastSegment().connectsTo(segment))
-            segments.add(segment);
+        return segments.add(segment);
+    }
 
-        return result;
+    public long getTime() {
+        long sum = 0;
+        for (Segment s : segments) {
+            sum += s.getTime().getTime();
+        }
+
+        return sum;
     }
 
     public boolean removeLastSegment() {
@@ -54,6 +62,16 @@ public class Route {
             return segments.get(segments.size() - 1);
         else
             return null;
+    }
+
+    public double getValue(){
+        double sum = 0;
+
+        for(Segment s : segments){
+            sum += s.getValue();
+        }
+
+        return sum;
     }
 
     public City[] getCities() {
@@ -116,5 +134,10 @@ public class Route {
 
     public void setSegments(List<Segment> segments) {
         this.segments = segments;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

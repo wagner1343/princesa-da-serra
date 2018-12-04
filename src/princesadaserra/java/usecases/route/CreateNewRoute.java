@@ -5,12 +5,14 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.route.RouteRepository;
 import princesadaserra.java.util.threading.Task;
 
+import javax.sql.ConnectionPoolDataSource;
+
 public class CreateNewRoute extends Task<String, Boolean, Integer> {
 
-    private PDSDatabaseConnectionPool connectionPool = null;
+    private ConnectionPoolDataSource connectionPool = null;
     private Route route = null;
 
-    public CreateNewRoute(PDSDatabaseConnectionPool connectionPool, Route route){
+    public CreateNewRoute(ConnectionPoolDataSource connectionPool, Route route){
 
         this.connectionPool = connectionPool;
         this.route = route;

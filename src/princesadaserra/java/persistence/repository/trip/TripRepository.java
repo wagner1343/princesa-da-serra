@@ -123,7 +123,7 @@ public class TripRepository implements Repository<Trip, Long> {
     }
 
     private static class SQLQueries {
-        private static final String INSERT_TRIP = "INSERT INTO trips (dateSail, estimatedArrivalDate, /*id_user_driver, */id_bus, id_route) VALUES(?, ?, /*?, */?, ?)";
+        private static final String INSERT_TRIP = "INSERT INTO trips (dateSail, estimatedArrivalDate,id_user_driver, id_bus, id_route) VALUES(?, ?, ?, ?, ?)";
         private static final String DELETE_TRIP = "DELETE FROM trips WHERE id_trip = ?";
         private static final String UPDATE_TRIP = "UPDATE trips set dateSail = ?, estimatedArrivalDate = ?, id_user_driver = ?, id_bus = ?, id_route = ? where id_trip = ?";
         private static final String UPDATE_FINISH_DATE_TRIP = "UPDATE trips set dateArrival = ? where id_trip = ?";
@@ -138,7 +138,7 @@ public class TripRepository implements Repository<Trip, Long> {
         public static PreparedStatement updateFinish(Connection conn, Trip trip) throws SQLException{
 
             PreparedStatement stmt =  conn.prepareStatement(SQLQueries.UPDATE_FINISH_DATE_TRIP);
-            stmt.setTime(1, trip.getTimeFinish());
+            stmt.setTimestamp(1, trip.getTimeFinish());
             stmt.setLong(2, trip.getId());
 
             return stmt;
@@ -147,8 +147,8 @@ public class TripRepository implements Repository<Trip, Long> {
         public static PreparedStatement update(Connection conn, Trip trip) throws SQLException{
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_TRIP);
-            statement.setTime(1, trip.getTimeStart());
-            statement.setTime(2, trip.getTimeExpected());
+            statement.setTimestamp(1, trip.getTimeStart());
+            statement.setTimestamp(2, trip.getTimeExpected());
             statement.setLong(3, trip.getDriver().getId());
             statement.setLong(4, trip.getBus().getId());
             statement.setLong(5, trip.getRoute().getId());
@@ -168,11 +168,12 @@ public class TripRepository implements Repository<Trip, Long> {
         public static PreparedStatement insert(Connection conn, Trip trip) throws SQLException{
 
             PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_TRIP);
-            statement.setTime(1, trip.getTimeStart());
-            statement.setTime(2, trip.getTimeExpected());
-            //statement.setLong(3, trip.getDriver().getId());
-            statement.setLong(3, trip.getBus().getId());
-            statement.setLong(4, trip.getRoute().getId());
+            statement.setTimestamp(1, trip.getTimeStart());
+            statement.setTimestamp(2, trip.getTimeExpected());
+            System.out.println("trip.getDriver() != null = " + trip.getDriver() != null);
+            statement.setLong(3, trip.getDriver().getId());
+            statement.setLong(4, trip.getBus().getId());
+            statement.setLong(5, trip.getRoute().getId());
 
             return statement;
         }

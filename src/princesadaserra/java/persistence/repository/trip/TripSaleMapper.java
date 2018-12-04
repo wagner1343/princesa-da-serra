@@ -61,9 +61,9 @@ public class TripSaleMapper implements Mapper<ResultSet, TripSale>{
             trip.setId(result.getLong("id_trip"));
             trip.setBus(bus);
             trip.setDriver(driver);
-            trip.setTimeExpected(result.getTime("estimatedarrivaltime"));
-            trip.setTimeFinish(result.getTime("datearrival"));
-            trip.setTimeStart(result.getTime("datesail"));
+            trip.setTimeExpected(result.getTimestamp("estimatedarrivaltime"));
+            trip.setTimeFinish(result.getTimestamp("datearrival"));
+            trip.setTimeStart(result.getTimestamp("datesail"));
             route.setId(result.getLong("id_route"));
             route.setName(result.getString("namer"));
             trip.setRoute(route);

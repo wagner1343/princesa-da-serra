@@ -5,14 +5,15 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.vehicle.BusRepository;
 import princesadaserra.java.util.threading.Task;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoadAllBuses extends Task<Boolean, List<Bus>, Integer> {
 
-    private PDSDatabaseConnectionPool connectionPool = null;
+    private ConnectionPoolDataSource connectionPool = null;
 
-    public LoadAllBuses(PDSDatabaseConnectionPool connectionPool){
+    public LoadAllBuses(ConnectionPoolDataSource connectionPool){
 
         this.connectionPool = connectionPool;
     }

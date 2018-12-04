@@ -6,33 +6,38 @@ import princesadaserra.java.persistence.repository.trip.TripRepository;
 import princesadaserra.java.util.threading.Task;
 
 import javax.sql.ConnectionPoolDataSource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class CreateNewTrip extends Task<String, Boolean, Integer> {
+public class LoadTripsBySpecification extends Task<Boolean, List<Trip>, Integer> {
 
     private ConnectionPoolDataSource connectionPool = null;
-    private Trip trip = null;
+    private Predicate<Trip>[] predicates;
 
-    public CreateNewTrip(ConnectionPoolDataSource connectionPool, Trip trip){
-
+    public LoadTripsBySpecification(ConnectionPoolDataSource connectionPool, Predicate<Trip>[] predicates){
+        this.predicates = predicates;
         this.connectionPool = connectionPool;
-        this.trip = trip;
     }
 
     @Override
-    protected Boolean execute(String useless) {
+    protected List<Trip> execute(Boolean useless){
 
         TripRepository tripRepository = null;
+        List<Trip> trips = new ArrayList<>();
         try{
 
             tripRepository = new TripRepository(connectionPool);
-            tripRepository.add(trip);
-            System.out.println("Add trip success");
+            trips = tripRepository.list();
+            for(Predicate<Trip> p : predicates){
+                trips.removeIf(p);
+            }
+            System.out.println("List all trips success");
             setSuccess();
         } catch(Exception e){
 
             e.printStackTrace();
-            return false;
         }
-        return true;
+        return trips;
     }
 }

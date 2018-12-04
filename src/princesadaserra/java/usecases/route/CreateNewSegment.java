@@ -5,12 +5,14 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.route.SegmentRepository;
 import princesadaserra.java.util.threading.Task;
 
+import javax.sql.ConnectionPoolDataSource;
+
 public class CreateNewSegment extends Task<String, Boolean, Integer> {
 
-    private PDSDatabaseConnectionPool connectionPool = null;
+    private ConnectionPoolDataSource connectionPool = null;
     private Segment segment = null;
 
-    public CreateNewSegment(PDSDatabaseConnectionPool connectionPool, Segment segment){
+    public CreateNewSegment(ConnectionPoolDataSource connectionPool, Segment segment){
 
         this.connectionPool = connectionPool;
         this.segment = segment;

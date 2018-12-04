@@ -33,4 +33,9 @@ public class City {
         return Objects.equals(otherCity.getId(), this.getId()) && Objects.equals(otherCity.getName(), this.getName());
 
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

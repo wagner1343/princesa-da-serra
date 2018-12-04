@@ -5,6 +5,7 @@ package princesadaserra.java.ui.controller.dashboard.content.trips;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -14,10 +15,17 @@ import javafx.scene.layout.VBox;
 import princesadaserra.java.core.trip.Trip;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.ui.controller.View;
+import princesadaserra.java.usecases.trip.LoadTripsBySpecification;
 import princesadaserra.java.util.context.AppContext;
 
 import javax.sql.ConnectionPoolDataSource;
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
 public class TripsContentController {
     @FXML
@@ -42,19 +50,22 @@ public class TripsContentController {
     private JFXButton searchButton;
 
     @FXML
-    private TableView<Trip> tripTableView;
+    private TableView<Trip> tripsTable;
 
     @FXML
     private TableColumn<Trip, String> originCol;
 
     @FXML
-    private TableColumn<Trip, String> destnyCol;
+    private TableColumn<Trip, String> destinyCol;
 
     @FXML
     private TableColumn<Trip, String> priceCol;
 
     @FXML
     private TableColumn<Trip, String> freeSeatsCol;
+
+    @FXML
+    private JFXTextField priceTextField;
 
     private Parent tripsRegisterPane;
     private boolean tripsRegisterPaneIsShowing;
@@ -84,8 +95,60 @@ public class TripsContentController {
         else {
             manageTripsButton.setOnAction(this::manageTripsButtonOnAction);
         }
+
+        searchButton.setOnAction(this::searchButtonOnAction);
+
+        initTable();
     }
 
+    private void searchButtonOnAction(ActionEvent event) {
+        LoadTripsBySpecification bySpecification = new LoadTripsBySpecification(dataSource, getPredicates());
+        bySpecification.addOnSuccessCallback(trips -> {
+            tripsTable.getItems().removeAll(tripsTable.getItems());
+            tripsTable.getItems().addAll(trips);
+        });
+
+        bySpecification.start();
+    }
+
+    public Predicate<Trip>[] getPredicates(){
+        List<Predicate<Trip>> predicates = new ArrayList<>();
+
+        if(!originTextField.getText().equals("")){
+            predicates.add(trip -> !trip.getRoute().getFirstCity().getName().equals(originTextField.getText()));
+        }
+
+        if(!destinyTextField.getText().equals("")){
+            predicates.add(trip -> !trip.getRoute().getLastCity().getName().equals(destinyTextField.getText()));
+        }
+
+        if(datePicker.getValue() != null){
+            predicates.add(trip -> !trip.getTimeStart().before(Date.from(datePicker.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant())));
+        }
+
+        if(!priceTextField.getText().equals("")){
+            predicates.add(trip -> trip.getRoute().getValue() <= Double.parseDouble(priceTextField.getText()));
+        }
+
+        Predicate<Trip>[] preds = new Predicate[predicates.size()];
+
+        for(int x = 0; x < preds.length; x++){
+            preds[x] = predicates.get(x);
+        }
+
+        return preds;
+    }
+
+    private void initTable(){
+        System.out.println("originCol == null = " + originCol == null);
+        originCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRoute().getFirstCity().getName()));
+        destinyCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getRoute().getLastCity().getName()));
+        priceCol.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(data.getValue().getRoute().getValue())));
+        freeSeatsCol.setCellValueFactory(
+                data -> new SimpleStringProperty(String.valueOf(
+                        data.getValue().emptySeats(data.getValue().getRoute().getFirstCity(), data.getValue().getRoute().getLastCity())
+                )));
+    }
     private void manageTripsButtonOnAction(ActionEvent event) {
         if(tripsRegisterPaneIsShowing){
             manageTripsButton.setText("Gerenciar Viagens, Rotas, e Cidades");

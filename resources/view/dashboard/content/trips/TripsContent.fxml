@@ -41,7 +41,7 @@
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin></JFXTextField>
-                        <JFXTextField fx:id="timeTextField" layoutX="512.0" layoutY="44.0" prefHeight="31.0" prefWidth="76.0" promptText="hh:mm" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="44.0" HBox.hgrow="NEVER">
+                        <JFXTextField fx:id="priceTextField" layoutX="512.0" layoutY="44.0" prefHeight="31.0" prefWidth="76.0" promptText="preço" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="44.0" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin></JFXTextField>
