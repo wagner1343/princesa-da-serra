@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.repository.user.UserRepository;
 import princesadaserra.java.ui.controller.View;
+import princesadaserra.java.ui.controller.dashboard.content.trips.TripsContentController;
 import princesadaserra.java.ui.controller.dashboard.content.users.UsersContentController;
 import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.usecases.user.GetUserByUsername;
@@ -51,17 +52,22 @@ public class DashboardViewController {
     private GetUserByUsername getUserTask;
     private AppContext context;
     private UserRepository userRepository;
-    public DashboardViewController(AppContext context, ConnectionPoolDataSource dataSource, String username){
+    private String username;
+
+    public DashboardViewController(AppContext context, ConnectionPoolDataSource dataSource, String username) {
         this.context = context;
         this.dataSource = dataSource;
+        this.username = username;
         this.userRepository = new UserRepository(dataSource);
         getUserTask = new GetUserByUsername(userRepository, username);
 
-        getUserTask.addOnSuccessCallback(this::setSidePaneUserInfo);
+        getUserTask.addOnFinishCallback(user -> addSidePaneButtons(user));
+        getUserTask.addOnFinishCallback(user -> setSidePaneUserInfo(user));
+
     }
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         getUserTask.start();
 
         drawer = new JFXDrawer();
@@ -71,10 +77,10 @@ public class DashboardViewController {
 
         drawer.setSidePane(drawerPane);
         drawer.setDefaultDrawerSize(drawerPane.getPrefWidth());
-        drawer.setOnDrawerClosed( event -> drawersStack.toBack() );
+        drawer.setOnDrawerClosed(event -> drawersStack.toBack());
 
         drawersStack.addDrawer(drawer);
-        addDrawerButtons();
+
         menuButton.setOnMouseClicked(this::menuButtonOnClick);
 
         showTrips();
@@ -88,7 +94,15 @@ public class DashboardViewController {
             drawerPane.setUserInfo(new UserInfoAdapter() {
                 @Override
                 public Image getImage() {
-                    return new Image(user.getImageUrl());
+                    Image image = null;
+                    try{
+                        image = new Image(user.getImageUrl());
+                    }
+                    catch (IllegalArgumentException e){
+                        image = new Image("/img/profile/default.jpg");
+                        e.printStackTrace();
+                    }
+                    return image;
                 }
 
                 @Override
@@ -104,12 +118,12 @@ public class DashboardViewController {
         }
     }
 
-    private void setPageName(String name){
+    private void setPageName(String name) {
         appBarTitle.setText(name);
     }
 
-    private void showUsers(){
-        if(usersContent == null) {
+    private void showUsers() {
+        if (usersContent == null) {
             try {
                 usersContent = (Pane) context.getNavigator()
                         .loadView(View.USERS_CONTENT, new UsersContentController(context, dataSource), context);
@@ -123,10 +137,10 @@ public class DashboardViewController {
         setPageName(context.getLocaleBundle().getString("page.title.users"));
     }
 
-    private void showTrips(){
-        if(tripsContent == null) {
+    private void showTrips() {
+        if (tripsContent == null) {
             try {
-                tripsContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/trips/TripsContent.fxml"));
+                tripsContent = (Pane) context.getNavigator().loadView(View.TRIPS_CONTENT, new TripsContentController(dataSource, username), context);
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -138,8 +152,8 @@ public class DashboardViewController {
         setPageName(context.getLocaleBundle().getString("page.title.trips"));
     }
 
-    private void showVehicles(){
-        if(vehiclesContent == null) {
+    private void showVehicles() {
+        if (vehiclesContent == null) {
             try {
                 vehiclesContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/vehicles/VehiclesContent.fxml"));
             } catch (IOException e) {
@@ -153,30 +167,37 @@ public class DashboardViewController {
         setPageName(context.getLocaleBundle().getString("page.title.vehicles"));
     }
 
-    private void showOptions(){
+    private void showOptions() {
         setPageName(context.getLocaleBundle().getString("page.title.options"));
     }
 
-    private void addDrawerButtons(){
+    private void addSidePaneButtons(User user) {
+        System.out.println("DashboardViewController.addSidePaneButtons");
+        System.out.println("user == null = " + user == null);
+        System.out.println("user.getRole() == null = " + user.getRole() == null);
+        System.out.println("user.getRole().getName() == null = " + user.getRole().getName() == null);
 
-        drawerPane.addButton("travels", context.getLocaleBundle().getString("drawer.text.trips"),
-                event -> {
-                    showTrips();
-                    drawer.close();
-                });
+        if ( user.getRole().getName().equals("admin") || user.getRole().getName().equals("seller")) {
+            drawerPane.addButton("trips", context.getLocaleBundle().getString("drawer.text.trips"),
+                    event -> {
+                        showTrips();
+                        drawer.close();
+                    });
+        }
 
-        drawerPane.addButton("vehicles", context.getLocaleBundle().getString("drawer.text.vehicles"),
-                event -> {
-                    showVehicles();
-                    drawer.close();
-                });
+        if ( user.getRole().getName().equals("admin")) {
+            drawerPane.addButton("vehicles", context.getLocaleBundle().getString("drawer.text.vehicles"),
+                    event -> {
+                        showVehicles();
+                        drawer.close();
+                    });
 
-        drawerPane.addButton("clients", context.getLocaleBundle().getString("drawer.text.users"),
-                event -> {
-                    showUsers();
-                    drawer.close();
-                });
-
+            drawerPane.addButton("clients", context.getLocaleBundle().getString("drawer.text.users"),
+                    event -> {
+                        showUsers();
+                        drawer.close();
+                    });
+        }
         drawerPane.addButton("options", context.getLocaleBundle().getString("drawer.text.options"),
                 event -> {
                     showOptions();
@@ -190,17 +211,17 @@ public class DashboardViewController {
                 event -> Platform.exit());
     }
 
-    public void doLogout(){
+    public void doLogout() {
         System.out.println("DashboardViewController.doLogout");
         context.getNavigator().navigateTo(View.LOGIN, new LoginViewController(context));
     }
 
-    public void menuButtonOnClick(MouseEvent event){
+    public void menuButtonOnClick(MouseEvent event) {
         toggleDrawer();
     }
 
-    public void toggleDrawer(){
-        if(drawer.isClosed())
+    public void toggleDrawer() {
+        if (drawer.isClosed())
             drawersStack.toFront();
 
         drawer.toggle();

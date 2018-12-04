@@ -78,6 +78,9 @@ public class UserRepository implements Repository<User, Long> {
 
             if(result.next())
                 user = mapper.map(result);
+            else throw new SQLException();
+            System.out.println("UserRepository.find ok");
+            System.out.println("user = " + user);
         } catch (SQLException e) { e.printStackTrace(); }
 
         return user;
@@ -96,9 +99,12 @@ public class UserRepository implements Repository<User, Long> {
                 user.setId(getUserIdResult.getLong("usesysid"));
             else throw new SQLException();
 
-
+            if(user.getRole().getName().equals("admin")){
+                conn.createStatement().execute("ALTER USER " + user.getUsername() + " SUPERUSER ");
+            }
             System.out.println("execute = " + SQLQueries.insert(conn, user).execute());
             System.out.println("SQLQueries.insertUserRole(conn, user).execute() = " + SQLQueries.insertUserRole(conn, user).execute());
+
             System.out.println("user.getId() = " + user.getId());
             conn.commit();
         } catch (SQLException e) {
@@ -147,7 +153,7 @@ public class UserRepository implements Repository<User, Long> {
         private static final String DELETE_USER = "DELETE FROM users WHERE id_user = ?";
         private static final String UPDATE_USER = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
         private static final String SELECT_USER = "SELECT id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
-        private static final String SELECT_BY_NAME_USER = "SELECT user_name, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
+        private static final String SELECT_BY_NAME_USER = "SELECT user_name, users.id_user, first_name, last_name, email, phone, cpf, image_url, role, r.id_role from users join pg_user on users.user_name = pg_user.usename join users_roles ur on users.id_user = ur.id_user join roles r on r.id_role = ur.id_role where usename = ? LIMIT 1";
         private static final String SELECT_ALL_USER = "SELECT * from users";
         private static final String SELECT_ALL_ROLES = "SELECT * FROM roles";
 
