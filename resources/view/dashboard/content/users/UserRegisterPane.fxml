@@ -36,6 +36,11 @@
                </HBox>
                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                    <children>
+                  <JFXTextField fx:id="usernameTextField" promptText="Nome de usuário">
+                     <HBox.margin>
+                        <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                     </HBox.margin>
+                  </JFXTextField>
                        <JFXTextField fx:id="emailTextField" promptText="Email" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                                <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
@@ -55,7 +60,7 @@
                                <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </HBox.margin>
                   </JFXComboBox>
-                       <JFXTextField fx:id="cpfTextFIeld" prefHeight="25.0" prefWidth="180.0" promptText="CPF" HBox.hgrow="ALWAYS">
+                       <JFXTextField fx:id="cpfTextField" prefHeight="25.0" prefWidth="180.0" promptText="CPF" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                                <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                            </HBox.margin>

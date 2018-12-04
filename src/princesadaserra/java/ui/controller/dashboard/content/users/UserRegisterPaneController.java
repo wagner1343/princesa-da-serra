@@ -28,6 +28,9 @@ public class UserRegisterPaneController {
     private JFXTextField emailTextField;
 
     @FXML
+    private JFXTextField usernameTextField;
+
+    @FXML
     private JFXTextField phoneTextField;
 
     @FXML
@@ -58,18 +61,28 @@ public class UserRegisterPaneController {
     private GetAllRoles getAllRoles;
     public UserRegisterPaneController(ConnectionPoolDataSource dataSource){
         this.userRepository = new UserRepository(dataSource);
-        getAllRoles = new GetAllRoles(userRepository);
-        getAllRoles.addOnSuccessCallback(roles -> roleComboBox.getItems().addAll(roles));
+
     }
 
     @FXML
     public void initialize() {
-        getAllRoles.start();
+        updateRoles();
         registerButton.setOnAction(this::registerButtonOnAction);
         clearButton.setOnAction(this::clearButtonOnAction);
+        roleComboBox.setOnMouseClicked(event -> updateRoles());
         // todo implement roles list
     }
 
+    private void updateRoles(){
+
+        getAllRoles = new GetAllRoles(userRepository);
+        getAllRoles.addOnSuccessCallback(roles -> {
+            roleComboBox.getItems().removeAll(roleComboBox.getItems());
+            roleComboBox.getItems().addAll(roles);
+
+        });
+        getAllRoles.start();
+    }
     private void showInfo(String info){
         infoLabel.setText(info);
     }
@@ -86,13 +99,13 @@ public class UserRegisterPaneController {
         CreateNewUser createNewUser = new CreateNewUser(userRepository, getUser());
         createNewUser.addOnSuccessCallback(user -> showInfo("Usuário criado com sucesso!"));
         createNewUser.addOnFailedCallback(user -> showInfo("Erro durante o cadastro o usuário"));
+        createNewUser.start();
     }
 
     private User getUser(){
         User newUser = new User();
-        System.out.println("imageUrlTextField.getText() == null = " + imageUrlTextField.getText() == null);
         newUser.setImageUrl(imageUrlTextField.getText());
-        newUser.setUsername(emailTextField.getText());
+        newUser.setUsername(usernameTextField.getText());
         newUser.setFirstName(nameTextField.getText());
         newUser.setLastName(lastNameTextField.getText());
         newUser.setEmail(emailTextField.getText());

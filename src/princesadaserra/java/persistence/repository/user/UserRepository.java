@@ -142,8 +142,8 @@ public class UserRepository implements Repository<User, Long> {
     }
 
     private static class SQLQueries {
-        private static final String INSERT_USER = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
-        private static final String INSERT_USER_ROLE = "INSERT INTO user_roles (id_user, id_roles) VALUES (?, ?)";
+        private static final String INSERT_USER = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name, image_url) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+        private static final String INSERT_USER_ROLE = "INSERT INTO users_roles (id_user, id_role) VALUES (?, ?)";
         private static final String DELETE_USER = "DELETE FROM users WHERE id_user = ?";
         private static final String UPDATE_USER = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
         private static final String SELECT_USER = "SELECT id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
@@ -189,9 +189,11 @@ public class UserRepository implements Repository<User, Long> {
         }
 
         public static PreparedStatement createDatabaseUser(Connection conn, User user) throws SQLException {
-            return conn.prepareStatement(
-                    String.format("CREATE USER %s WITH PASSWORD '%s' IN ROLE %s",
-                            user.getUsername(), user.getPassword(), user.getRole().getName()));
+            String q = String.format("CREATE USER %s WITH PASSWORD '%s' IN ROLE %s",
+                    user.getUsername(), user.getPassword(), user.getRole().getName());
+            System.out.println("SQLQueries.createDatabaseUser");
+            System.out.println("q = " + q);
+            return conn.prepareStatement(q);
         }
 
         public static PreparedStatement findDatabaseUserByUsername(Connection conn, User user) throws SQLException {
@@ -210,6 +212,7 @@ public class UserRepository implements Repository<User, Long> {
             statement.setLong(5, user.getId());
             statement.setString(6, user.getUsername());
             statement.setString(7, user.getLastName());
+            if(user.getImageUrl() != null ) statement.setString(8, user.getImageUrl());
 
             return statement;
         }
