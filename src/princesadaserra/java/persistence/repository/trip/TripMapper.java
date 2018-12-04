@@ -38,7 +38,7 @@ public class TripMapper implements Mapper<ResultSet, Trip> {
             user.setLastName(result.getString("last_name"));
             user.setPhone(result.getString("phone"));
             bus.setId(result.getLong("id_bus"));
-            bus.setLastMaintenance(result.getTime("dateLastmaintenance"));
+            bus.setLastMaintenance(result.getDate("dateLastmaintenance"));
             route.setId(result.getLong("id_route"));
             route.setName(result.getString("name"));
             model.setId(result.getLong("id_model"));

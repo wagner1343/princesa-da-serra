@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="678.0" prefWidth="866.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root" alignment="TOP_CENTER" prefHeight="678.0" prefWidth="866.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <AnchorPane prefHeight="36.0" style="-fx-background-color: white; -fx-background-radius: 5;" VBox.vgrow="NEVER">
          <children>
@@ -25,11 +25,11 @@
             <children>
                 <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="87.0" prefWidth="625.0" style="-fx-border-radius: 0; -fx-background-radius: 5 5 0 0; -fx-background-color: #8AE664;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                        <JFXTextField fx:id="OriginTextField" layoutX="40.0" layoutY="9.0" minWidth="-Infinity" prefHeight="31.0" prefWidth="414.0" promptText="Origem" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="9.0" HBox.hgrow="ALWAYS">
+                        <JFXTextField fx:id="originTextField" layoutX="40.0" layoutY="9.0" minWidth="-Infinity" prefHeight="31.0" prefWidth="414.0" promptText="Origem" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="9.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin></JFXTextField>
-                  <JFXDatePicker prefHeight="31.0" prefWidth="128.0" promptText="dd/mm/aaaa" HBox.hgrow="NEVER">
+                  <JFXDatePicker fx:id="datePicker" prefHeight="31.0" prefWidth="128.0" promptText="dd/mm/aaaa" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin>
@@ -37,15 +37,15 @@
                         
                     </HBox>
                     <HBox alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0">
-                        <JFXTextField fx:id="DestinyTextField" layoutX="40.0" layoutY="44.0" prefWidth="414.0" promptText="Destino" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="44.0" HBox.hgrow="ALWAYS">
+                        <JFXTextField fx:id="destinyTextField" layoutX="40.0" layoutY="44.0" prefWidth="414.0" promptText="Destino" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="44.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin></JFXTextField>
-                        <JFXTextField fx:id="TimeTextField" layoutX="512.0" layoutY="44.0" prefHeight="31.0" prefWidth="76.0" promptText="hh:mm" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="44.0" HBox.hgrow="NEVER">
+                        <JFXTextField fx:id="timeTextField" layoutX="512.0" layoutY="44.0" prefHeight="31.0" prefWidth="76.0" promptText="hh:mm" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="44.0" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin></JFXTextField>
-                  <JFXButton mnemonicParsing="false" text="B">
+                  <JFXButton fx:id="searchButton" mnemonicParsing="false" text="Buscar">
                      <HBox.margin>
                         <Insets bottom="6.0" left="12.0" right="12.0" top="6.0" />
                      </HBox.margin>
@@ -55,12 +55,12 @@
                   <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                </padding>
                 </AnchorPane>
-                <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
+                <TableView fx:id="tripsTable" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="110.0">
                     <columns>
-                        <TableColumn maxWidth="1000.0" minWidth="-Infinity" prefWidth="75.0" text="Origem" />
-                        <TableColumn maxWidth="1000.0" prefWidth="75.0" text="Destino" />
-                        <TableColumn maxWidth="1000.0" prefWidth="118.0" text="Preço" />
-                        <TableColumn maxWidth="1000.0" prefWidth="177.0" text="Vagas" />
+                        <TableColumn fx:id="originCol" maxWidth="1000.0" minWidth="-Infinity" prefWidth="75.0" text="Origem" />
+                        <TableColumn fx:id="destinyCol" maxWidth="1000.0" prefWidth="75.0" text="Destino" />
+                        <TableColumn fx:id="priceCol" maxWidth="1000.0" prefWidth="118.0" text="Preço" />
+                        <TableColumn fx:id="freeSeatsCol" maxWidth="1000.0" prefWidth="177.0" text="Vagas" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

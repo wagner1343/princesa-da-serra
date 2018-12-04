@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class UserMapper implements Mapper<ResultSet, User> {
     @Override
     public User map(ResultSet result) {
-        System.out.println("UserMapper.map");
+
         User user = null;
 
         try {
@@ -22,7 +22,6 @@ public class UserMapper implements Mapper<ResultSet, User> {
             user.setPhone(result.getString("phone"));
             user.setCpf(result.getString("cpf"));
             user.setImageUrl(result.getString("image_url"));
-            System.out.println("UserMapper.map ok");
             user.setRole(new RoleMapper().map(result));
 
         } catch (SQLException e) {

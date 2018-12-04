@@ -1,5 +1,6 @@
 package princesadaserra.java.persistence.repository.user;
 
+import javafx.scene.control.ListCell;
 import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.repository.Repository;
@@ -17,7 +18,7 @@ import java.util.List;
 
 //TODO USER_PERMITION
 
-public class UserRepository implements Repository<User, Long> {
+public  class UserRepository implements Repository<User, Long> {
     UserMapper mapper;
     RoleMapper roleMapper;
     private ConnectionPoolDataSource dataSource;
@@ -122,6 +123,16 @@ public class UserRepository implements Repository<User, Long> {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
+    @Override
+    public List<User> find(Specification specification) {
+        return null;
+    }
+
+    @Override
+    public List<User> delete(Specification specification) {
+        return null;
+    }
+
     public List<Role> findAllRoles(){
         List<Role> list = null;
 
@@ -137,13 +148,24 @@ public class UserRepository implements Repository<User, Long> {
         }
         return list;
     }
-    @Override
-    public List<User> find(Specification specification) {
-        throw new NotImplementedException();
+
+    public List<User> find(String... specification) {
+        List<User> list = null;
+        try(Connection conn = getConnection()){
+            list = new ArrayList<>();
+            ResultSet resultSet = SQLQueries.findBySpecification(conn, specification).executeQuery();
+
+            while (resultSet.next()){
+                list.add(mapper.map(resultSet));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 
-    @Override
-    public List<User> delete(Specification specification) {
+    public List<User> delete(String... specification) {
         throw new NotImplementedException();
     }
 
@@ -152,9 +174,10 @@ public class UserRepository implements Repository<User, Long> {
         private static final String INSERT_USER_ROLE = "INSERT INTO users_roles (id_user, id_role) VALUES (?, ?)";
         private static final String DELETE_USER = "DELETE FROM users WHERE id_user = ?";
         private static final String UPDATE_USER = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
-        private static final String SELECT_USER = "SELECT id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
+        private static final String SELECT_USER = "SELECT user_name, users.id_user, first_name, last_name, email, phone, cpf, image_url, role, r.id_role from users join pg_user on users.user_name = pg_user.usename join users_roles ur on users.id_user = ur.id_user join roles r on r.id_role = ur.id_role where users.id_user = ? LIMIT 1";
         private static final String SELECT_BY_NAME_USER = "SELECT user_name, users.id_user, first_name, last_name, email, phone, cpf, image_url, role, r.id_role from users join pg_user on users.user_name = pg_user.usename join users_roles ur on users.id_user = ur.id_user join roles r on r.id_role = ur.id_role where usename = ? LIMIT 1";
-        private static final String SELECT_ALL_USER = "SELECT * from users";
+        private static final String SELECT_BY_SPECIFICATION = "SELECT user_name, users.id_user, first_name, last_name, email, phone, cpf, image_url, role, r.id_role from users join pg_user on users.user_name = pg_user.usename join users_roles ur on users.id_user = ur.id_user join roles r on r.id_role = ur.id_role";
+        private static final String SELECT_ALL_USER = "SELECT user_name, users.id_user, first_name, last_name, email, phone, cpf, image_url, role, r.id_role from users join pg_user on users.user_name = pg_user.usename join users_roles ur on users.id_user = ur.id_user join roles r on r.id_role = ur.id_role";
         private static final String SELECT_ALL_ROLES = "SELECT * FROM roles";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
@@ -164,6 +187,22 @@ public class UserRepository implements Repository<User, Long> {
 
         public static PreparedStatement findAllRoles(Connection conn) throws SQLException {
             PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_ALL_ROLES);
+            return statement;
+        }
+
+        public static PreparedStatement findBySpecification(Connection conn, String... specifications) throws SQLException {
+            String query = SELECT_BY_SPECIFICATION;
+            if(specifications.length > 0){
+                query.concat(" where ");
+            }
+            for(int x = 0; x < specifications.length - 1; x++){
+                query.concat(" " + specifications[x] + " AND ");
+            }
+            if(specifications.length-1 >= 0){
+                query.concat(specifications[specifications.length-1]);
+            }
+            PreparedStatement statement = conn.prepareStatement(query);
+
             return statement;
         }
 

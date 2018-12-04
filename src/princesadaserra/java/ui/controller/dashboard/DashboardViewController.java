@@ -16,6 +16,7 @@ import princesadaserra.java.persistence.repository.user.UserRepository;
 import princesadaserra.java.ui.controller.View;
 import princesadaserra.java.ui.controller.dashboard.content.trips.TripsContentController;
 import princesadaserra.java.ui.controller.dashboard.content.users.UsersContentController;
+import princesadaserra.java.ui.controller.dashboard.content.vehicles.VehiclesContentController;
 import princesadaserra.java.ui.controller.login.LoginViewController;
 import princesadaserra.java.usecases.user.GetUserByUsername;
 import princesadaserra.java.util.context.AppContext;
@@ -53,6 +54,7 @@ public class DashboardViewController {
     private AppContext context;
     private UserRepository userRepository;
     private String username;
+    private User currentUser;
 
     public DashboardViewController(AppContext context, ConnectionPoolDataSource dataSource, String username) {
         this.context = context;
@@ -63,12 +65,13 @@ public class DashboardViewController {
 
         getUserTask.addOnFinishCallback(user -> addSidePaneButtons(user));
         getUserTask.addOnFinishCallback(user -> setSidePaneUserInfo(user));
+        getUserTask.addOnFinishCallback(user -> this.currentUser = user);
 
     }
 
     @FXML
     public void initialize() {
-        getUserTask.start();
+
 
         drawer = new JFXDrawer();
         snackbar = new JFXSnackbar(dashboardRoot);
@@ -83,7 +86,8 @@ public class DashboardViewController {
 
         menuButton.setOnMouseClicked(this::menuButtonOnClick);
 
-        showTrips();
+        getUserTask.addOnFinishCallback(() -> showTrips());
+        getUserTask.start();
     }
 
     private void setSidePaneUserInfo(User user) {
@@ -140,7 +144,7 @@ public class DashboardViewController {
     private void showTrips() {
         if (tripsContent == null) {
             try {
-                tripsContent = (Pane) context.getNavigator().loadView(View.TRIPS_CONTENT, new TripsContentController(dataSource, username), context);
+                tripsContent = (Pane) context.getNavigator().loadView(View.TRIPS_CONTENT, new TripsContentController(context, dataSource, currentUser), context);
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -155,7 +159,7 @@ public class DashboardViewController {
     private void showVehicles() {
         if (vehiclesContent == null) {
             try {
-                vehiclesContent = FXMLLoader.load(getClass().getResource("/view/dashboard/content/vehicles/VehiclesContent.fxml"));
+                vehiclesContent = (Pane) context.getNavigator().loadView(View.VEHICLES_CONTENT, new VehiclesContentController(dataSource, context), context);
             } catch (IOException e) {
                 e.printStackTrace();
                 return;

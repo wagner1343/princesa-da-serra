@@ -113,9 +113,9 @@ public class ModelRepository implements Repository<Model, Long> {
     }
 
     private static class SQLQueries {
-        private static final String INSERT_MODEL = "INSERT INTO models (amntAxis, amntSeats) VALUES(?, ?)";
+        private static final String INSERT_MODEL = "INSERT INTO models (amntAxis, amntSeats, year, name) VALUES(?, ?, ?, ?)";
         private static final String DELETE_MODEL = "DELETE FROM models WHERE id_model = ?";
-        private static final String UPDATE_MODEL = "UPDATE models set amntAxis = ?, amntSeats = ? where id_model = ?";
+        private static final String UPDATE_MODEL = "UPDATE models set amntAxis = ?, amntSeats = ?, year = ?, name = ? where id_model = ?";
         private static final String SELECT_MODEL = "SELECT * from models where id_model = ?";
         private static final String SELECT_ALL_MODEL = "SELECT * from models";
 
@@ -129,7 +129,9 @@ public class ModelRepository implements Repository<Model, Long> {
             PreparedStatement statement = conn.prepareStatement(SQLQueries.UPDATE_MODEL);
             statement.setInt(1, model.getAxisAmount());
             statement.setInt(2, model.getSeatAmount());
-            statement.setLong(3, model.getId());
+            statement.setInt(3, model.getYear());
+            statement.setString(4, model.getName());
+            statement.setLong(5, model.getId());
 
             return statement;
         }
@@ -147,6 +149,8 @@ public class ModelRepository implements Repository<Model, Long> {
             PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_MODEL);
             statement.setInt(1, model.getAxisAmount());
             statement.setInt(2, model.getSeatAmount());
+            statement.setInt(3, model.getYear());
+            statement.setString(4, model.getName());
 
             return statement;
         }

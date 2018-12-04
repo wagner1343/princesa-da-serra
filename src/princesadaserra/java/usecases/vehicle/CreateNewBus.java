@@ -5,19 +5,21 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.vehicle.BusRepository;
 import princesadaserra.java.util.threading.Task;
 
-public class CreateNewBus extends Task<String, Boolean, Integer> {
+import javax.sql.ConnectionPoolDataSource;
 
-    private PDSDatabaseConnectionPool connectionPool = null;
+public class CreateNewBus extends Task<String, Bus, Integer> {
+
+    private ConnectionPoolDataSource connectionPool = null;
     private Bus bus = null;
 
-    public CreateNewBus(PDSDatabaseConnectionPool connectionPool, Bus bus){
+    public CreateNewBus(ConnectionPoolDataSource connectionPool, Bus bus){
 
         this.connectionPool = connectionPool;
         this.bus = bus;
     }
 
     @Override
-    protected Boolean execute(String useless) {
+    protected Bus execute(String useless) {
 
         BusRepository busRepository = null;
         try{
@@ -29,8 +31,8 @@ public class CreateNewBus extends Task<String, Boolean, Integer> {
         } catch(Exception e){
 
             e.printStackTrace();
-            return false;
+            return null;
         }
-        return true;
+        return bus;
     }
 }

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxWidth="1.7976931348623157E308" minWidth="600.0" VBox.vgrow="NEVER" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <VBox.margin>
+        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+    </VBox.margin>
+    <children>
+        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="722.0" minWidth="-Infinity" prefWidth="722.0" spacing="24.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS">
+
+            <HBox.margin>
+                <Insets bottom="12.0" right="12.0" top="12.0" />
+            </HBox.margin>
+            <children>
+                <AnchorPane prefHeight="79.0" prefWidth="283.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <effect>
+                        <DropShadow color="#00000047" height="33.44" radius="15.442499999999999" spread="0.29" width="30.33" />
+                    </effect>
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="79.0" prefWidth="405.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
+                            <children>
+                                <JFXTextField fx:id="nameTextField" prefHeight="31.0" prefWidth="67.0" promptText="Nome">
+                                    <HBox.margin>
+                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                    </HBox.margin>
+                                </JFXTextField>
+                                <JFXTextField fx:id="seatsTextField" prefHeight="31.0" prefWidth="47.0" promptText="Assentos" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                    </HBox.margin>
+                                </JFXTextField>
+                                <JFXTextField fx:id="axisTextField" prefHeight="31.0" prefWidth="29.0" promptText="Eixos" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                    </HBox.margin>
+                                </JFXTextField>
+                                <JFXTextField fx:id="yearTextField" prefHeight="31.0" prefWidth="33.0" promptText="Ano" />
+                                <JFXButton fx:id="addModelButton" mnemonicParsing="false" text="Adicionar Modelo">
+                                    <HBox.margin>
+                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                    </HBox.margin>
+                                </JFXButton>
+                            </children>
+                            <padding>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </padding>
+                        </HBox>
+                  <Label fx:id="modelInfo" alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="200.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets />
+                    </HBox.margin>
+                    <effect>
+                        <DropShadow color="#00000047" height="33.44" radius="15.442499999999999" spread="0.29" width="30.33" />
+                    </effect>
+                    <children>
+                        <HBox alignment="CENTER" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="12.0">
+                            <children>
+                                <JFXComboBox fx:id="modelComboBox" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="88.0" promptText="Modelo" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                    </HBox.margin>
+                                </JFXComboBox>
+                                <JFXButton fx:id="addVehicleButton" mnemonicParsing="false" text="Adicionar Veiculo">
+                                    <HBox.margin>
+                                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                                    </HBox.margin>
+                                </JFXButton>
+                            </children>
+                            <padding>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </padding>
+                        </HBox>
+                  <Label fx:id="vehicleInfo" alignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

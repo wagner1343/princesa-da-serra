@@ -5,19 +5,21 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.vehicle.ModelRepository;
 import princesadaserra.java.util.threading.Task;
 
-public class CreateNewModel extends Task<String, Boolean, Integer> {
+import javax.sql.ConnectionPoolDataSource;
 
-    private PDSDatabaseConnectionPool connectionPool = null;
+public class CreateNewModel extends Task<String, Model, Integer> {
+
+    private ConnectionPoolDataSource connectionPool = null;
     private Model model = null;
 
-    public CreateNewModel(PDSDatabaseConnectionPool connectionPool, Model model){
+    public CreateNewModel(ConnectionPoolDataSource connectionPool, Model model){
 
         this.connectionPool = connectionPool;
         this.model = model;
     }
 
     @Override
-    protected Boolean execute(String useless) {
+    protected Model execute(String useless) {
 
         ModelRepository modelRepository = null;
         try{
@@ -29,8 +31,8 @@ public class CreateNewModel extends Task<String, Boolean, Integer> {
         } catch(Exception e){
 
             e.printStackTrace();
-            return false;
+            return null;
         }
-        return true;
+        return model;
     }
 }

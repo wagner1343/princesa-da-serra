@@ -5,14 +5,15 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.vehicle.ModelRepository;
 import princesadaserra.java.util.threading.Task;
 
+import javax.sql.ConnectionPoolDataSource;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoadAllModels extends Task<Boolean, List<Model>, Integer> {
 
-    private PDSDatabaseConnectionPool connectionPool = null;
+    private ConnectionPoolDataSource connectionPool = null;
 
-    public LoadAllModels(PDSDatabaseConnectionPool connectionPool){
+    public LoadAllModels(ConnectionPoolDataSource connectionPool){
 
         this.connectionPool = connectionPool;
     }

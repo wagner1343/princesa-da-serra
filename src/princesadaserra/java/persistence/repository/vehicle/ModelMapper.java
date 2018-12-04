@@ -18,6 +18,8 @@ public class ModelMapper implements Mapper<ResultSet, Model>{
             model.setId(result.getLong("id_model"));
             model.setAxisAmount(result.getInt("amntAxis"));
             model.setSeatAmount(result.getInt("amntSeats"));
+            model.setYear(result.getInt("year"));
+            model.setName(result.getString("name"));
         } catch(SQLException e){
 
             e.printStackTrace();

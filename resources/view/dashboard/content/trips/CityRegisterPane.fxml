@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="286.0" prefWidth="295.0" style="-fx-background-color: white; -fx-background-radius: 5;" HBox.hgrow="ALWAYS" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <effect>
+        <DropShadow color="#00000039" height="36.55" radius="17.775" spread="0.3" width="36.55" />
+    </effect>
+    <HBox.margin>
+        <Insets bottom="12.0" right="12.0" top="12.0" />
+    </HBox.margin>
+
+</AnchorPane>
