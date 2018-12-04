@@ -4,6 +4,7 @@ import princesadaserra.java.core.route.Route;
 import princesadaserra.java.core.trip.Trip;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.core.vehicle.Bus;
+import princesadaserra.java.core.vehicle.Model;
 import princesadaserra.java.util.mapping.Mapper;
 
 import java.sql.ResultSet;
@@ -18,12 +19,14 @@ public class TripMapper implements Mapper<ResultSet, Trip> {
         User user = null;
         Bus bus = null;
         Route route = null;
+        Model model = null;
         try {
 
             trip = new Trip();
             user = new User();
             bus = new Bus();
             route = new Route();
+            model = new Model();
             trip.setId(result.getLong("id_trip"));
             trip.setTimeStart(result.getTime("dateSail"));
             trip.setTimeFinish(result.getTime("dateArrival"));
@@ -38,6 +41,10 @@ public class TripMapper implements Mapper<ResultSet, Trip> {
             bus.setLastMaintenance(result.getTime("dateLastmaintenance"));
             route.setId(result.getLong("id_route"));
             route.setName(result.getString("name"));
+            model.setId(result.getLong("id_model"));
+            model.setAxisAmount(result.getInt("amntaxis"));
+            model.setSeatAmount(result.getInt("amntseats"));
+            bus.setModel(model);
             trip.setBus(bus);
             trip.setDriver(user);
             trip.setRoute(route);

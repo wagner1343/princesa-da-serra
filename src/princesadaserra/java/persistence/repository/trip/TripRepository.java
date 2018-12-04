@@ -127,8 +127,8 @@ public class TripRepository implements Repository<Trip, Long> {
         private static final String DELETE_TRIP = "DELETE FROM trips WHERE id_trip = ?";
         private static final String UPDATE_TRIP = "UPDATE trips set dateSail = ?, estimatedArrivalDate = ?, id_user_driver = ?, id_bus = ?, id_route = ? where id_trip = ?";
         private static final String UPDATE_FINISH_DATE_TRIP = "UPDATE trips set dateArrival = ? where id_trip = ?";
-        private static final String SELECT_TRIP = "SELECT * from trips t join users u on t.id_user_driver = u.id_user join buses b on t.id_bus = b.id_bus join routes r on t.id_route = r.id_route where id_trip = ?";
-        private static final String SELECT_ALL_TRIP = "SELECT * from trips t join users u on t.id_user_driver = u.id_user join buses b on t.id_bus = b.id_bus join routes r on t.id_route = r.id_route";
+        private static final String SELECT_TRIP = "SELECT * from trips t join users u on t.id_user_driver = u.id_user join buses b on t.id_bus = b.id_bus join routes r on t.id_route = r.id_route join models m2 on b.id_model = m2.id_model where id_trip = ?";
+        private static final String SELECT_ALL_TRIP = "SELECT * from trips t join users u on t.id_user_driver = u.id_user join buses b on t.id_bus = b.id_bus join routes r on t.id_route = r.id_route join models m2 on b.id_model = m2.id_model";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
