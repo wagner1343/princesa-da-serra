@@ -5,32 +5,34 @@ import princesadaserra.java.persistence.repository.connection.PDSDatabaseConnect
 import princesadaserra.java.persistence.repository.trip.TripRepository;
 import princesadaserra.java.util.threading.Task;
 
-public class CreateNewTrip extends Task<String, Boolean, Integer> {
+public class GetTripByTripId extends Task<String, Trip, Integer> {
 
     private PDSDatabaseConnectionPool connectionPool = null;
-    private Trip trip = null;
+    private Long key = null;
 
-    public CreateNewTrip(PDSDatabaseConnectionPool connectionPool, Trip trip){
+    public GetTripByTripId(PDSDatabaseConnectionPool connectionPool, Long key){
 
         this.connectionPool = connectionPool;
-        this.trip = trip;
+        this.key = key;
     }
 
     @Override
-    protected Boolean execute(String useless) {
+    protected Trip execute(String useless){
 
         TripRepository tripRepository = null;
+        Trip trip = null;
+
         try{
 
             tripRepository = new TripRepository(connectionPool);
-            tripRepository.add(trip);
-            System.out.println("Add trip success");
+            trip = new Trip();
+            trip = tripRepository.find(key);
+            System.out.println("Find trip by key success");
             setSuccess();
         } catch(Exception e){
 
             e.printStackTrace();
-            return false;
         }
-        return true;
+        return trip;
     }
 }
