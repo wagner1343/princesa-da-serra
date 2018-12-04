@@ -8,6 +8,24 @@ public class Route {
     private String name;
     private List<Segment> segments;
 
+    public int findCityStart(City start){ //retorna o indice do vetor de segmentos que representa a posição do banco, para respeitar a ordem dos segmentos
+
+        for(int x = 0; x < segments.size(); x++)
+            if(segments.get(x).getCityOrigin().getId() == start.getId())
+                return x;
+
+        return -1;
+    }
+
+    public int findCityFinish(City finish){ //retorna o indice do vetor de segmentos que representa a posição do banco, para respeitar a ordem dos segmentos
+
+        for(int x = 0; x < segments.size(); x++)
+            if(segments.get(x).getCityDestination().getId() == finish.getId())
+                return x;
+
+        return -1;
+    }
+
     public boolean addSegment(Segment segment) {
         boolean result;
 
