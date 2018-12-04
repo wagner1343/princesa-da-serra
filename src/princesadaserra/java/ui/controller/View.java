@@ -1,7 +1,7 @@
 package princesadaserra.java.ui.controller;
 
 public enum View {
-    REGISTER_USER_POPUP,
+    USER_REGISTER_PANE,
     TRIPS_CONTENT,
     USERS_CONTENT,
     VEHICLES_CONTENT,
@@ -20,7 +20,7 @@ public enum View {
                 return "/view/dashboard/content/users/UsersContent.fxml";
             case VEHICLES_CONTENT:
                 return "/view/dashboard/content/vehicles/VehiclesContent.fxml";
-            case REGISTER_USER_POPUP:
+            case USER_REGISTER_PANE:
                 return "/view/dashboard/content/users/UserRegisterPane.fxml";
             default:
                 return null;

@@ -7,18 +7,17 @@ import princesadaserra.java.util.threading.Task;
 import javax.sql.ConnectionPoolDataSource;
 
 public class GetUserByUsername extends Task<String, User, Integer> {
-    private ConnectionPoolDataSource dataSource;
     private String username;
+    private UserRepository userRepository;
 
-    public GetUserByUsername(ConnectionPoolDataSource dataSource, String username) {
-        this.dataSource = dataSource;
+    public GetUserByUsername(UserRepository userRepository, String username) {
+        this.userRepository = userRepository;
         this.username = username;
     }
 
     @Override
     protected User execute(String s) {
-        UserRepository repository = new UserRepository(dataSource);
-        User user = repository.find(username);
+        User user = userRepository.find(username);
         if(user == null){
             setFailed();
         }

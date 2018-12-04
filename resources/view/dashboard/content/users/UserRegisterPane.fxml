@@ -13,98 +13,94 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-         <AnchorPane fx:id="userRegisterPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="231.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 5;">
-             <effect>
-                 <DropShadow color="#00000039" height="36.55" radius="17.775" spread="0.3" width="36.55" />
-             </effect>
-             <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                 <children>
-                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                         <children>
-                             <JFXTextField fx:id="nameTextField" prefHeight="25.0" prefWidth="47.0" promptText="Nome" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                        </JFXTextField>
-                             <JFXTextField fx:id="lastNameTextField" prefHeight="25.0" prefWidth="154.0" promptText="Sobrenome" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                        </JFXTextField>
-                         </children>
-                     </HBox>
-                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                         <children>
-                             <JFXTextField fx:id="emailTextField" promptText="Email" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                        </JFXTextField>
-                             <JFXTextField fx:id="phoneTextField" prefHeight="25.0" prefWidth="93.0" promptText="Telefone" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                        </JFXTextField>
-                         </children>
-                     </HBox>
-                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                         <children>
-                             <JFXComboBox fx:id="roleComboBox" prefWidth="150.0" promptText="Cargo" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                        </JFXComboBox>
-                             <JFXTextField fx:id="cpfTextFIeld" prefHeight="25.0" prefWidth="180.0" promptText="CPF" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                        </JFXTextField>
-                         </children>
-                     </HBox>
-                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                         <children>
-                             <JFXPasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="170.0" promptText="Senha" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                             </JFXPasswordField>
-                             <JFXPasswordField fx:id="repeatPasswordField" prefHeight="25.0" prefWidth="170.0" promptText="Repetir senha" HBox.hgrow="ALWAYS">
-                                 <HBox.margin>
-                                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                                 </HBox.margin>
-                             </JFXPasswordField>
-                         </children>
-                     </HBox>
-                     <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
-                         <children>
-                        <AnchorPane fx:id="infoLabel" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label fx:id="infoLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                           </children>
-                        </AnchorPane>
-                             <JFXButton fx:id="clearButton" mnemonicParsing="false" text="Limpar" />
-                             <JFXButton fx:id="registerButton" mnemonicParsing="false" text="Cadastrar" />
-                         </children>
-                     </HBox>
-                 </children>
-                 <padding>
-                     <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
-                 </padding>
-             </VBox>
-                 <AnchorPane prefHeight="210.0" prefWidth="167.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+<AnchorPane fx:id="userRegisterPane" minWidth="-Infinity" prefHeight="231.0" prefWidth="600.0" style="-fx-background-color: white; -fx-background-radius: 5;" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+       <effect>
+           <DropShadow color="#00000039" height="36.55" radius="17.775" spread="0.3" width="36.55" />
+       </effect>
+       <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <children>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                   <children>
+                       <JFXTextField fx:id="nameTextField" prefHeight="25.0" prefWidth="47.0" promptText="Nome" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                  </JFXTextField>
+                       <JFXTextField fx:id="lastNameTextField" prefHeight="25.0" prefWidth="154.0" promptText="Sobrenome" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                            </HBox.margin>
+                  </JFXTextField>
+                   </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                   <children>
+                       <JFXTextField fx:id="emailTextField" promptText="Email" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                  </JFXTextField>
+                       <JFXTextField fx:id="phoneTextField" prefHeight="25.0" prefWidth="93.0" promptText="Telefone" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                  </JFXTextField>
+                   </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                   <children>
+                       <JFXComboBox fx:id="roleComboBox" prefWidth="150.0" promptText="Cargo" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                  </JFXComboBox>
+                       <JFXTextField fx:id="cpfTextFIeld" prefHeight="25.0" prefWidth="180.0" promptText="CPF" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                  </JFXTextField>
+                   </children>
+               </HBox>
+               <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                   <children>
+                       <JFXPasswordField fx:id="passwordField" prefHeight="25.0" prefWidth="170.0" promptText="Senha" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                       </JFXPasswordField>
+                       <JFXPasswordField fx:id="repeatPasswordField" prefHeight="25.0" prefWidth="170.0" promptText="Repetir senha" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+                           </HBox.margin>
+                       </JFXPasswordField>
+                   </children>
+               </HBox>
+               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                   <children>
+                  <AnchorPane prefWidth="200.0" HBox.hgrow="ALWAYS">
                      <children>
-                  <JFXTextField fx:id="ImageUrlTextField" promptText="URL da foto" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="16.0" />
-                         <ImageView fitHeight="167.0" fitWidth="167.0" layoutX="-0.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                             <image>
-                                 <Image url="@../../../../img/profile/default.jpg" />
-                             </image>
-                         </ImageView>
+                        <Label fx:id="infoLabel" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
-            </AnchorPane>
-             </children>
-         </AnchorPane>
-   </children>
-</VBox>
+                  </AnchorPane>
+                       <JFXButton fx:id="clearButton" mnemonicParsing="false" text="Limpar" />
+                       <JFXButton fx:id="registerButton" mnemonicParsing="false" text="Cadastrar" />
+                   </children>
+               </HBox>
+           </children>
+           <padding>
+               <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
+           </padding>
+       </VBox>
+           <AnchorPane prefHeight="210.0" prefWidth="167.0" AnchorPane.leftAnchor="16.0" AnchorPane.topAnchor="16.0">
+               <children>
+            <JFXTextField fx:id="imageUrlTextField" promptText="URL da foto" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="16.0" />
+                   <ImageView fitHeight="167.0" fitWidth="167.0" layoutX="-0.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                       <image>
+                           <Image url="@../../../../img/profile/default.jpg" />
+                       </image>
+                   </ImageView>
+               </children>
+      </AnchorPane>
+       </children>
+   </AnchorPane>

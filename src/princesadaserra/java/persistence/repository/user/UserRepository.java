@@ -1,8 +1,10 @@
 package princesadaserra.java.persistence.repository.user;
 
+import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
+import princesadaserra.java.usecases.user.RoleMapper;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import javax.sql.ConnectionPoolDataSource;
@@ -17,12 +19,13 @@ import java.util.List;
 
 public class UserRepository implements Repository<User, Long> {
     UserMapper mapper;
-
+    RoleMapper roleMapper;
     private ConnectionPoolDataSource dataSource;
 
     public UserRepository(ConnectionPoolDataSource dataSource) {
         this.dataSource = dataSource;
         mapper = new UserMapper();
+        roleMapper = new RoleMapper();
     }
 
     public Connection getConnection() throws SQLException {
@@ -91,11 +94,17 @@ public class UserRepository implements Repository<User, Long> {
 
             if(getUserIdResult.next())
                 user.setId(getUserIdResult.getLong("usesysid"));
+            else throw new SQLException();
+
 
             System.out.println("execute = " + SQLQueries.insert(conn, user).execute());
+            System.out.println("SQLQueries.insertUserRole(conn, user).execute() = " + SQLQueries.insertUserRole(conn, user).execute());
             System.out.println("user.getId() = " + user.getId());
             conn.commit();
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            user = null;
+            e.printStackTrace();
+        }
 
         return user;
     }
@@ -107,6 +116,21 @@ public class UserRepository implements Repository<User, Long> {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
+    public List<Role> findAllRoles(){
+        List<Role> list = null;
+
+        try(Connection conn = getConnection()){
+            list = new ArrayList<>();
+            ResultSet resultSet =  SQLQueries.findAllRoles(conn).executeQuery();
+
+            while(resultSet.next())
+                list.add(roleMapper.map(resultSet));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
     @Override
     public List<User> find(Specification specification) {
         throw new NotImplementedException();
@@ -119,15 +143,22 @@ public class UserRepository implements Repository<User, Long> {
 
     private static class SQLQueries {
         private static final String INSERT_USER = "INSERT INTO users ( first_name, email, phone, cpf, id_user, user_name, last_name) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        private static final String INSERT_USER_ROLE = "INSERT INTO user_roles (id_user, id_roles) VALUES (?, ?)";
         private static final String DELETE_USER = "DELETE FROM users WHERE id_user = ?";
         private static final String UPDATE_USER = "UPDATE users set first_name = ?, last_name = ?, email = ?, phone = ?, cpf = ? where id_user = ?";
         private static final String SELECT_USER = "SELECT id_user, first_name, last_name  email, phone, cpf, image_url from users where id_user = ? LIMIT 1";
         private static final String SELECT_BY_NAME_USER = "SELECT user_name, id_user, first_name, last_name, email, phone, cpf, image_url from users join pg_user on id_user = usesysid where usename = ? LIMIT 1";
         private static final String SELECT_ALL_USER = "SELECT * from users";
+        private static final String SELECT_ALL_ROLES = "SELECT * FROM roles";
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 
             return conn.prepareStatement(SQLQueries.SELECT_ALL_USER);
+        }
+
+        public static PreparedStatement findAllRoles(Connection conn) throws SQLException {
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.SELECT_ALL_ROLES);
+            return statement;
         }
 
         public static PreparedStatement update(Connection conn, User user) throws SQLException {
@@ -179,6 +210,14 @@ public class UserRepository implements Repository<User, Long> {
             statement.setLong(5, user.getId());
             statement.setString(6, user.getUsername());
             statement.setString(7, user.getLastName());
+
+            return statement;
+        }
+
+        public static PreparedStatement insertUserRole(Connection conn, User user)throws SQLException {
+            PreparedStatement statement = conn.prepareStatement(SQLQueries.INSERT_USER_ROLE);
+            statement.setLong(1, user.getId());
+            statement.setLong(2, user.getRole().getId());
 
             return statement;
         }

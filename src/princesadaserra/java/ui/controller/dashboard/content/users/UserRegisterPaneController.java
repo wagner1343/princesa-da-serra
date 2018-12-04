@@ -10,13 +10,16 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import princesadaserra.java.core.role.Role;
 import princesadaserra.java.core.user.User;
+import princesadaserra.java.persistence.repository.user.UserRepository;
+import princesadaserra.java.usecases.user.CreateNewUser;
+import princesadaserra.java.usecases.user.GetAllRoles;
 
 import javax.sql.ConnectionPoolDataSource;
 
 // TODO implement UserRegisterPaneController
 public class UserRegisterPaneController {
     @FXML
-    private JFXPasswordField nameTextField;
+    private JFXTextField nameTextField;
 
     @FXML
     private JFXTextField lastNameTextField;
@@ -51,16 +54,20 @@ public class UserRegisterPaneController {
     @FXML
     private Label infoLabel;
 
-    private ConnectionPoolDataSource dataSource;
-
-    public UserRegisterPaneController(ConnectionPoolDataSource dataSource) {
-        this.dataSource = dataSource;
+    private UserRepository userRepository;
+    private GetAllRoles getAllRoles;
+    public UserRegisterPaneController(ConnectionPoolDataSource dataSource){
+        this.userRepository = new UserRepository(dataSource);
+        getAllRoles = new GetAllRoles(userRepository);
+        getAllRoles.addOnSuccessCallback(roles -> roleComboBox.getItems().addAll(roles));
     }
 
     @FXML
     public void initialize() {
+        getAllRoles.start();
         registerButton.setOnAction(this::registerButtonOnAction);
         clearButton.setOnAction(this::clearButtonOnAction);
+        // todo implement roles list
     }
 
     private void showInfo(String info){
@@ -76,8 +83,16 @@ public class UserRegisterPaneController {
     }
 
     private void registerButtonOnAction(ActionEvent actionEvent) {
+        CreateNewUser createNewUser = new CreateNewUser(userRepository, getUser());
+        createNewUser.addOnSuccessCallback(user -> showInfo("Usuário criado com sucesso!"));
+        createNewUser.addOnFailedCallback(user -> showInfo("Erro durante o cadastro o usuário"));
+    }
+
+    private User getUser(){
         User newUser = new User();
+        System.out.println("imageUrlTextField.getText() == null = " + imageUrlTextField.getText() == null);
         newUser.setImageUrl(imageUrlTextField.getText());
+        newUser.setUsername(emailTextField.getText());
         newUser.setFirstName(nameTextField.getText());
         newUser.setLastName(lastNameTextField.getText());
         newUser.setEmail(emailTextField.getText());
@@ -85,6 +100,8 @@ public class UserRegisterPaneController {
         newUser.setRole(roleComboBox.valueProperty().getValue());
         newUser.setCpf(cpfTextField.getText());
         newUser.setPassword(passwordField.getText());
+
+        return newUser;
     }
 
 }

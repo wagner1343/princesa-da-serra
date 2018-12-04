@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import princesadaserra.java.core.user.User;
+import princesadaserra.java.persistence.repository.user.UserRepository;
 import princesadaserra.java.ui.controller.View;
 import princesadaserra.java.ui.controller.dashboard.content.users.UsersContentController;
 import princesadaserra.java.ui.controller.login.LoginViewController;
@@ -49,11 +50,12 @@ public class DashboardViewController {
     private ConnectionPoolDataSource dataSource;
     private GetUserByUsername getUserTask;
     private AppContext context;
-
+    private UserRepository userRepository;
     public DashboardViewController(AppContext context, ConnectionPoolDataSource dataSource, String username){
         this.context = context;
         this.dataSource = dataSource;
-        getUserTask = new GetUserByUsername(dataSource, username);
+        this.userRepository = new UserRepository(dataSource);
+        getUserTask = new GetUserByUsername(userRepository, username);
 
         getUserTask.addOnSuccessCallback(this::setSidePaneUserInfo);
     }
