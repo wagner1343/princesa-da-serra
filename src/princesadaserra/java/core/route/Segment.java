@@ -1,11 +1,13 @@
 package princesadaserra.java.core.route;
 
+import java.sql.Time;
+
 public class Segment {
 
     private Long id;
     private City cityOrigin;
     private City cityDestination;
-    private int time;
+    private Time time;
     private double value;
 
     public Long getId() {
@@ -16,11 +18,11 @@ public class Segment {
         this.id = id;
     }
 
-    public int getTime() {
+    public Time getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Time time) {
         this.time = time;
     }
 
@@ -49,6 +51,6 @@ public class Segment {
     }
 
     public boolean connectsTo(Segment other) {
-        return getCityDestination() == other.getCityOrigin();
+        return getCityDestination().getId() == other.getCityOrigin().getId();
     }
 }

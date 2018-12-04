@@ -25,9 +25,9 @@ public class TripMapper implements Mapper<ResultSet, Trip> {
             bus = new Bus();
             route = new Route();
             trip.setId(result.getLong("id_trip"));
-            trip.setDateStart(result.getDate("dateSail"));
-            trip.setDateFinish(result.getDate("dateArrival"));
-            trip.setDateExpected(result.getDate("estimatedArrivalDate"));
+            trip.setTimeStart(result.getTime("dateSail"));
+            trip.setTimeFinish(result.getTime("dateArrival"));
+            trip.setTimeExpected(result.getTime("estimatedArrivalTime"));
             user.setId(result.getLong("id_user_driver"));
             user.setCpf(result.getString("cpf"));
             user.setEmail(result.getString("email"));
@@ -35,9 +35,8 @@ public class TripMapper implements Mapper<ResultSet, Trip> {
             user.setLastName(result.getString("last_name"));
             user.setPhone(result.getString("phone"));
             bus.setId(result.getLong("id_bus"));
-            bus.setLastMaintenance(result.getDate("dateLastmaintenance"));
+            bus.setLastMaintenance(result.getTime("dateLastmaintenance"));
             route.setId(result.getLong("id_route"));
-            //route.setSegments();
             route.setName(result.getString("name"));
             trip.setBus(bus);
             trip.setDriver(user);

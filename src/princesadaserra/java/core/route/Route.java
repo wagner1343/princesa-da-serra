@@ -1,12 +1,12 @@
 package princesadaserra.java.core.route;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Route {
 
     private Long id;
     private String name;
-    private ArrayList<Segment> segments;
+    private List<Segment> segments;
 
     public boolean addSegment(Segment segment) {
         boolean result;
@@ -92,11 +92,11 @@ public class Route {
         this.id = id;
     }
 
-    public ArrayList<Segment> getSegments() {
+    public List<Segment> getSegments() {
         return segments;
     }
 
-    public void setSegments(ArrayList<Segment> segments) {
+    public void setSegments(List<Segment> segments) {
         this.segments = segments;
     }
 }

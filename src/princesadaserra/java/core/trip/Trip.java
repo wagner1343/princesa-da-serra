@@ -4,16 +4,23 @@ import princesadaserra.java.core.route.Route;
 import princesadaserra.java.core.user.User;
 import princesadaserra.java.core.vehicle.Bus;
 
-import java.sql.Date;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Trip {
     private Long id;
     private Route route;
-    private Date dateStart;
-    private Date dateFinish;
-    private Date dateExpected;
+    private Time dateStart;
+    private Time dateFinish;
+    private Time dateExpected;
     private User driver;
     private Bus bus;
+    private List<TripSale> sells = null;
+
+    public Trip(){
+        sells = new ArrayList<>();
+    }
 
     public User getDriver() {
         return driver;
@@ -39,27 +46,27 @@ public class Trip {
         this.route = route;
     }
 
-    public Date getDateStart() {
+    public Time getTimeStart() {
         return dateStart;
     }
 
-    public void setDateStart(Date dateStart) {
+    public void setTimeStart(Time dateStart) {
         this.dateStart = dateStart;
     }
 
-    public Date getDateFinish() {
+    public Time getTimeFinish() {
         return dateFinish;
     }
 
-    public void setDateFinish(Date dateFinish) {
+    public void setTimeFinish(Time dateFinish) {
         this.dateFinish = dateFinish;
     }
 
-    public Date getDateExpected() {
+    public Time getTimeExpected() {
         return dateExpected;
     }
 
-    public void setDateExpected(Date dateExpected) {
+    public void setTimeExpected(Time dateExpected) {
         this.dateExpected = dateExpected;
     }
 

@@ -1,6 +1,7 @@
 package princesadaserra.java.persistence.repository.route;
 
 import princesadaserra.java.core.route.Route;
+import princesadaserra.java.core.route.Segment;
 import princesadaserra.java.persistence.repository.Repository;
 import princesadaserra.java.persistence.repository.Specification;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
@@ -13,16 +14,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-//FIXME TEM Q VER COMO VAI FAZER A PARTE DA LISTA DE SEGMENTOS POR ROTA, E DE PROCURAR POR SEGMENTO DE PARTIDA E SAIDA. VER EM OUTRAS CLASSES TAMBEM
-
 public class RouteRepository implements Repository<Route, Long> {
 
     RouteMapper mapper;
+    SegmentMapper mapperS;
     private ConnectionPoolDataSource dataSource;
 
     public RouteRepository(ConnectionPoolDataSource dataSource) {
         this.dataSource = dataSource;
         mapper = new RouteMapper();
+        mapperS = new SegmentMapper();
     }
 
     public Connection getConnection() throws SQLException {
@@ -102,6 +103,60 @@ public class RouteRepository implements Repository<Route, Long> {
         }
     }
 
+    public void addRouteSegment(Route route){
+
+        try(Connection connection = getConnection()){
+
+            connection.setAutoCommit(false);
+            for(int x = 0; x < route.getSegments().size(); x++){
+
+                SQLQueries.insertRouteSegment(connection, route.getId(), route.getSegments().get(x).getId(), x).execute();
+            }
+            connection.commit();
+        } catch (SQLException e){
+
+            e.printStackTrace();
+        }
+    }
+
+    public Route findByName(String nome){
+
+        Route route = null;
+
+        try(Connection connection = getConnection()) {
+
+            ResultSet resultSet = SQLQueries.findByName(connection, nome).executeQuery();
+            if(resultSet.next())
+                route = mapper.map(resultSet);
+        } catch (SQLException e){
+
+            e.printStackTrace();
+        }
+        return route;
+    }
+
+    public Route fullRoute(Long key){
+
+        Route route = null;
+        List<Segment> segments = new ArrayList<>();
+
+        try(Connection connection = getConnection()){
+
+            route = new Route();
+            ResultSet resultSet = SQLQueries.findFullRoute(connection, key).executeQuery();
+            System.out.println(key);
+            while (resultSet.next()){
+                segments.add(mapperS.map(resultSet));
+
+            }
+        } catch (Exception e){
+
+            e.printStackTrace();
+        }
+        route.setSegments(segments);
+        return route;
+    }
+
     @Override
     public List<Route> find(Specification specification) {
         throw new NotImplementedException();
@@ -119,6 +174,35 @@ public class RouteRepository implements Repository<Route, Long> {
         private static final String UPDATE_ROUTE = "UPDATE routes set name = ? where id_route = ?";
         private static final String SELECT_ROUTE = "SELECT * from routes where id_route = ?";
         private static final String SELECT_ALL_ROUTE = "SELECT * from routes";
+        private static final String INSERT_ROUTE_SEGMENT = "INSERT INTO routes_segments values (?, ?, ?)";
+        private static final String SELECT_BY_NAME_ROUTE = "SELECT * FROM routes where name = ?";
+        private static final String SELECT_ALL_ROUTE_SEGMENT = "SELECT *, r.id_route as id_routeR, r.name as nameR, cs.id_city as id_cityS, cs.name as nameS, ca.id_city as id_cityA, ca.name as nameA from routes_segments rs join routes r on rs.id_route = r.id_route join segments s on s.id_segment = rs.id_segment join cities cs on s.id_citySail = cs.id_city join cities ca on s.id_cityArrival = ca.id_city where rs.id_route = ? order by 3 asc";
+
+        public static PreparedStatement findFullRoute(Connection connection, Long key) throws SQLException{
+
+            PreparedStatement statement = connection.prepareStatement(SQLQueries.SELECT_ALL_ROUTE_SEGMENT);
+            statement.setLong(1, key);
+
+            return statement;
+        }
+
+        public static PreparedStatement findByName(Connection connection, String nome) throws  SQLException{
+
+            PreparedStatement statement = connection.prepareStatement(SQLQueries.SELECT_BY_NAME_ROUTE);
+            statement.setString(1, nome);
+
+            return statement;
+        }
+
+        public static PreparedStatement insertRouteSegment(Connection connection, Long route, Long segment, int pos) throws SQLException{
+
+            PreparedStatement statement = connection.prepareStatement(SQLQueries.INSERT_ROUTE_SEGMENT);
+            statement.setLong(1, route);
+            statement.setLong(2, segment);
+            statement.setInt(3, pos);
+
+            return  statement;
+        }
 
         public static PreparedStatement findAll(Connection conn) throws SQLException{
 

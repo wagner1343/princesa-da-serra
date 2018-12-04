@@ -21,7 +21,7 @@ public class BusMapper implements Mapper<ResultSet, Bus>{
 
             bus.setId(result.getLong("id_bus"));
             model.setId(result.getLong("id_model"));
-            bus.setLastMaintenance(result.getDate("id_dateLastMaintenance"));
+            bus.setLastMaintenance(result.getTime("id_dateLastMaintenance"));
             bus.setModel(model);
         } catch(SQLException e){
 
